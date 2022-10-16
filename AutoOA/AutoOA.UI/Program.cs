@@ -1,4 +1,4 @@
-using AutoOA.UI.Data;
+using AutoOA.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

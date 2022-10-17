@@ -1,13 +1,17 @@
 using AutoOA.Core;
+using AutoOA.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("AutoOAConnection");
+
 builder.Services.AddDbContext<AutoOADbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>(options =>
@@ -20,7 +24,12 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequiredLength = 5;
 }).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AutoOADbContext>();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<UsersRepository>();
 
 var app = builder.Build();
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoOA.Core.Migrations
 {
     [DbContext(typeof(AutoOADbContext))]
-    [Migration("20221017175114_Test1")]
+    [Migration("20221017220842_Test1")]
     partial class Test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,6 +126,111 @@ namespace AutoOA.Core.Migrations
                             GearBoxId = 2,
                             GearBoxName = "Автомат",
                             VehicleId = 2
+                        });
+                });
+
+            modelBuilder.Entity("AutoOA.Core.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "25773e91-12e6-4d03-b825-c9a3e949681c",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "71b03ffc-d1db-49ca-a5b7-5d9a874bfc36",
+                            Email = "admin@autooa.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@AUTOOA.COM",
+                            NormalizedUserName = "ADMIN@AUTOOA.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAMdmUr8ja8N8MQ6CoBPEeMgaOmwLnWNaJeOHJ/0FOZxOBJeVgPtrtVwYzidoCTfXQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "99b18804-b2bb-4a88-b50e-53b3c3d331c2",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@autooa.com"
+                        },
+                        new
+                        {
+                            Id = "0ccea4d5-240b-4e17-89f7-1b4fdc4114e9",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c8610742-07e0-4b41-a79e-4443af782da3",
+                            Email = "user@autooa.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@AUTOOA.COM",
+                            NormalizedUserName = "USER@AUTOOA.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDcO1tM6gEYEIuncsoH+5ANge4X5LJ8k39hr1yNbKsy9yDH3ZNps7HqzY3XX5CybgQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "64578671-c83a-4793-b1e6-4d2f055ea2bd",
+                            TwoFactorEnabled = false,
+                            UserName = "user@autooa.com"
                         });
                 });
 
@@ -254,14 +359,14 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             VehicleModelId = 1,
-                            ProductionDate = new DateTime(2022, 10, 17, 20, 51, 14, 364, DateTimeKind.Local).AddTicks(2958),
+                            ProductionDate = new DateTime(2022, 10, 18, 1, 8, 42, 384, DateTimeKind.Local).AddTicks(4867),
                             VehicleBrandId = 1,
                             VehicleModelName = "E 220"
                         },
                         new
                         {
                             VehicleModelId = 2,
-                            ProductionDate = new DateTime(2022, 10, 17, 20, 51, 14, 364, DateTimeKind.Local).AddTicks(2988),
+                            ProductionDate = new DateTime(2022, 10, 18, 1, 8, 42, 384, DateTimeKind.Local).AddTicks(4903),
                             VehicleBrandId = 2,
                             VehicleModelName = "320"
                         });
@@ -296,15 +401,15 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "37c9bd7d-4377-4d89-bf45-0b710e15ff8f",
-                            ConcurrencyStamp = "8b1c3cfc-1d6d-49ac-b9da-d4e29d9fc1a8",
+                            Id = "2d4e6299-72f4-40e7-9dab-7f40d9bbbfce",
+                            ConcurrencyStamp = "b1c14abc-e0f5-42d0-a484-55d1b1e36a4a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "01072ea4-4430-4232-a9f9-6472f675e268",
-                            ConcurrencyStamp = "3eca5e08-ec24-4f47-b3a7-d4eda1ab0678",
+                            Id = "d90a084a-f615-4e0a-aba2-70aa25800b32",
+                            ConcurrencyStamp = "f37de380-d4b0-4f29-949e-0060381bf34a",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -333,77 +438,6 @@ namespace AutoOA.Core.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -472,18 +506,18 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "85fea4e3-adea-4d44-bd4c-0dcad2d269de",
-                            RoleId = "37c9bd7d-4377-4d89-bf45-0b710e15ff8f"
+                            UserId = "25773e91-12e6-4d03-b825-c9a3e949681c",
+                            RoleId = "2d4e6299-72f4-40e7-9dab-7f40d9bbbfce"
                         },
                         new
                         {
-                            UserId = "85fea4e3-adea-4d44-bd4c-0dcad2d269de",
-                            RoleId = "01072ea4-4430-4232-a9f9-6472f675e268"
+                            UserId = "25773e91-12e6-4d03-b825-c9a3e949681c",
+                            RoleId = "d90a084a-f615-4e0a-aba2-70aa25800b32"
                         },
                         new
                         {
-                            UserId = "0459c771-f96b-4156-93da-c8b837574bcc",
-                            RoleId = "01072ea4-4430-4232-a9f9-6472f675e268"
+                            UserId = "0ccea4d5-240b-4e17-89f7-1b4fdc4114e9",
+                            RoleId = "d90a084a-f615-4e0a-aba2-70aa25800b32"
                         });
                 });
 
@@ -506,53 +540,6 @@ namespace AutoOA.Core.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("AutoOA.Core.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("User");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "85fea4e3-adea-4d44-bd4c-0dcad2d269de",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e2e5b9d9-e6a8-43e0-b095-7e2f6c0e30b9",
-                            Email = "admin@autooa.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@AUTOOA.COM",
-                            NormalizedUserName = "ADMIN@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBPIoZ6R6tnaS684OuYhWALgG/TuIXv59T11tyznr8rnqHTjeto1UcwqEww9hvRomw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "fa5e3515-3a7e-44dc-a8f2-3f3a6ab05792",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@autooa.com"
-                        },
-                        new
-                        {
-                            Id = "0459c771-f96b-4156-93da-c8b837574bcc",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "fd992920-b6f4-4090-a131-d55e1d48e0d2",
-                            Email = "user@autooa.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "USER@AUTOOA.COM",
-                            NormalizedUserName = "USER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENDQFQkSwg0K6Qr4Vh1pHBqERO+1cNp5ay9wqDVSj4WxAmzpLgYhJeHb7UKEIVI6OQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "c0d8dc7f-b27f-4331-bc24-75aeaed8c926",
-                            TwoFactorEnabled = false,
-                            UserName = "user@autooa.com"
-                        });
                 });
 
             modelBuilder.Entity("AutoOA.Core.BodyType", b =>
@@ -619,7 +606,7 @@ namespace AutoOA.Core.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("AutoOA.Core.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -628,7 +615,7 @@ namespace AutoOA.Core.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("AutoOA.Core.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -643,7 +630,7 @@ namespace AutoOA.Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("AutoOA.Core.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -652,7 +639,7 @@ namespace AutoOA.Core.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("AutoOA.Core.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

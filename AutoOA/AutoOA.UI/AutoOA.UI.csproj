@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoOA.Core\AutoOA.Core.csproj" />
+    <ProjectReference Include="..\AutoOA.Repository\AutoOA.Repository.csproj" />
   </ItemGroup>
 
 </Project>

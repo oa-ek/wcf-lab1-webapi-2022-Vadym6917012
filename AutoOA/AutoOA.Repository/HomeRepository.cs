@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace AutoOA.Repository
 {
-    public class VehicleRepository
+    public class HomeRepository : VehicleRenewalDto
     {
         private readonly AutoOADbContext _ctx;
-        
-        public VehicleRepository(AutoOADbContext ctx)
+
+        public HomeRepository(AutoOADbContext ctx)
         {
             _ctx = ctx;
         }

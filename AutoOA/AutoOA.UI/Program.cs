@@ -29,7 +29,9 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<VehicleRepository>();
 builder.Services.AddTransient<UsersRepository>();
+builder.Services.AddTransient<HomeRepository>();
 
 var app = builder.Build();
 

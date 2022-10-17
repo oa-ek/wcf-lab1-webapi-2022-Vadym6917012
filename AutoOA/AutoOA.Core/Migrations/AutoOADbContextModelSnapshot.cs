@@ -252,14 +252,14 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             VehicleModelId = 1,
-                            ProductionDate = new DateTime(2022, 10, 17, 1, 6, 54, 751, DateTimeKind.Local).AddTicks(3051),
+                            ProductionDate = new DateTime(2022, 10, 17, 20, 51, 14, 364, DateTimeKind.Local).AddTicks(2958),
                             VehicleBrandId = 1,
                             VehicleModelName = "E 220"
                         },
                         new
                         {
                             VehicleModelId = 2,
-                            ProductionDate = new DateTime(2022, 10, 17, 1, 6, 54, 751, DateTimeKind.Local).AddTicks(3084),
+                            ProductionDate = new DateTime(2022, 10, 17, 20, 51, 14, 364, DateTimeKind.Local).AddTicks(2988),
                             VehicleBrandId = 2,
                             VehicleModelName = "320"
                         });
@@ -294,15 +294,15 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b717849e-fea3-403f-b4b5-ca55380257f7",
-                            ConcurrencyStamp = "8eac6288-772d-4ad9-8f58-d9fcb5648259",
+                            Id = "37c9bd7d-4377-4d89-bf45-0b710e15ff8f",
+                            ConcurrencyStamp = "8b1c3cfc-1d6d-49ac-b9da-d4e29d9fc1a8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "aed56789-5592-4acd-b5ee-84f41cd88b45",
-                            ConcurrencyStamp = "1253bf5c-aae1-4afc-bdb4-53541428c21c",
+                            Id = "01072ea4-4430-4232-a9f9-6472f675e268",
+                            ConcurrencyStamp = "3eca5e08-ec24-4f47-b3a7-d4eda1ab0678",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -470,18 +470,18 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "0a25f1a9-9b0b-4c7c-92fd-53b66e81fa67",
-                            RoleId = "b717849e-fea3-403f-b4b5-ca55380257f7"
+                            UserId = "85fea4e3-adea-4d44-bd4c-0dcad2d269de",
+                            RoleId = "37c9bd7d-4377-4d89-bf45-0b710e15ff8f"
                         },
                         new
                         {
-                            UserId = "0a25f1a9-9b0b-4c7c-92fd-53b66e81fa67",
-                            RoleId = "aed56789-5592-4acd-b5ee-84f41cd88b45"
+                            UserId = "85fea4e3-adea-4d44-bd4c-0dcad2d269de",
+                            RoleId = "01072ea4-4430-4232-a9f9-6472f675e268"
                         },
                         new
                         {
-                            UserId = "990a0a15-4ad5-4fde-8234-355ba400f0bd",
-                            RoleId = "aed56789-5592-4acd-b5ee-84f41cd88b45"
+                            UserId = "0459c771-f96b-4156-93da-c8b837574bcc",
+                            RoleId = "01072ea4-4430-4232-a9f9-6472f675e268"
                         });
                 });
 
@@ -521,33 +521,33 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0a25f1a9-9b0b-4c7c-92fd-53b66e81fa67",
+                            Id = "85fea4e3-adea-4d44-bd4c-0dcad2d269de",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dcf9f1d6-1d8c-4771-a1cd-1e3d7bb2a18c",
+                            ConcurrencyStamp = "e2e5b9d9-e6a8-43e0-b095-7e2f6c0e30b9",
                             Email = "admin@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@AUTOOA.COM",
                             NormalizedUserName = "ADMIN@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAnzPuV1vj2HxLX1A6wQus/2fymvfA7iSeaSefIWigGD0OqncdzKXVGSPKy+WGRelg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBPIoZ6R6tnaS684OuYhWALgG/TuIXv59T11tyznr8rnqHTjeto1UcwqEww9hvRomw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9a36999e-f51e-4b33-a2ef-9ad5b62d8942",
+                            SecurityStamp = "fa5e3515-3a7e-44dc-a8f2-3f3a6ab05792",
                             TwoFactorEnabled = false,
                             UserName = "admin@autooa.com"
                         },
                         new
                         {
-                            Id = "990a0a15-4ad5-4fde-8234-355ba400f0bd",
+                            Id = "0459c771-f96b-4156-93da-c8b837574bcc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3caac908-7ead-4593-aa04-2c26c976cb71",
+                            ConcurrencyStamp = "fd992920-b6f4-4090-a131-d55e1d48e0d2",
                             Email = "user@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@AUTOOA.COM",
                             NormalizedUserName = "USER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPPK9omfKEnysquRctNRMkGP1J6hulQbmiPULvxe68kQVSexl/FXLFjk+VsTJ/MeYw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENDQFQkSwg0K6Qr4Vh1pHBqERO+1cNp5ay9wqDVSj4WxAmzpLgYhJeHb7UKEIVI6OQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b73f82da-5188-4ef0-b34d-8fa9d7b990a2",
+                            SecurityStamp = "c0d8dc7f-b27f-4331-bc24-75aeaed8c926",
                             TwoFactorEnabled = false,
                             UserName = "user@autooa.com"
                         });

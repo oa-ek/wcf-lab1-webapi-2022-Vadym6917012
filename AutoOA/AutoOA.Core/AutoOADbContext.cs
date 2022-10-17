@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AutoOA.Core
 {
-    public class AutoOADbContext : IdentityDbContext
+    public class AutoOADbContext : IdentityDbContext<User>
     {
         public AutoOADbContext(DbContextOptions<AutoOADbContext> options)
             : base(options)

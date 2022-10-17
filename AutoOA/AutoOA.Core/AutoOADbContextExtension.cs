@@ -8,6 +8,7 @@ namespace AutoOA.Core
         public static void Seed(this ModelBuilder builder)
         {
             string ADMIN_ROLE_ID = Guid.NewGuid().ToString();
+            string MODER_ROLE_ID = Guid.NewGuid().ToString();
             string USER_ROLE_ID = Guid.NewGuid().ToString();
 
             builder.Entity<IdentityRole>().HasData(
@@ -19,12 +20,19 @@ namespace AutoOA.Core
                 },
                 new IdentityRole
                 {
+                    Id = MODER_ROLE_ID,
+                    Name = "Moderator",
+                    NormalizedName = "MODERATOR"
+                },
+                new IdentityRole
+                {
                     Id = USER_ROLE_ID,
                     Name = "User",
                     NormalizedName = "USER"
                 });
 
             string ADMIN_ID = Guid.NewGuid().ToString();
+            string MODER_ID = Guid.NewGuid().ToString();
             string USER_ID = Guid.NewGuid().ToString();
 
             var admin = new User
@@ -35,6 +43,16 @@ namespace AutoOA.Core
                 EmailConfirmed = true,
                 NormalizedEmail = "admin@autooa.com".ToUpper(),
                 NormalizedUserName = "admin@autooa.com".ToUpper()
+            };
+
+            var moder = new User
+            {
+                Id = MODER_ID,
+                UserName = "moder@autooa.com",
+                Email = "moder@autooa.com",
+                EmailConfirmed = true,
+                NormalizedEmail = "moder@autooa.com".ToUpper(),
+                NormalizedUserName = "moder@autooa.com".ToUpper()
             };
 
             var user = new User
@@ -49,9 +67,10 @@ namespace AutoOA.Core
 
             PasswordHasher<User> hasher = new PasswordHasher<User>();
             admin.PasswordHash = hasher.HashPassword(admin, "Admin$pass1");
+            moder.PasswordHash = hasher.HashPassword(moder, "Moder$pass1");
             user.PasswordHash = hasher.HashPassword(user, "User$pass1");
 
-            builder.Entity<User>().HasData(admin, user);
+            builder.Entity<User>().HasData(admin, moder, user);
 
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>
@@ -61,8 +80,23 @@ namespace AutoOA.Core
                 },
                 new IdentityUserRole<string>
                 {
+                    RoleId = MODER_ROLE_ID,
+                    UserId = ADMIN_ID
+                },
+                new IdentityUserRole<string>
+                {
                     RoleId = USER_ROLE_ID,
                     UserId = ADMIN_ID
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = MODER_ROLE_ID,
+                    UserId = MODER_ID
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = USER_ROLE_ID,
+                    UserId = MODER_ID
                 },
                 new IdentityUserRole<string>
                 {

@@ -282,8 +282,9 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2d4e6299-72f4-40e7-9dab-7f40d9bbbfce", "b1c14abc-e0f5-42d0-a484-55d1b1e36a4a", "Admin", "ADMIN" },
-                    { "d90a084a-f615-4e0a-aba2-70aa25800b32", "f37de380-d4b0-4f29-949e-0060381bf34a", "User", "USER" }
+                    { "41aa4ef3-77e5-461d-a512-43ddbe2fc144", "1c61d5a1-5e15-4b4a-8715-adcec738597f", "Admin", "ADMIN" },
+                    { "828f3daa-a7e9-4383-8598-d77ec6e23b02", "df03b959-cd13-4b97-8422-d45cedc15409", "Moderator", "MODERATOR" },
+                    { "a1851db6-a85e-4551-b0b3-b44e18794c19", "82ed3945-77ab-401c-8734-369047fcb8e9", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -291,8 +292,9 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "0ccea4d5-240b-4e17-89f7-1b4fdc4114e9", 0, "c8610742-07e0-4b41-a79e-4443af782da3", "user@autooa.com", true, null, null, false, null, "USER@AUTOOA.COM", "USER@AUTOOA.COM", "AQAAAAEAACcQAAAAEDcO1tM6gEYEIuncsoH+5ANge4X5LJ8k39hr1yNbKsy9yDH3ZNps7HqzY3XX5CybgQ==", null, false, "64578671-c83a-4793-b1e6-4d2f055ea2bd", false, "user@autooa.com" },
-                    { "25773e91-12e6-4d03-b825-c9a3e949681c", 0, "71b03ffc-d1db-49ca-a5b7-5d9a874bfc36", "admin@autooa.com", true, null, null, false, null, "ADMIN@AUTOOA.COM", "ADMIN@AUTOOA.COM", "AQAAAAEAACcQAAAAEAMdmUr8ja8N8MQ6CoBPEeMgaOmwLnWNaJeOHJ/0FOZxOBJeVgPtrtVwYzidoCTfXQ==", null, false, "99b18804-b2bb-4a88-b50e-53b3c3d331c2", false, "admin@autooa.com" }
+                    { "0ff5e18c-a86f-4851-97b4-a6628af36e2c", 0, "252e8ac8-170d-4be7-a8f0-bae7f1ee5871", "admin@autooa.com", true, null, null, false, null, "ADMIN@AUTOOA.COM", "ADMIN@AUTOOA.COM", "AQAAAAEAACcQAAAAEEz0TLyuuQWEzYAOUn8orsAfLWQcvNzRenR4S31egXkXtXNg8K9iTCikOXHtM21ysQ==", null, false, "7ebc222d-16ae-4eb1-a8d1-09b4bcad8041", false, "admin@autooa.com" },
+                    { "7dba4a05-1b0d-46be-9621-84a282c48c25", 0, "5b60e980-6c83-43e5-850d-b5de4fe2edec", "moder@autooa.com", true, null, null, false, null, "MODER@AUTOOA.COM", "MODER@AUTOOA.COM", "AQAAAAEAACcQAAAAEBcwpJZkIu7IHC/DS3nxSUu2UOZtRvVELnwvZlGlzjwUN/DPUQHs8mZ3D7/G3K7zbw==", null, false, "90e569d3-5fb6-462c-b028-2f0f772f70b5", false, "moder@autooa.com" },
+                    { "b9ffe8ab-815c-4193-bb83-245a4e49bf01", 0, "62781a64-3c97-46d3-80a9-98c3030054de", "user@autooa.com", true, null, null, false, null, "USER@AUTOOA.COM", "USER@AUTOOA.COM", "AQAAAAEAACcQAAAAENTawxHoDx+gY59oX1u9As2AGY9RBG3AAi3EVQGh1KkYJa4lThBM/JNxjjKBked/DA==", null, false, "d464df2d-44c9-461a-a327-ab8b91b8f929", false, "user@autooa.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -309,9 +311,12 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "d90a084a-f615-4e0a-aba2-70aa25800b32", "0ccea4d5-240b-4e17-89f7-1b4fdc4114e9" },
-                    { "2d4e6299-72f4-40e7-9dab-7f40d9bbbfce", "25773e91-12e6-4d03-b825-c9a3e949681c" },
-                    { "d90a084a-f615-4e0a-aba2-70aa25800b32", "25773e91-12e6-4d03-b825-c9a3e949681c" }
+                    { "41aa4ef3-77e5-461d-a512-43ddbe2fc144", "0ff5e18c-a86f-4851-97b4-a6628af36e2c" },
+                    { "828f3daa-a7e9-4383-8598-d77ec6e23b02", "0ff5e18c-a86f-4851-97b4-a6628af36e2c" },
+                    { "a1851db6-a85e-4551-b0b3-b44e18794c19", "0ff5e18c-a86f-4851-97b4-a6628af36e2c" },
+                    { "828f3daa-a7e9-4383-8598-d77ec6e23b02", "7dba4a05-1b0d-46be-9621-84a282c48c25" },
+                    { "a1851db6-a85e-4551-b0b3-b44e18794c19", "7dba4a05-1b0d-46be-9621-84a282c48c25" },
+                    { "a1851db6-a85e-4551-b0b3-b44e18794c19", "b9ffe8ab-815c-4193-bb83-245a4e49bf01" }
                 });
 
             migrationBuilder.InsertData(
@@ -319,8 +324,8 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "VehicleModelId", "ProductionDate", "VehicleBrandId", "VehicleModelName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 18, 1, 8, 42, 384, DateTimeKind.Local).AddTicks(4867), 1, "E 220" },
-                    { 2, new DateTime(2022, 10, 18, 1, 8, 42, 384, DateTimeKind.Local).AddTicks(4903), 2, "320" }
+                    { 1, new DateTime(2022, 10, 18, 1, 47, 26, 593, DateTimeKind.Local).AddTicks(8351), 1, "E 220" },
+                    { 2, new DateTime(2022, 10, 18, 1, 47, 26, 593, DateTimeKind.Local).AddTicks(8387), 2, "320" }
                 });
 
             migrationBuilder.InsertData(

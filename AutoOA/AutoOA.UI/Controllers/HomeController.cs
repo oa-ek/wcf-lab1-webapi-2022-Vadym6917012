@@ -1,6 +1,8 @@
 ﻿using AutoOA.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using AutoOA.Repository.Repositories;
+using AutoOA.Repository.Dto;
 
 namespace AutoOA.UI.Controllers
 {
@@ -8,14 +10,17 @@ namespace AutoOA.UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly VehicleRepository _vehicleRepository;
+
+        public HomeController(ILogger<HomeController> logger, VehicleRepository vehicleRepository)
         {
             _logger = logger;
+            _vehicleRepository = vehicleRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _vehicleRepository.GetVehicleAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

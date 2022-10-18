@@ -1,9 +1,31 @@
-﻿@{
+﻿@using AutoOA.Repository
+@using AutoOA.Repository.Dto.VehicleDto
+@using AutoOA.Repository.Dto.VehicleModelDto
+@using AutoOA.Repository.Dto.VehicleBrandDto
+
+@model IEnumerable<VehicleReadDto>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    @foreach (var u in Model)
+    {
 
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+            <div class="card h-100">
+                <img class="card-img-top" src="@u.IconPath" alt="...">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <h5 class="fw-bolder">@u.ModelId</h5>
+                        @u.Price $
+                </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

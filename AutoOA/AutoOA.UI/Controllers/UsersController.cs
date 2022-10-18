@@ -1,9 +1,9 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto;
-using AutoOA.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using AutoOA.Repository.Dto.UserDto;
+using AutoOA.Repository.Repositories;
 
 namespace AutoOA.UI.Controllers
 {

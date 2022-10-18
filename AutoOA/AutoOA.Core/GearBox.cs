@@ -9,6 +9,6 @@ namespace AutoOA.Core
         public string? GearBoxName { get; set; }
 
         public int VehicleId { get; set; }
-        public Vehicle? Vehicle { get; set; }
+        public virtual ICollection<Vehicle>? Vehicle { get; set; }
     }
 }

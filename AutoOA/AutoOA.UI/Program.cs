@@ -1,5 +1,5 @@
 using AutoOA.Core;
-using AutoOA.Repository;
+using AutoOA.Repository.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -30,6 +30,12 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<UsersRepository>();
+builder.Services.AddTransient<BodyTypeRepository>();
+builder.Services.AddTransient<FuelTypeRepository>();
+builder.Services.AddTransient<GearBoxRepository>();
+builder.Services.AddTransient<VehicleBrandRepository>();
+builder.Services.AddTransient<VehicleRepository>();
+builder.Services.AddTransient<VehicleModelRepository>();
 
 var app = builder.Build();
 

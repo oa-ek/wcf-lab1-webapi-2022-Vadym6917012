@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AutoOA.Repository.Dto
+namespace AutoOA.Repository.Dto.UserDto
 {
     public class UserCreateDto
     {

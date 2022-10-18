@@ -38,8 +38,6 @@ namespace AutoOA.Core.Migrations
 
                     b.HasKey("BodyTypeId");
 
-                    b.HasIndex("VehicleId");
-
                     b.ToTable("BodyTypes");
 
                     b.HasData(
@@ -73,8 +71,6 @@ namespace AutoOA.Core.Migrations
 
                     b.HasKey("FuelTypeId");
 
-                    b.HasIndex("VehicleId");
-
                     b.ToTable("FuelTypes");
 
                     b.HasData(
@@ -107,8 +103,6 @@ namespace AutoOA.Core.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("GearBoxId");
-
-                    b.HasIndex("VehicleId");
 
                     b.ToTable("GearBoxes");
 
@@ -200,49 +194,49 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0ff5e18c-a86f-4851-97b4-a6628af36e2c",
+                            Id = "88d63c87-abbd-448d-a081-4103a85d5547",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "252e8ac8-170d-4be7-a8f0-bae7f1ee5871",
+                            ConcurrencyStamp = "2b9ec38d-f72e-4671-8695-d1cd0a687435",
                             Email = "admin@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@AUTOOA.COM",
                             NormalizedUserName = "ADMIN@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEz0TLyuuQWEzYAOUn8orsAfLWQcvNzRenR4S31egXkXtXNg8K9iTCikOXHtM21ysQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELm0dj1p883njIoHQBJGaCVeW/gskisNnta3K7WgiAK/LJ7PRoulO+67PpJ3Z+VmJw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7ebc222d-16ae-4eb1-a8d1-09b4bcad8041",
+                            SecurityStamp = "021b52a1-43f4-44d0-9f2a-2148554577c5",
                             TwoFactorEnabled = false,
                             UserName = "admin@autooa.com"
                         },
                         new
                         {
-                            Id = "7dba4a05-1b0d-46be-9621-84a282c48c25",
+                            Id = "6651087c-1170-4e0f-a5fa-fe6cbf63e353",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b60e980-6c83-43e5-850d-b5de4fe2edec",
+                            ConcurrencyStamp = "01ada7e3-08c7-41ac-b6ab-4349607bff30",
                             Email = "moder@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MODER@AUTOOA.COM",
                             NormalizedUserName = "MODER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBcwpJZkIu7IHC/DS3nxSUu2UOZtRvVELnwvZlGlzjwUN/DPUQHs8mZ3D7/G3K7zbw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJLcNvJhFKFyxBSM0EJevcxMENYl5molpRDM8aN3x8ePbnOIhzTj2t++baI2vnc+Qw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "90e569d3-5fb6-462c-b028-2f0f772f70b5",
+                            SecurityStamp = "9c9bd96f-e228-4004-a6bb-52343e0abf66",
                             TwoFactorEnabled = false,
                             UserName = "moder@autooa.com"
                         },
                         new
                         {
-                            Id = "b9ffe8ab-815c-4193-bb83-245a4e49bf01",
+                            Id = "1eb2f4f3-1ae3-4176-8a6c-bf388ac24884",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "62781a64-3c97-46d3-80a9-98c3030054de",
+                            ConcurrencyStamp = "85aedd46-bc52-4194-8bc3-377fad2d1d3d",
                             Email = "user@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@AUTOOA.COM",
                             NormalizedUserName = "USER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENTawxHoDx+gY59oX1u9As2AGY9RBG3AAi3EVQGh1KkYJa4lThBM/JNxjjKBked/DA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB9yIdWpjr9D3ANZ1SEqB+skQJw74Vg7o0vEw4VT1yQjlK8dJ4Yip8QqpbPcMEffBQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d464df2d-44c9-461a-a327-ab8b91b8f929",
+                            SecurityStamp = "d3006f6f-2215-4d20-a97d-b1c7c99777ad",
                             TwoFactorEnabled = false,
                             UserName = "user@autooa.com"
                         });
@@ -285,6 +279,12 @@ namespace AutoOA.Core.Migrations
 
                     b.HasKey("VehicleId");
 
+                    b.HasIndex("BodyTypeId");
+
+                    b.HasIndex("FuelTypeId");
+
+                    b.HasIndex("GearBoxId");
+
                     b.HasIndex("VehicleModelId");
 
                     b.ToTable("Vehicles");
@@ -297,7 +297,7 @@ namespace AutoOA.Core.Migrations
                             Color = "Black",
                             FuelTypeId = 1,
                             GearBoxId = 1,
-                            IconPath = "Images\\w220cidan - Copy.png",
+                            IconPath = "Images\\w220cidan.png",
                             Mileage = 90000,
                             Price = 15000m,
                             VehicleModelId = 1,
@@ -373,14 +373,14 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             VehicleModelId = 1,
-                            ProductionDate = new DateTime(2022, 10, 18, 1, 47, 26, 593, DateTimeKind.Local).AddTicks(8351),
+                            ProductionDate = new DateTime(2022, 10, 19, 1, 19, 54, 142, DateTimeKind.Local).AddTicks(1221),
                             VehicleBrandId = 1,
                             VehicleModelName = "E 220"
                         },
                         new
                         {
                             VehicleModelId = 2,
-                            ProductionDate = new DateTime(2022, 10, 18, 1, 47, 26, 593, DateTimeKind.Local).AddTicks(8387),
+                            ProductionDate = new DateTime(2022, 10, 19, 1, 19, 54, 142, DateTimeKind.Local).AddTicks(1253),
                             VehicleBrandId = 2,
                             VehicleModelName = "320"
                         });
@@ -415,22 +415,22 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "41aa4ef3-77e5-461d-a512-43ddbe2fc144",
-                            ConcurrencyStamp = "1c61d5a1-5e15-4b4a-8715-adcec738597f",
+                            Id = "432a22f6-ff71-4bf1-b00a-eddda04fc11e",
+                            ConcurrencyStamp = "21b0e6c4-cdf3-4388-b557-decf178732e4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "828f3daa-a7e9-4383-8598-d77ec6e23b02",
-                            ConcurrencyStamp = "df03b959-cd13-4b97-8422-d45cedc15409",
+                            Id = "8382fd89-f5ec-4e3e-b03e-b4e89ac0cc3b",
+                            ConcurrencyStamp = "5d7b4bd8-aa12-42a7-b4cf-de09d501b885",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
-                            Id = "a1851db6-a85e-4551-b0b3-b44e18794c19",
-                            ConcurrencyStamp = "82ed3945-77ab-401c-8734-369047fcb8e9",
+                            Id = "b2e36ddb-f9b6-403b-8b53-544612fc6f19",
+                            ConcurrencyStamp = "446e262c-580e-4c27-bfe0-d9b0fd5a46ee",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -527,33 +527,33 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "0ff5e18c-a86f-4851-97b4-a6628af36e2c",
-                            RoleId = "41aa4ef3-77e5-461d-a512-43ddbe2fc144"
+                            UserId = "88d63c87-abbd-448d-a081-4103a85d5547",
+                            RoleId = "432a22f6-ff71-4bf1-b00a-eddda04fc11e"
                         },
                         new
                         {
-                            UserId = "0ff5e18c-a86f-4851-97b4-a6628af36e2c",
-                            RoleId = "828f3daa-a7e9-4383-8598-d77ec6e23b02"
+                            UserId = "88d63c87-abbd-448d-a081-4103a85d5547",
+                            RoleId = "8382fd89-f5ec-4e3e-b03e-b4e89ac0cc3b"
                         },
                         new
                         {
-                            UserId = "0ff5e18c-a86f-4851-97b4-a6628af36e2c",
-                            RoleId = "a1851db6-a85e-4551-b0b3-b44e18794c19"
+                            UserId = "88d63c87-abbd-448d-a081-4103a85d5547",
+                            RoleId = "b2e36ddb-f9b6-403b-8b53-544612fc6f19"
                         },
                         new
                         {
-                            UserId = "7dba4a05-1b0d-46be-9621-84a282c48c25",
-                            RoleId = "828f3daa-a7e9-4383-8598-d77ec6e23b02"
+                            UserId = "6651087c-1170-4e0f-a5fa-fe6cbf63e353",
+                            RoleId = "8382fd89-f5ec-4e3e-b03e-b4e89ac0cc3b"
                         },
                         new
                         {
-                            UserId = "7dba4a05-1b0d-46be-9621-84a282c48c25",
-                            RoleId = "a1851db6-a85e-4551-b0b3-b44e18794c19"
+                            UserId = "6651087c-1170-4e0f-a5fa-fe6cbf63e353",
+                            RoleId = "b2e36ddb-f9b6-403b-8b53-544612fc6f19"
                         },
                         new
                         {
-                            UserId = "b9ffe8ab-815c-4193-bb83-245a4e49bf01",
-                            RoleId = "a1851db6-a85e-4551-b0b3-b44e18794c19"
+                            UserId = "1eb2f4f3-1ae3-4176-8a6c-bf388ac24884",
+                            RoleId = "b2e36ddb-f9b6-403b-8b53-544612fc6f19"
                         });
                 });
 
@@ -578,46 +578,37 @@ namespace AutoOA.Core.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AutoOA.Core.BodyType", b =>
-                {
-                    b.HasOne("AutoOA.Core.Vehicle", "Vehicle")
-                        .WithMany("BodyTypes")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Vehicle");
-                });
-
-            modelBuilder.Entity("AutoOA.Core.FuelType", b =>
-                {
-                    b.HasOne("AutoOA.Core.Vehicle", "Vehicle")
-                        .WithMany("FuelTypes")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Vehicle");
-                });
-
-            modelBuilder.Entity("AutoOA.Core.GearBox", b =>
-                {
-                    b.HasOne("AutoOA.Core.Vehicle", "Vehicle")
-                        .WithMany("GearBoxes")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Vehicle");
-                });
-
             modelBuilder.Entity("AutoOA.Core.Vehicle", b =>
                 {
+                    b.HasOne("AutoOA.Core.BodyType", "BodyType")
+                        .WithMany("Vehicle")
+                        .HasForeignKey("BodyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AutoOA.Core.FuelType", "FuelType")
+                        .WithMany("Vehicle")
+                        .HasForeignKey("FuelTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AutoOA.Core.GearBox", "GearBoxe")
+                        .WithMany("Vehicle")
+                        .HasForeignKey("GearBoxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AutoOA.Core.VehicleModel", "VehicleModel")
                         .WithMany("Vehicles")
                         .HasForeignKey("VehicleModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BodyType");
+
+                    b.Navigation("FuelType");
+
+                    b.Navigation("GearBoxe");
 
                     b.Navigation("VehicleModel");
                 });
@@ -682,13 +673,19 @@ namespace AutoOA.Core.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AutoOA.Core.Vehicle", b =>
+            modelBuilder.Entity("AutoOA.Core.BodyType", b =>
                 {
-                    b.Navigation("BodyTypes");
+                    b.Navigation("Vehicle");
+                });
 
-                    b.Navigation("FuelTypes");
+            modelBuilder.Entity("AutoOA.Core.FuelType", b =>
+                {
+                    b.Navigation("Vehicle");
+                });
 
-                    b.Navigation("GearBoxes");
+            modelBuilder.Entity("AutoOA.Core.GearBox", b =>
+                {
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("AutoOA.Core.VehicleBrand", b =>

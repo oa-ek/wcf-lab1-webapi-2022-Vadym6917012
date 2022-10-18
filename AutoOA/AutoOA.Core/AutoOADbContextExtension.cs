@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AutoOA.Core
 {
@@ -179,7 +180,7 @@ namespace AutoOA.Core
                     Price = 15000,
                     isNew = true,
                     Mileage = 90000,
-                    IconPath = @"Images\w220cidan - Copy.png",
+                    IconPath = @"Images\w220cidan.png",
                     FuelTypeId = 1,
                     Color = "Black"
                 },

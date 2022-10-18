@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoOA.Repository.Dto
+namespace AutoOA.Repository.Dto.UserDto
 {
     public class UserReadDto
     {

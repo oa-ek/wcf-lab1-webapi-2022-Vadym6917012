@@ -1,4 +1,6 @@
-﻿@using AutoOA.Repository
+﻿@using AutoOA.Core
+@using AutoOA.Repository
+@using AutoOA.Repository.Dto.BodyTypeDto
 @using AutoOA.Repository.Dto.VehicleDto
 @using AutoOA.Repository.Dto.VehicleModelDto
 @using AutoOA.Repository.Dto.VehicleBrandDto
@@ -13,12 +15,11 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     @foreach (var u in Model)
     {
-
             <div class="card h-100">
                 <img class="card-img-top" src="@u.IconPath" alt="...">
                 <div class="card-body p-4">
                     <div class="text-center">
-                        <h5 class="fw-bolder">@u.ModelId</h5>
+                        <h5 class="fw-bolder">@u.VehicleBrand @u.VehicleModel.VehicleModelName @u.VehicleModel.ProductionDate.ToString("yyyy")</h5>
                         @u.Price $
                 </div>
                 </div>

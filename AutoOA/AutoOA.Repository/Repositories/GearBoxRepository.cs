@@ -14,21 +14,13 @@ namespace AutoOA.Repository.Repositories
 
         public async Task<IEnumerable<GearBoxReadDto>> GetGearBoxesAsync()
         {
-            var gears = new List<GearBoxReadDto>();
+            var gearDto = _ctx.GearBoxes.
+                Select(x => new GearBoxReadDto { 
+                    GearBoxId = x.GearBoxId, 
+                    GearBoxName = x.GearBoxName, 
+                    Vehicles = x.Vehicle }).ToList();
 
-            foreach (var u in _ctx.GearBoxes.ToList())
-            {
-                var gearsDto = new GearBoxReadDto
-                {
-                    GearBoxId = u.GearBoxId,
-                    GearBoxName = u.GearBoxName,
-                    VehicleId = u.VehicleId
-                };
-
-                gears.Add(gearsDto);
-            }
-
-            return gears;
+            return gearDto;
         }
     }
 }

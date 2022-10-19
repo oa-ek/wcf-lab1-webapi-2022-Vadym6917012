@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoOA.Core;
 
 namespace AutoOA.Repository.Dto.VehicleBrandDto
 {
@@ -10,5 +6,7 @@ namespace AutoOA.Repository.Dto.VehicleBrandDto
     {
         public int VehicleBrandId { get; set; }
         public string? VehicleBrandName { get; set; }
+
+        public ICollection<VehicleModel> VehicleModels { get; set; }
     }
 }

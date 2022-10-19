@@ -14,21 +14,13 @@ namespace AutoOA.Repository.Repositories
 
         public async Task<IEnumerable<BodyTypeReadDto>> GetBodyTypesAsync()
         {
-            var bodies = new List<BodyTypeReadDto>();
+            var bodyDto = _ctx.BodyTypes.
+                Select(x => new BodyTypeReadDto { 
+                    BodyId = x.BodyTypeId, 
+                    BodyName = x.BodyTypeName, 
+                    Vehicle = x.Vehicle }).ToList();
 
-            foreach (var u in _ctx.BodyTypes.ToList())
-            {
-                var bodiesDto = new BodyTypeReadDto
-                {
-                    BodyId = u.BodyTypeId,
-                    BodyName = u.BodyTypeName,
-                    VehicleId = u.VehicleId,
-                };
-
-                bodies.Add(bodiesDto);
-            }
-
-            return bodies;
+            return bodyDto;
         }
     }
 }

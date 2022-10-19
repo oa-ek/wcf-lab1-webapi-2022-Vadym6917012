@@ -8,7 +8,6 @@ namespace AutoOA.Core
         public int FuelTypeId { get; set; }
         public string? FuelName { get; set; }
 
-        public int VehicleId { get; set; }
-        public virtual ICollection<Vehicle>? Vehicle { get; set; }
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
 }

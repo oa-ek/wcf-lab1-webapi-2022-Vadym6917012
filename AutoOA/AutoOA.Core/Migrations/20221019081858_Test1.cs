@@ -56,8 +56,7 @@ namespace AutoOA.Core.Migrations
                 {
                     BodyTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BodyTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                    BodyTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,8 +69,7 @@ namespace AutoOA.Core.Migrations
                 {
                     FuelTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FuelName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                    FuelName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,8 +82,7 @@ namespace AutoOA.Core.Migrations
                 {
                     GearBoxId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GearBoxName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                    GearBoxName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -282,9 +279,9 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "432a22f6-ff71-4bf1-b00a-eddda04fc11e", "21b0e6c4-cdf3-4388-b557-decf178732e4", "Admin", "ADMIN" },
-                    { "8382fd89-f5ec-4e3e-b03e-b4e89ac0cc3b", "5d7b4bd8-aa12-42a7-b4cf-de09d501b885", "Moderator", "MODERATOR" },
-                    { "b2e36ddb-f9b6-403b-8b53-544612fc6f19", "446e262c-580e-4c27-bfe0-d9b0fd5a46ee", "User", "USER" }
+                    { "60f035f4-6087-4df6-8fcb-0286bb421a07", "5f92f7ee-93c3-4764-af2e-6495e15761fa", "User", "USER" },
+                    { "bbbc6303-bd94-48e8-a2c6-22efa37bf035", "819ac160-c4e9-4181-aa26-f0a7f4fe0ffa", "Admin", "ADMIN" },
+                    { "d89571a7-7305-4396-abf4-71d1f7197591", "555fc35c-f110-4fdd-b41a-c6ef96d3be47", "Moderator", "MODERATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -292,36 +289,36 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1eb2f4f3-1ae3-4176-8a6c-bf388ac24884", 0, "85aedd46-bc52-4194-8bc3-377fad2d1d3d", "user@autooa.com", true, null, null, false, null, "USER@AUTOOA.COM", "USER@AUTOOA.COM", "AQAAAAEAACcQAAAAEB9yIdWpjr9D3ANZ1SEqB+skQJw74Vg7o0vEw4VT1yQjlK8dJ4Yip8QqpbPcMEffBQ==", null, false, "d3006f6f-2215-4d20-a97d-b1c7c99777ad", false, "user@autooa.com" },
-                    { "6651087c-1170-4e0f-a5fa-fe6cbf63e353", 0, "01ada7e3-08c7-41ac-b6ab-4349607bff30", "moder@autooa.com", true, null, null, false, null, "MODER@AUTOOA.COM", "MODER@AUTOOA.COM", "AQAAAAEAACcQAAAAEJLcNvJhFKFyxBSM0EJevcxMENYl5molpRDM8aN3x8ePbnOIhzTj2t++baI2vnc+Qw==", null, false, "9c9bd96f-e228-4004-a6bb-52343e0abf66", false, "moder@autooa.com" },
-                    { "88d63c87-abbd-448d-a081-4103a85d5547", 0, "2b9ec38d-f72e-4671-8695-d1cd0a687435", "admin@autooa.com", true, null, null, false, null, "ADMIN@AUTOOA.COM", "ADMIN@AUTOOA.COM", "AQAAAAEAACcQAAAAELm0dj1p883njIoHQBJGaCVeW/gskisNnta3K7WgiAK/LJ7PRoulO+67PpJ3Z+VmJw==", null, false, "021b52a1-43f4-44d0-9f2a-2148554577c5", false, "admin@autooa.com" }
+                    { "52ed7aae-b905-46ea-a765-84ccd040b391", 0, "3bb883de-5287-46b9-89da-82e918c08148", "user@autooa.com", true, null, null, false, null, "USER@AUTOOA.COM", "USER@AUTOOA.COM", "AQAAAAEAACcQAAAAEMF4AERcpqFXexZRjT6P7q+eJQZBWQsLKhHVfqV43I+rX9pm43oXj/+Q2lUhYJXqow==", null, false, "4120f90d-18f5-4a14-818f-6381fbe15fe8", false, "user@autooa.com" },
+                    { "a8891568-b12e-4e39-bab9-e725acc16c05", 0, "3e028b7b-604d-4f28-82ac-e602221b0c76", "admin@autooa.com", true, null, null, false, null, "ADMIN@AUTOOA.COM", "ADMIN@AUTOOA.COM", "AQAAAAEAACcQAAAAEDUc5TP3Vvg9MV9E8qmTijivP5EkjCytdZQCl/ieVVeF6fnD96TD0HY3zaQqhbO6Yw==", null, false, "d5652785-3517-43c2-a43d-3534369ce319", false, "admin@autooa.com" },
+                    { "afd7bf3c-845c-4c2f-8972-87e14160a7f0", 0, "ec106e5a-dc78-4f2b-b4f2-1ad3e6a13127", "moder@autooa.com", true, null, null, false, null, "MODER@AUTOOA.COM", "MODER@AUTOOA.COM", "AQAAAAEAACcQAAAAEErD4cg3KBpMYywuuVzVv8wfhRCOhm8b/onYXrfVFR+MgFkFGhjQHxaQMrjNfnrjGA==", null, false, "c8773856-f0c5-4f09-9db5-12204ddeea01", false, "moder@autooa.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "BodyTypes",
-                columns: new[] { "BodyTypeId", "BodyTypeName", "VehicleId" },
+                columns: new[] { "BodyTypeId", "BodyTypeName" },
                 values: new object[,]
                 {
-                    { 1, "Седан", 1 },
-                    { 2, "Універсал", 2 }
+                    { 1, "Седан" },
+                    { 2, "Універсал" }
                 });
 
             migrationBuilder.InsertData(
                 table: "FuelTypes",
-                columns: new[] { "FuelTypeId", "FuelName", "VehicleId" },
+                columns: new[] { "FuelTypeId", "FuelName" },
                 values: new object[,]
                 {
-                    { 1, "Дизель", 1 },
-                    { 2, "Бензин", 2 }
+                    { 1, "Дизель" },
+                    { 2, "Бензин" }
                 });
 
             migrationBuilder.InsertData(
                 table: "GearBoxes",
-                columns: new[] { "GearBoxId", "GearBoxName", "VehicleId" },
+                columns: new[] { "GearBoxId", "GearBoxName" },
                 values: new object[,]
                 {
-                    { 1, "Механіка", 1 },
-                    { 2, "Автомат", 2 }
+                    { 1, "Механіка" },
+                    { 2, "Автомат" }
                 });
 
             migrationBuilder.InsertData(
@@ -338,12 +335,12 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "b2e36ddb-f9b6-403b-8b53-544612fc6f19", "1eb2f4f3-1ae3-4176-8a6c-bf388ac24884" },
-                    { "8382fd89-f5ec-4e3e-b03e-b4e89ac0cc3b", "6651087c-1170-4e0f-a5fa-fe6cbf63e353" },
-                    { "b2e36ddb-f9b6-403b-8b53-544612fc6f19", "6651087c-1170-4e0f-a5fa-fe6cbf63e353" },
-                    { "432a22f6-ff71-4bf1-b00a-eddda04fc11e", "88d63c87-abbd-448d-a081-4103a85d5547" },
-                    { "8382fd89-f5ec-4e3e-b03e-b4e89ac0cc3b", "88d63c87-abbd-448d-a081-4103a85d5547" },
-                    { "b2e36ddb-f9b6-403b-8b53-544612fc6f19", "88d63c87-abbd-448d-a081-4103a85d5547" }
+                    { "60f035f4-6087-4df6-8fcb-0286bb421a07", "52ed7aae-b905-46ea-a765-84ccd040b391" },
+                    { "60f035f4-6087-4df6-8fcb-0286bb421a07", "a8891568-b12e-4e39-bab9-e725acc16c05" },
+                    { "bbbc6303-bd94-48e8-a2c6-22efa37bf035", "a8891568-b12e-4e39-bab9-e725acc16c05" },
+                    { "d89571a7-7305-4396-abf4-71d1f7197591", "a8891568-b12e-4e39-bab9-e725acc16c05" },
+                    { "60f035f4-6087-4df6-8fcb-0286bb421a07", "afd7bf3c-845c-4c2f-8972-87e14160a7f0" },
+                    { "d89571a7-7305-4396-abf4-71d1f7197591", "afd7bf3c-845c-4c2f-8972-87e14160a7f0" }
                 });
 
             migrationBuilder.InsertData(
@@ -351,8 +348,8 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "VehicleModelId", "ProductionDate", "VehicleBrandId", "VehicleModelName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 19, 1, 19, 54, 142, DateTimeKind.Local).AddTicks(1221), 1, "E 220" },
-                    { 2, new DateTime(2022, 10, 19, 1, 19, 54, 142, DateTimeKind.Local).AddTicks(1253), 2, "320" }
+                    { 1, new DateTime(2022, 10, 19, 11, 18, 57, 727, DateTimeKind.Local).AddTicks(1167), 1, "E 220" },
+                    { 2, new DateTime(2022, 10, 19, 11, 18, 57, 727, DateTimeKind.Local).AddTicks(1207), 2, "320" }
                 });
 
             migrationBuilder.InsertData(

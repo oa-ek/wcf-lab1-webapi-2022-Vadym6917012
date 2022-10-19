@@ -8,7 +8,6 @@ namespace AutoOA.Core
         public int BodyTypeId { get; set; }
         public string? BodyTypeName { get; set; }
 
-        public int VehicleId { get; set; }   
-        public virtual ICollection<Vehicle>? Vehicle { get; set; }
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
 }

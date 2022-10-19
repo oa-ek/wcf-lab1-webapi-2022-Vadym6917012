@@ -14,21 +14,13 @@ namespace AutoOA.Repository.Repositories
 
         public async Task<IEnumerable<FuelTypeReadDto>> GetFuelTypesAsync()
         {
-            var fuels = new List<FuelTypeReadDto>();
+            var fuelDto = _ctx.FuelTypes.
+                Select(x => new FuelTypeReadDto { 
+                    FuelTypeId = x.FuelTypeId, 
+                    FuelTypeName = x.FuelName, 
+                    Vehicles = x.Vehicle }).ToList();
 
-            foreach (var u in _ctx.FuelTypes.ToList())
-            {
-                var fuelsDto = new FuelTypeReadDto
-                {
-                    FuelTypeId = u.FuelTypeId,
-                    FuelTypeName = u.FuelName,
-                    VehileId = u.VehicleId
-                };
-
-                fuels.Add(fuelsDto);
-            }
-
-            return fuels;
+            return fuelDto;
         }
     }
 }

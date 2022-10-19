@@ -11,6 +11,8 @@ namespace AutoOA.Core
         public DateTime ProductionDate { get; set; } // Рік випуску
 
         public int VehicleBrandId { get; set; }
-        public virtual ICollection<Vehicle>? Vehicles { get; set; }
+        public VehicleBrand VehicleBrand { get; set; }
+
+        public virtual ICollection<Vehicle> Vehicles { get; set; }
     }
 }

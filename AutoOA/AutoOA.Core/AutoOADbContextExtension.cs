@@ -110,39 +110,33 @@ namespace AutoOA.Core
                 {
                     FuelTypeId = 1,
                     FuelName = "Дизель",
-                    VehicleId = 1
                 },
                 new FuelType
                 {
                     FuelTypeId = 2,
                     FuelName = "Бензин",
-                    VehicleId = 2
                 });
             builder.Entity<BodyType>().HasData(
                 new BodyType
                 {
                     BodyTypeId = 1,
                     BodyTypeName = "Седан",
-                    VehicleId = 1
                 },
                 new BodyType
                 {
                     BodyTypeId = 2,
                     BodyTypeName = "Універсал",
-                    VehicleId = 2
                 });
             builder.Entity<GearBox>().HasData(
                 new GearBox
                 {
                     GearBoxId = 1,
                     GearBoxName = "Механіка",
-                    VehicleId = 1
                 },
                 new GearBox
                 {
                     GearBoxId = 2,
                     GearBoxName = "Автомат",
-                    VehicleId = 2
                 });
             builder.Entity<VehicleBrand>().HasData(
                 new VehicleBrand

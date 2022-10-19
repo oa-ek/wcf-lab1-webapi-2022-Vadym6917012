@@ -7,7 +7,6 @@ namespace AutoOA.Repository.Dto.BodyTypeDto
         public int BodyId { get; set; }
         public string BodyName { get; set; }
 
-        public int VehicleId { get; set; }
-        public Vehicle Vehicle { get; set; }
+        public ICollection<Vehicle> Vehicle { get; set; }
     }
 }

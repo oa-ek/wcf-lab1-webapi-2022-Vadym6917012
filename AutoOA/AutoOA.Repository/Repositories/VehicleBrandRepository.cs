@@ -14,20 +14,13 @@ namespace AutoOA.Repository.Repositories
 
         public async Task<IEnumerable<VehicleBrandReadDto>> GetVehicleBrandsAsync()
         {
-            var brands = new List<VehicleBrandReadDto>();
+            var brandDto = _ctx.VehicleBrands
+                .Select(x => new VehicleBrandReadDto { 
+                    VehicleBrandId = x.VehicleBrandId, 
+                    VehicleBrandName = x.VehicleBrandName, 
+                    VehicleModels = x.VehicleModels}).ToList();
 
-            foreach (var u in _ctx.VehicleBrands.ToList())
-            {
-                var brandsDto = new VehicleBrandReadDto
-                {
-                    VehicleBrandId = u.VehicleBrandId,
-                    VehicleBrandName = u.VehicleBrandName
-                };
-
-                brands.Add(brandsDto);
-            }
-
-            return brands;
+            return brandDto;
         }
     }
 }

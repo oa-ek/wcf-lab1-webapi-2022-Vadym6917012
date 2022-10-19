@@ -1,9 +1,10 @@
 ﻿using AutoOA.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using AutoOA.Repository.Dto.UserDto;
 using AutoOA.Repository.Repositories;
+using AutoOA.UI.Models;
+using System.Diagnostics;
 
 namespace AutoOA.UI.Controllers
 {
@@ -71,6 +72,12 @@ namespace AutoOA.UI.Controllers
             }
             ViewBag.Roles = await usersRepository.GetRolesAsync();
             return View(model);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

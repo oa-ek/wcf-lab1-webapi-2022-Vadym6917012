@@ -294,7 +294,7 @@ namespace AutoOA.Core
                     Price = 15000,
                     isNew = true,
                     Mileage = 90000,
-                    VehicleIconPath = @"Images\w220cidan.png",
+                    VehicleIconPath = @"\Images\w220cidan.png",
                     FuelTypeId = 1,
                     Color = "Black",
                     Description = "Авто в дуже хорошому стані. Повністтю обслужене. Капіталовкладень не потребує."
@@ -310,7 +310,7 @@ namespace AutoOA.Core
                     Price = 9000,
                     isNew = false,
                     Mileage = 320000,
-                    VehicleIconPath = @"Images\320Universal.png",
+                    VehicleIconPath = @"\Images\320Universal.png",
                     FuelTypeId = 2,
                     Color = "Gray",
                     Description = "Продаю свій автомобіль у хорошому стані. Зроблено всі планові роботи, все працює добре. Є невеликі подряпини, пов'язані з експлуатацією."

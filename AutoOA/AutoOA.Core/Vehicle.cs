@@ -25,7 +25,7 @@ namespace AutoOA.Core
 
         public decimal Price { get; set; } // Ціна
         public bool isNew { get; set; } // Новий?
-        public string MileageIconPath { get; set; } = @"Images\MileageIcon.png";
+        public string MileageIconPath { get; set; } = @"\Images\MileageIcon.png";
         public int Mileage { get; set; } // Пробіг
 
         public string? VehicleIconPath { get; set; } // Шлях до іконки

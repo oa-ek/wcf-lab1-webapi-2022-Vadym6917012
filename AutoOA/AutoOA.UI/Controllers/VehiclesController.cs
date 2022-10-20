@@ -8,11 +8,14 @@ namespace AutoOA.UI.Controllers
 {
     public class VehiclesController : Controller
     {
+        private readonly ILogger<VehiclesController> _logger;
+
         private readonly VehicleRepository _vehicleRepository;
         private readonly VehicleModelRepository _vehicleModelRepository;
 
-        public VehiclesController(VehicleRepository vehicleRepository, VehicleModelRepository vehicleModelRepository)
+        public VehiclesController(ILogger<VehiclesController> logger, VehicleRepository vehicleRepository, VehicleModelRepository vehicleModelRepository)
         {
+            _logger = logger;
             _vehicleRepository = vehicleRepository;
             _vehicleModelRepository = vehicleModelRepository;
         }

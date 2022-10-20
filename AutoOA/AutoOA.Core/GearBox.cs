@@ -7,7 +7,7 @@ namespace AutoOA.Core
         [Key]
         public int GearBoxId { get; set; }
         public string? GearBoxName { get; set; }
-        public string? IconPath { get; set; } = @"Images\gearBoxIcon.png";
+        public string? IconPath { get; set; } = @"\Images\gearBoxIcon.png";
 
         public virtual ICollection<Vehicle> Vehicle { get; set; }
     }

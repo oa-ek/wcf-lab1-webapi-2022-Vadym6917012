@@ -21,9 +21,10 @@ namespace AutoOA.Repository.Repositories
                     GearBox = x.GearBox, 
                     VehicleBrand = x.VehicleModel.VehicleBrand.VehicleBrandName,
                     Price = x.Price, 
-                    isNew = x.isNew, 
-                    Mileage = x.Mileage, 
-                    IconPath = x.IconPath, 
+                    isNew = x.isNew,
+                    MileageIconPath = x.MileageIconPath,
+                    Mileage = x.Mileage,
+                    VehcileIconPath = x.VehicleIconPath,
                     FuelType = x.FuelType, 
                     Color = x.Color }).ToList();
 

@@ -6,6 +6,7 @@ namespace AutoOA.Repository.Dto.GearBoxDto
     {
         public int GearBoxId { get; set; }
         public string GearBoxName { get; set; }
+        public string IconPath { get; set; }
         
         public ICollection<Vehicle> Vehicles { get; set; }
     }

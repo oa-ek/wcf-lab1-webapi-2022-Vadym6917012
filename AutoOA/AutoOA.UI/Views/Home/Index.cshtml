@@ -18,8 +18,8 @@
         @foreach (var u in Model)
         {
             <div class="card" style="width:400px">
-                <img class="card-img-top" src="@u.IconPath" alt=" ">
-                <div class="card-body">ю
+                <img class="card-img-top" style="height: 250px" src="@u.VehcileIconPath" alt=" ">
+                <div class="card-body">
                     <div class="text-center">
                         <h5 class="fw-bolder">
                             <a href="#" class="text-decoration-none">@u.VehicleBrand @u.VehicleModel.VehicleModelName @u.VehicleModel.ProductionDate.ToString("yyyy")</a>                            
@@ -28,12 +28,12 @@
                         <table class="table table-borderless">
                             <tbody>
                                 <tr>
-                                    <td><img class="card-img" src="~/Images/fuel.png" alt="..." style="width: 1.3rem"> @u.FuelType.FuelName</td>
-                                    <td><img class="card-img" src="~/Images/pngegg.png" alt="..." style="width: 1.3rem"> @u.GearBox.GearBoxName</td>
+                                    <td><img class="card-img" src="@u.FuelType.IconPath" alt="..." style="width: 1.3rem"> @u.FuelType.FuelName</td>
+                                    <td><img class="card-img" src="@u.GearBox.IconPath" alt="..." style="width: 1.3rem"> @u.GearBox.GearBoxName</td>
                                 </tr>
                                 <tr>
-                                    <td><img class="card-img" src="~/Images/travel_car_icon_124831.png" alt="..." style="width: 1.3rem"> @u.BodyType.BodyTypeName</td>
-                                    <td><img class="card-img" src="~/Images/icons8-speedometer-24.png" alt="..." style="width: 1.3rem"> @u.Mileage</td>
+                                    <td><img class="card-img" src="@u.BodyType.IconPath" alt="..." style="width: 1.3rem"> @u.BodyType.BodyTypeName</td>
+                                    <td><img class="card-img" src="@u.MileageIconPath" alt="..." style="width: 1.3rem"> @u.Mileage км</td>
                                 </tr>                                
                             </tbody>
                         </table>

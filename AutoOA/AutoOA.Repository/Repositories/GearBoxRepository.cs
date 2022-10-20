@@ -17,7 +17,8 @@ namespace AutoOA.Repository.Repositories
             var gearDto = _ctx.GearBoxes.
                 Select(x => new GearBoxReadDto { 
                     GearBoxId = x.GearBoxId, 
-                    GearBoxName = x.GearBoxName, 
+                    GearBoxName = x.GearBoxName,
+                    IconPath = x.IconPath,
                     Vehicles = x.Vehicle }).ToList();
 
             return gearDto;

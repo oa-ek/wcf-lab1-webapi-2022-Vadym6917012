@@ -153,14 +153,14 @@ namespace AutoOA.Core
                 {
                     VehicleModelId = 1,
                     VehicleModelName = "E 220",
-                    ProductionDate = DateTime.Now,
+                    ProductionDate = new DateTime(2006, 3, 15),
                     VehicleBrandId = 1,
                 },
                 new VehicleModel
                 {
                     VehicleModelId = 2,
                     VehicleModelName = "320",
-                    ProductionDate = DateTime.Now,
+                    ProductionDate = new DateTime(2000, 6, 9),
                     VehicleBrandId = 2,
                 });
             builder.Entity<Vehicle>().HasData(
@@ -173,7 +173,7 @@ namespace AutoOA.Core
                     Price = 15000,
                     isNew = true,
                     Mileage = 90000,
-                    IconPath = @"Images\w220cidan.png",
+                    VehicleIconPath = @"Images\w220cidan.png",
                     FuelTypeId = 1,
                     Color = "Black"
                 },
@@ -186,7 +186,7 @@ namespace AutoOA.Core
                     Price = 9000,
                     isNew = false,
                     Mileage = 320000,
-                    IconPath = @"Images\320Universal.png",
+                    VehicleIconPath = @"Images\320Universal.png",
                     FuelTypeId = 2,
                     Color = "Gray"
                 });

@@ -17,7 +17,8 @@ namespace AutoOA.Repository.Repositories
             var bodyDto = _ctx.BodyTypes.
                 Select(x => new BodyTypeReadDto { 
                     BodyId = x.BodyTypeId, 
-                    BodyName = x.BodyTypeName, 
+                    BodyName = x.BodyTypeName,
+                    IconPath = x.IconPath,
                     Vehicle = x.Vehicle }).ToList();
 
             return bodyDto;

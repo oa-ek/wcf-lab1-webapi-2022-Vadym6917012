@@ -17,7 +17,8 @@ namespace AutoOA.Repository.Repositories
             var fuelDto = _ctx.FuelTypes.
                 Select(x => new FuelTypeReadDto { 
                     FuelTypeId = x.FuelTypeId, 
-                    FuelTypeName = x.FuelName, 
+                    FuelTypeName = x.FuelName,
+                    IconPath = x.IconPath,
                     Vehicles = x.Vehicle }).ToList();
 
             return fuelDto;

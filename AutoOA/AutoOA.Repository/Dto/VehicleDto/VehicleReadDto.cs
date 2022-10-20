@@ -19,8 +19,11 @@ namespace AutoOA.Repository.Dto.VehicleDto
 
         public decimal Price { get; set; }
         public bool isNew { get; set; }
+
+        public string MileageIconPath { get; set; }
         public int Mileage { get; set; }
-        public string IconPath { get; set; }
+
+        public string VehcileIconPath { get; set; }
 
         public int FuelTypeId { get; set; }
         public FuelType FuelType { get; set; }

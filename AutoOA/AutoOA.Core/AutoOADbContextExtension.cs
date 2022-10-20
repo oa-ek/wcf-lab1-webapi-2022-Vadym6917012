@@ -216,6 +216,22 @@ namespace AutoOA.Core
                     BodyTypeId = 13,
                     BodyTypeName = "Фастбек",
                 });
+            builder.Entity<DriveType>().HasData(
+                new DriveType
+                {
+                    DriveTypeId = 1,
+                    DriveTypeName = "Повний",
+                },
+                new DriveType
+                {
+                    DriveTypeId = 2,
+                    DriveTypeName = "Передній",
+                },
+                new DriveType
+                {
+                    DriveTypeId = 3,
+                    DriveTypeName = "Задній",
+                });
             builder.Entity<GearBox>().HasData(
                 new GearBox
                 {
@@ -271,6 +287,7 @@ namespace AutoOA.Core
                 {
                     VehicleId = 1,
                     BodyTypeId = 1,
+                    DriveTypeId = 1,
                     VehicleModelId = 1,
                     ProductionDate = new DateTime(2006, 3, 15),
                     GearBoxId = 1,
@@ -279,12 +296,14 @@ namespace AutoOA.Core
                     Mileage = 90000,
                     VehicleIconPath = @"Images\w220cidan.png",
                     FuelTypeId = 1,
-                    Color = "Black"
+                    Color = "Black",
+                    Description = "Авто в дуже хорошому стані. Повністтю обслужене. Капіталовкладень не потребує."
                 },
                 new Vehicle
                 {
                     VehicleId = 2,
                     BodyTypeId = 2,
+                    DriveTypeId = 3,
                     VehicleModelId = 2,
                     ProductionDate = new DateTime(2000, 6, 9),
                     GearBoxId = 2,
@@ -293,7 +312,8 @@ namespace AutoOA.Core
                     Mileage = 320000,
                     VehicleIconPath = @"Images\320Universal.png",
                     FuelTypeId = 2,
-                    Color = "Gray"
+                    Color = "Gray",
+                    Description = "Продаю свій автомобіль у хорошому стані. Зроблено всі планові роботи, все працює добре. Є невеликі подряпини, пов'язані з експлуатацією."
                 });
         }
     }

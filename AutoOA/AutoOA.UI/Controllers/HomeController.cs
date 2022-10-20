@@ -21,7 +21,7 @@ namespace AutoOA.UI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _vehicleRepository.GetVehicleAsync());
+            return View(await _vehicleRepository.GetVehiclesAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

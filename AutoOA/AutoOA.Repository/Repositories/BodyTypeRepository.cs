@@ -1,5 +1,8 @@
 ﻿using AutoOA.Core;
 using AutoOA.Repository.Dto.BodyTypeDto;
+using AutoOA.Repository.Dto.UserDto;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoOA.Repository.Repositories
 {
@@ -20,6 +23,21 @@ namespace AutoOA.Repository.Repositories
                     BodyName = x.BodyTypeName,
                     IconPath = x.IconPath,
                     Vehicle = x.Vehicle }).ToList();
+
+            return bodyDto;
+        }
+
+        public async Task<BodyTypeReadDto> GetBodyTypeAsync(int id)
+        {
+            var u = await _ctx.BodyTypes.FirstAsync(x => x.BodyTypeId == id);
+
+            var bodyDto = new BodyTypeReadDto
+            {
+                BodyId = u.BodyTypeId,
+                BodyName = u.BodyTypeName,
+                IconPath = u.IconPath,
+                Vehicle = u.Vehicle
+            };
 
             return bodyDto;
         }

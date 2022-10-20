@@ -31,6 +31,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<UsersRepository>();
 builder.Services.AddTransient<BodyTypeRepository>();
+builder.Services.AddTransient<DriveTypeRepository>();
 builder.Services.AddTransient<FuelTypeRepository>();
 builder.Services.AddTransient<GearBoxRepository>();
 builder.Services.AddTransient<VehicleBrandRepository>();

@@ -1,0 +1,16 @@
+﻿@using AutoOA.Repository.Dto.VehicleModelDto
+@using AutoOA.Repository.Dto.VehicleDto
+
+@model VehicleReadDto
+
+@{
+    ViewData["Title"] = "Home Page";
+    var models = ViewBag.Models as VehicleModelReadDto;
+}
+
+<h1>Description</h1>
+<h1> @models.VehicleModelName @Model.ProductionDate</h1>
+<img class="floa" src="~/@Model.VehicleIconPath" alt=" ">
+<p>@Model.Description</p>
+
+<p>@Model.Color</p>

@@ -10,15 +10,18 @@ namespace AutoOA.Core
         public int VehicleId { get; set; }
 
         public int BodyTypeId { get; set; }
-        public BodyType BodyType { get; set; } // Тип кузова
+        public BodyType? BodyType { get; set; } // Тип кузова
 
         public int VehicleModelId { get; set; }
-        public VehicleModel VehicleModel { get; set; } // Модель
+        public VehicleModel? VehicleModel { get; set; } // Модель
 
         public DateTime ProductionDate { get; set; } // Рік випуску
 
         public int GearBoxId { get; set; }
-        public GearBox GearBox { get; set; } // Коробка передач
+        public GearBox? GearBox { get; set; } // Коробка передач
+
+        public int DriveTypeId { get; set; }
+        public DriveType? DriveType { get; set; }
 
         public decimal Price { get; set; } // Ціна
         public bool isNew { get; set; } // Новий?
@@ -28,8 +31,9 @@ namespace AutoOA.Core
         public string? VehicleIconPath { get; set; } // Шлях до іконки
 
         public int FuelTypeId { get; set; }
-        public FuelType FuelType { get; set; } // Тип палива
+        public FuelType? FuelType { get; set; } // Тип палива
         
         public string? Color { get; set; } // Колір
+        public string? Description { get; set; } // Опис
     }
 }

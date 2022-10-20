@@ -22,10 +22,5 @@ namespace AutoOA.Repository.Repositories
 
             return bodyDto;
         }
-
-        public async Task<BodyTypeReadDto> CreateBodyTypesAsync()
-        {
-
-        }
     }
 }

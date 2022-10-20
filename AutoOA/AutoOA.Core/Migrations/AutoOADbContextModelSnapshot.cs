@@ -52,6 +52,72 @@ namespace AutoOA.Core.Migrations
                             BodyTypeId = 2,
                             BodyTypeName = "Універсал",
                             IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 3,
+                            BodyTypeName = "Хетчбек",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 4,
+                            BodyTypeName = "Купе",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 5,
+                            BodyTypeName = "Кабріолет",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 6,
+                            BodyTypeName = "Позашляховик / Кросовер",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 7,
+                            BodyTypeName = "Мінівен",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 8,
+                            BodyTypeName = "Ліфтбек",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 9,
+                            BodyTypeName = "Мікровен",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 10,
+                            BodyTypeName = "Пікап",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 11,
+                            BodyTypeName = "Родстер",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 12,
+                            BodyTypeName = "Лімузин",
+                            IconPath = "Images\\BodyTypeIcon.png"
+                        },
+                        new
+                        {
+                            BodyTypeId = 13,
+                            BodyTypeName = "Фастбек",
+                            IconPath = "Images\\BodyTypeIcon.png"
                         });
                 });
 
@@ -85,6 +151,48 @@ namespace AutoOA.Core.Migrations
                             FuelTypeId = 2,
                             FuelName = "Бензин",
                             IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 3,
+                            FuelName = "Газ",
+                            IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 4,
+                            FuelName = "Газ / Бензин",
+                            IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 5,
+                            FuelName = "Гібрид",
+                            IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 6,
+                            FuelName = "Електро",
+                            IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 7,
+                            FuelName = "Інше",
+                            IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 8,
+                            FuelName = "Газ метан",
+                            IconPath = "Images\\fuelTypeIcon.png"
+                        },
+                        new
+                        {
+                            FuelTypeId = 9,
+                            FuelName = "Газ пропан-бутан",
+                            IconPath = "Images\\fuelTypeIcon.png"
                         });
                 });
 
@@ -110,13 +218,31 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             GearBoxId = 1,
-                            GearBoxName = "Механіка",
+                            GearBoxName = "Ручна / Механіка",
                             IconPath = "Images\\gearBoxIcon.png"
                         },
                         new
                         {
                             GearBoxId = 2,
                             GearBoxName = "Автомат",
+                            IconPath = "Images\\gearBoxIcon.png"
+                        },
+                        new
+                        {
+                            GearBoxId = 3,
+                            GearBoxName = "Типтронік",
+                            IconPath = "Images\\gearBoxIcon.png"
+                        },
+                        new
+                        {
+                            GearBoxId = 4,
+                            GearBoxName = "Робот",
+                            IconPath = "Images\\gearBoxIcon.png"
+                        },
+                        new
+                        {
+                            GearBoxId = 5,
+                            GearBoxName = "Варіатор",
                             IconPath = "Images\\gearBoxIcon.png"
                         });
                 });
@@ -194,49 +320,49 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "854dc1a1-b3fa-443c-833c-378d5fa51500",
+                            Id = "1477e937-3a8f-476f-8006-a1fb224c780e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4d6ab9ce-5bd0-4699-9316-52e9cf3619c3",
+                            ConcurrencyStamp = "6179f121-9937-474d-b2cc-b942ffcb27f2",
                             Email = "admin@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@AUTOOA.COM",
                             NormalizedUserName = "ADMIN@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOM2WKYVdXa9oqdrqWlBUuGzuHEhiJ6d6yAx3hJZBTHC8QfyQKp86poNXT/4q0SnCw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN6hcZ2iX0S6KM2igjAvEn/BhC+PLLb41N9IVpFByej88reQ3L6WwZTIxxRcThu2cw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fb8bb820-4c6c-49d9-9eb5-ea384dd0366a",
+                            SecurityStamp = "08ba4929-b95f-4811-ac9c-525d86d70020",
                             TwoFactorEnabled = false,
                             UserName = "admin@autooa.com"
                         },
                         new
                         {
-                            Id = "a8849476-4853-41af-a7e8-6a2dc4b0e302",
+                            Id = "79286173-365f-422f-bfa6-2228e374eb6a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1e7dc0f-6eec-4c32-8471-d7f4c1a874d7",
+                            ConcurrencyStamp = "132705e0-2219-426e-934e-dde04dbdf859",
                             Email = "moder@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MODER@AUTOOA.COM",
                             NormalizedUserName = "MODER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDaIIPSrlj43OdgZLdRqMpPUosbcQdl4rIAZhcl3YVrXDv4oL0eb0/m4znZy5UZPhw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKDL8HKgz2t/ZV+ypMKEfocCaPv6e4lVk5WpLYWhIBocl5VJgu1uljCrniZGQ7gLGg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eccdbd1c-54bf-4d2f-bfaf-4ad77207b7b5",
+                            SecurityStamp = "af577bad-36be-44d4-9f73-9ec738298c79",
                             TwoFactorEnabled = false,
                             UserName = "moder@autooa.com"
                         },
                         new
                         {
-                            Id = "39551443-7100-4a3f-bb11-9b35d1563677",
+                            Id = "8a006d9e-c5ea-4c81-aed8-9d988b575351",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "18afd3b8-01e0-4ab2-8833-5c46e8d24d94",
+                            ConcurrencyStamp = "f716ef8b-3b0b-488e-8714-263478cf28d4",
                             Email = "user@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@AUTOOA.COM",
                             NormalizedUserName = "USER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK4k8yIsNhwEnMpR9bhQPFRNsqCLv5fOnwQiugUTQizZMFTVZ9dQfZVnTRu5gOIS+g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIjs2qCyp7ptcLJ9B16J04jMxvC4GgUtOmQUWYU+A090fXHXhe4y3gVJtqdHxALvoA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1ac934fc-fd83-4911-8b24-7fb25b1a631b",
+                            SecurityStamp = "14a92140-933b-4343-a83f-de07810f76f6",
                             TwoFactorEnabled = false,
                             UserName = "user@autooa.com"
                         });
@@ -272,6 +398,9 @@ namespace AutoOA.Core.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime>("ProductionDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("VehicleIconPath")
                         .HasColumnType("nvarchar(max)");
 
@@ -304,6 +433,7 @@ namespace AutoOA.Core.Migrations
                             Mileage = 90000,
                             MileageIconPath = "Images\\MileageIcon.png",
                             Price = 15000m,
+                            ProductionDate = new DateTime(2006, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             VehicleIconPath = "Images\\w220cidan.png",
                             VehicleModelId = 1,
                             isNew = true
@@ -318,6 +448,7 @@ namespace AutoOA.Core.Migrations
                             Mileage = 320000,
                             MileageIconPath = "Images\\MileageIcon.png",
                             Price = 9000m,
+                            ProductionDate = new DateTime(2000, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             VehicleIconPath = "Images\\320Universal.png",
                             VehicleModelId = 2,
                             isNew = false
@@ -360,9 +491,6 @@ namespace AutoOA.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VehicleModelId"), 1L, 1);
 
-                    b.Property<DateTime>("ProductionDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("VehicleBrandId")
                         .HasColumnType("int");
 
@@ -379,14 +507,12 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             VehicleModelId = 1,
-                            ProductionDate = new DateTime(2006, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             VehicleBrandId = 1,
                             VehicleModelName = "E 220"
                         },
                         new
                         {
                             VehicleModelId = 2,
-                            ProductionDate = new DateTime(2000, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             VehicleBrandId = 2,
                             VehicleModelName = "320"
                         });
@@ -421,22 +547,22 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "90cc43f9-0ba2-414d-b863-a1ad5bc247d0",
-                            ConcurrencyStamp = "781290e0-3f14-4075-bfff-434bd7bd5865",
+                            Id = "6e87913d-6f4b-4362-b865-dbf43525fc97",
+                            ConcurrencyStamp = "0f311083-d91a-4eea-b882-828d49e020a7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "1705e299-2b5a-4852-8ffc-a950a0e44a20",
-                            ConcurrencyStamp = "11c635a8-cffc-4b90-9aa1-7913d76c30cf",
+                            Id = "3722e96c-26e9-4669-81ab-70c2f3dd6f4d",
+                            ConcurrencyStamp = "4b8d73fc-c011-430b-bb88-62ea7baf6813",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
-                            Id = "eb605f64-727d-4f6f-abfd-9a27f730b5ba",
-                            ConcurrencyStamp = "3aac827f-b04e-4cb2-a48a-2c4665fed611",
+                            Id = "82366c52-55ef-4c51-a563-80b200f288c9",
+                            ConcurrencyStamp = "d2d14b68-9bcf-4514-947d-cf641795e70f",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -533,33 +659,33 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "854dc1a1-b3fa-443c-833c-378d5fa51500",
-                            RoleId = "90cc43f9-0ba2-414d-b863-a1ad5bc247d0"
+                            UserId = "1477e937-3a8f-476f-8006-a1fb224c780e",
+                            RoleId = "6e87913d-6f4b-4362-b865-dbf43525fc97"
                         },
                         new
                         {
-                            UserId = "854dc1a1-b3fa-443c-833c-378d5fa51500",
-                            RoleId = "1705e299-2b5a-4852-8ffc-a950a0e44a20"
+                            UserId = "1477e937-3a8f-476f-8006-a1fb224c780e",
+                            RoleId = "3722e96c-26e9-4669-81ab-70c2f3dd6f4d"
                         },
                         new
                         {
-                            UserId = "854dc1a1-b3fa-443c-833c-378d5fa51500",
-                            RoleId = "eb605f64-727d-4f6f-abfd-9a27f730b5ba"
+                            UserId = "1477e937-3a8f-476f-8006-a1fb224c780e",
+                            RoleId = "82366c52-55ef-4c51-a563-80b200f288c9"
                         },
                         new
                         {
-                            UserId = "a8849476-4853-41af-a7e8-6a2dc4b0e302",
-                            RoleId = "1705e299-2b5a-4852-8ffc-a950a0e44a20"
+                            UserId = "79286173-365f-422f-bfa6-2228e374eb6a",
+                            RoleId = "3722e96c-26e9-4669-81ab-70c2f3dd6f4d"
                         },
                         new
                         {
-                            UserId = "a8849476-4853-41af-a7e8-6a2dc4b0e302",
-                            RoleId = "eb605f64-727d-4f6f-abfd-9a27f730b5ba"
+                            UserId = "79286173-365f-422f-bfa6-2228e374eb6a",
+                            RoleId = "82366c52-55ef-4c51-a563-80b200f288c9"
                         },
                         new
                         {
-                            UserId = "39551443-7100-4a3f-bb11-9b35d1563677",
-                            RoleId = "eb605f64-727d-4f6f-abfd-9a27f730b5ba"
+                            UserId = "8a006d9e-c5ea-4c81-aed8-9d988b575351",
+                            RoleId = "82366c52-55ef-4c51-a563-80b200f288c9"
                         });
                 });
 

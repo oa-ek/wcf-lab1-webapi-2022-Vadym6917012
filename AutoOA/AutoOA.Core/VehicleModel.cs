@@ -6,9 +6,7 @@ namespace AutoOA.Core
     {
         [Key]
         public int VehicleModelId { get; set; }
-
         public string? VehicleModelName { get; set; }
-        public DateTime ProductionDate { get; set; } // Рік випуску
 
         public int VehicleBrandId { get; set; }
         public VehicleBrand VehicleBrand { get; set; }

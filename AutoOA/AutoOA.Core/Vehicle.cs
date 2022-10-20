@@ -15,6 +15,8 @@ namespace AutoOA.Core
         public int VehicleModelId { get; set; }
         public VehicleModel VehicleModel { get; set; } // Модель
 
+        public DateTime ProductionDate { get; set; } // Рік випуску
+
         public int GearBoxId { get; set; }
         public GearBox GearBox { get; set; } // Коробка передач
 

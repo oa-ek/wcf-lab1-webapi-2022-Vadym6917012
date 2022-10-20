@@ -12,6 +12,8 @@ namespace AutoOA.Repository.Dto.VehicleDto
         public int ModelId { get; set; }
         public VehicleModel VehicleModel { get; set; }
 
+        public DateTime ProductionDate { get; set; }
+
         public string VehicleBrand { get; set; }
 
         public int GearBoxId { get; set; }

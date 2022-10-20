@@ -17,8 +17,7 @@ namespace AutoOA.Repository.Repositories
             var modelDto = _ctx.VehicleModels
                 .Select(x => new VehicleModelReadDto { 
                     VehicleModelId = x.VehicleModelId, 
-                    VehicleModelName = x.VehicleModelName, 
-                    ProductionDate = x.ProductionDate, 
+                    VehicleModelName = x.VehicleModelName,  
                     VehicleBrandId = x.VehicleBrandId, 
                     VehicleBrand = x.VehicleBrand, 
                     Vehicles = x.Vehicles}).ToList();

@@ -21,7 +21,6 @@ namespace AutoOA.UI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.BodyTypes = await _bodyTypeRepository.GetBodyTypesAsync();
             return View(await _vehicleRepository.GetVehicleAsync());
         }
 

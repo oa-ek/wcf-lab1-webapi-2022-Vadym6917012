@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using AutoOA.Repository.Repositories;
+using AutoOA.Repository.Dto.FuelTypeDto;
 
 namespace AutoOA.UI.Controllers
 {

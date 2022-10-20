@@ -18,6 +18,7 @@ namespace AutoOA.Repository.Repositories
                 .Select(x => new VehicleReadDto{ 
                     BodyType = x.BodyType, 
                     VehicleModel = x.VehicleModel,
+                    ProductionDate = x.ProductionDate,
                     GearBox = x.GearBox, 
                     VehicleBrand = x.VehicleModel.VehicleBrand.VehicleBrandName,
                     Price = x.Price, 

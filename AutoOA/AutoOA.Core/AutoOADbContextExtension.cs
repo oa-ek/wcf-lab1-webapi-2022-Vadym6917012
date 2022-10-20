@@ -114,6 +114,41 @@ namespace AutoOA.Core
                 {
                     FuelTypeId = 2,
                     FuelName = "Бензин",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 3,
+                    FuelName = "Газ",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 4,
+                    FuelName = "Газ / Бензин",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 5,
+                    FuelName = "Гібрид",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 6,
+                    FuelName = "Електро",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 7,
+                    FuelName = "Інше",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 8,
+                    FuelName = "Газ метан",
+                },
+                new FuelType
+                {
+                    FuelTypeId = 9,
+                    FuelName = "Газ пропан-бутан",
                 });
             builder.Entity<BodyType>().HasData(
                 new BodyType
@@ -125,17 +160,87 @@ namespace AutoOA.Core
                 {
                     BodyTypeId = 2,
                     BodyTypeName = "Універсал",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 3,
+                    BodyTypeName = "Хетчбек",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 4,
+                    BodyTypeName = "Купе",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 5,
+                    BodyTypeName = "Кабріолет",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 6,
+                    BodyTypeName = "Позашляховик / Кросовер",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 7,
+                    BodyTypeName = "Мінівен",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 8,
+                    BodyTypeName = "Ліфтбек",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 9,
+                    BodyTypeName = "Мікровен",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 10,
+                    BodyTypeName = "Пікап",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 11,
+                    BodyTypeName = "Родстер",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 12,
+                    BodyTypeName = "Лімузин",
+                },
+                new BodyType
+                {
+                    BodyTypeId = 13,
+                    BodyTypeName = "Фастбек",
                 });
             builder.Entity<GearBox>().HasData(
                 new GearBox
                 {
                     GearBoxId = 1,
-                    GearBoxName = "Механіка",
+                    GearBoxName = "Ручна / Механіка",
                 },
                 new GearBox
                 {
                     GearBoxId = 2,
                     GearBoxName = "Автомат",
+                },
+                new GearBox
+                {
+                    GearBoxId = 3,
+                    GearBoxName = "Типтронік",
+                },
+                new GearBox
+                {
+                    GearBoxId = 4,
+                    GearBoxName = "Робот",
+                },
+                new GearBox
+                {
+                    GearBoxId = 5,
+                    GearBoxName = "Варіатор",
                 });
             builder.Entity<VehicleBrand>().HasData(
                 new VehicleBrand
@@ -153,14 +258,12 @@ namespace AutoOA.Core
                 {
                     VehicleModelId = 1,
                     VehicleModelName = "E 220",
-                    ProductionDate = new DateTime(2006, 3, 15),
                     VehicleBrandId = 1,
                 },
                 new VehicleModel
                 {
                     VehicleModelId = 2,
                     VehicleModelName = "320",
-                    ProductionDate = new DateTime(2000, 6, 9),
                     VehicleBrandId = 2,
                 });
             builder.Entity<Vehicle>().HasData(
@@ -169,6 +272,7 @@ namespace AutoOA.Core
                     VehicleId = 1,
                     BodyTypeId = 1,
                     VehicleModelId = 1,
+                    ProductionDate = new DateTime(2006, 3, 15),
                     GearBoxId = 1,
                     Price = 15000,
                     isNew = true,
@@ -182,6 +286,7 @@ namespace AutoOA.Core
                     VehicleId = 2,
                     BodyTypeId = 2,
                     VehicleModelId = 2,
+                    ProductionDate = new DateTime(2000, 6, 9),
                     GearBoxId = 2,
                     Price = 9000,
                     isNew = false,

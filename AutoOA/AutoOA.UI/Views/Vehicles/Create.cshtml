@@ -1,3 +1,20 @@
-﻿
-@{
-}
+﻿@using AutoOA.Repository.Dto.VehicleDto
+
+@model IEnumerable<VehicleReadDto>
+
+<div class="mb-3">
+    <input type="file" class="form-control" aria-label="file example" required>
+    <div class="invalid-feedback">Example invalid form file feedback</div>
+</div>
+
+<div class="col-md-3">
+    <label class="form-label">Brand</label>
+    <select class="form-select" id="validationCustom04" required>
+        <option selected disabled value="">Choose...</option>
+        @foreach(var u in Model){
+            <option>@u.VehicleBrand</option>
+        }
+    </select>
+    <div class="invalid-feedback">
+        Please select a valid brand.
+    </div>

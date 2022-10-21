@@ -8,9 +8,24 @@
     var models = ViewBag.Models as VehicleModelReadDto;
 }
 
-<h1>Description</h1>
-<h1> @models.VehicleModelName @Model.ProductionDate</h1>
-<img class="float-end" src="@Model.VehicleIconPath" alt=" ">
-<p>@Model.Description</p>
 
-<p>@Model.Color</p>
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img class="float-end" src="@Model.VehicleIconPath" alt=" ">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h1> @models.VehicleModelName @Model.ProductionDate.ToString("yyyy")</h1>
+                <h3>Description:</h3>
+                <p>@Model.Description</p>
+                <p>Color: @Model.Color</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

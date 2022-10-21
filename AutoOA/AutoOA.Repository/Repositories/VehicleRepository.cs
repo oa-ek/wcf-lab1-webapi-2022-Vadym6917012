@@ -39,13 +39,14 @@ namespace AutoOA.Repository.Repositories
 
         public async Task<VehicleReadDto> GetVehicleAsync(int id)
         {
-            var u = await _ctx.Vehicles.FirstAsync(x => x.VehicleId == id);
+            var u = await _ctx.Vehicles.Include(x => x.VehicleModel).ThenInclude(x => x.VehicleBrand).FirstAsync(x => x.VehicleId == id);
 
             var vehicleDto = new VehicleReadDto
             {
                 VehicleId = u.VehicleId,
                 BodyType = u.BodyType,
                 VehicleModel = u.VehicleModel,
+                VehicleBrand = u.VehicleModel.VehicleBrand.VehicleBrandName,
                 DriveType = u.DriveType,
                 ProductionDate = u.ProductionDate,
                 Price = u.Price,

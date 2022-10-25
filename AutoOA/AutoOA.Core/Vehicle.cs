@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoOA.Core
@@ -8,6 +9,11 @@ namespace AutoOA.Core
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VehicleId { get; set; }
+
+        public DateTime FirstRegistrationDate { get; set; } // Рік першої регістрації
+
+        public int RegionId { get; set; }
+        public Region? Region { get; set; } // Регіон
 
         public int BodyTypeId { get; set; }
         public BodyType? BodyType { get; set; } // Тип кузова
@@ -21,9 +27,12 @@ namespace AutoOA.Core
         public GearBox? GearBox { get; set; } // Коробка передач
 
         public int DriveTypeId { get; set; }
-        public DriveType? DriveType { get; set; }
+        public DriveType? DriveType { get; set; } // Тип приводу
 
-        public decimal Price { get; set; } // Ціна
+        public string? StateNumber { get; set; } = "Не задано"; // Гос номер
+        public int NumberOfSeats { get; set; } // Кількість сидінь
+        public int NumberOfDoors { get; set; } // Кількість дверей
+        public decimal Price { get; set; } = 0; // Ціна
         public bool isNew { get; set; } // Новий?
         public string MileageIconPath { get; set; } = @"\Images\MileageIcon.png";
         public int Mileage { get; set; } // Пробіг
@@ -35,5 +44,10 @@ namespace AutoOA.Core
         
         public string? Color { get; set; } // Колір
         public string? Description { get; set; } // Опис
+
+        public SalesData? SalesData { get; set; } // День продажу
+
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

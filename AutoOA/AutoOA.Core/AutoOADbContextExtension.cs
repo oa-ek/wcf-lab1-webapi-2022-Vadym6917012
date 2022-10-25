@@ -62,7 +62,7 @@ namespace AutoOA.Core
                 Email = "user@autooa.com",
                 EmailConfirmed = true,
                 NormalizedEmail = "user@autooa.com".ToUpper(),
-                NormalizedUserName = "user@autooa.com".ToUpper()
+                NormalizedUserName = "user@autooa.com".ToUpper(),
             };
 
             PasswordHasher<User> hasher = new PasswordHasher<User>();
@@ -282,6 +282,25 @@ namespace AutoOA.Core
                     VehicleModelName = "320",
                     VehicleBrandId = 2,
                 });
+            builder.Entity<SalesData>().HasData(
+                new SalesData
+                {
+                    SalesDataId = 1,
+                    VehicleId = 1,
+                    CreatedOn = DateTime.Now,
+                },
+                new SalesData
+                {
+                    SalesDataId = 2,
+                    VehicleId = 2,
+                    CreatedOn = new DateTime(2022, 10, 10)
+                });
+            builder.Entity<Region>().HasData(
+                new Region
+                {
+                    RegionId = 1,
+                    RegionName = "Ukraine"
+                });
             builder.Entity<Vehicle>().HasData(
                 new Vehicle
                 {
@@ -291,11 +310,16 @@ namespace AutoOA.Core
                     VehicleModelId = 1,
                     ProductionDate = new DateTime(2006, 3, 15),
                     GearBoxId = 1,
-                    Price = 15000,
+                    Price = 19000,
+                    RegionId = 1,
+                    NumberOfDoors = 5,
+                    NumberOfSeats = 4,
+                    FirstRegistrationDate = new DateTime(2007, 9, 10),
                     isNew = true,
                     Mileage = 90000,
                     VehicleIconPath = @"\Images\w220cidan.png",
                     FuelTypeId = 1,
+                    UserId = USER_ID,
                     Color = "Black",
                     Description = "Авто в дуже хорошому стані. Повністтю обслужене. Капіталовкладень не потребує."
                 },
@@ -307,11 +331,16 @@ namespace AutoOA.Core
                     VehicleModelId = 2,
                     ProductionDate = new DateTime(2000, 6, 9),
                     GearBoxId = 2,
-                    Price = 9000,
-                    isNew = false,
+                    Price = 15000,
+                    RegionId = 1,
+                    NumberOfDoors = 5,
+                    NumberOfSeats = 4,
+                    FirstRegistrationDate = new DateTime(2003, 9, 10),
+                    isNew = false, 
                     Mileage = 320000,
                     VehicleIconPath = @"\Images\320Universal.png",
                     FuelTypeId = 2,
+                    UserId = USER_ID,
                     Color = "Gray",
                     Description = "Продаю свій автомобіль у хорошому стані. Зроблено всі планові роботи, все працює добре. Є невеликі подряпини, пов'язані з експлуатацією."
                 });

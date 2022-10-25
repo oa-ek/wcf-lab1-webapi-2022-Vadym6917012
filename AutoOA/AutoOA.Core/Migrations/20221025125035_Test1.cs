@@ -106,6 +106,19 @@ namespace AutoOA.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Regions",
+                columns: table => new
+                {
+                    RegionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegionName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Regions", x => x.RegionId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "VehicleBrands",
                 columns: table => new
                 {
@@ -250,11 +263,16 @@ namespace AutoOA.Core.Migrations
                 {
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstRegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RegionId = table.Column<int>(type: "int", nullable: false),
                     BodyTypeId = table.Column<int>(type: "int", nullable: false),
                     VehicleModelId = table.Column<int>(type: "int", nullable: false),
                     ProductionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GearBoxId = table.Column<int>(type: "int", nullable: false),
                     DriveTypeId = table.Column<int>(type: "int", nullable: false),
+                    StateNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumberOfSeats = table.Column<int>(type: "int", nullable: false),
+                    NumberOfDoors = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     isNew = table.Column<bool>(type: "bit", nullable: false),
                     MileageIconPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -262,11 +280,18 @@ namespace AutoOA.Core.Migrations
                     VehicleIconPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FuelTypeId = table.Column<int>(type: "int", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehicles", x => x.VehicleId);
+                    table.ForeignKey(
+                        name: "FK_Vehicles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Vehicles_BodyTypes_BodyTypeId",
                         column: x => x.BodyTypeId,
@@ -292,10 +317,37 @@ namespace AutoOA.Core.Migrations
                         principalColumn: "GearBoxId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Vehicles_Regions_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Regions",
+                        principalColumn: "RegionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Vehicles_VehicleModels_VehicleModelId",
                         column: x => x.VehicleModelId,
                         principalTable: "VehicleModels",
                         principalColumn: "VehicleModelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SalesData",
+                columns: table => new
+                {
+                    SalesDataId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VehicleId = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SalesData", x => x.SalesDataId);
+                    table.ForeignKey(
+                        name: "FK_SalesData_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "VehicleId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -304,9 +356,9 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1d8ac350-0590-4973-b3da-eb0daab1b6ca", "4e421d61-094a-49ba-a880-976648fcdf93", "Admin", "ADMIN" },
-                    { "737d13d4-54b3-47d9-bcc2-f2fc1df0c9d7", "15522d6d-2e7e-4938-a3f0-1ac355a5c94d", "Moderator", "MODERATOR" },
-                    { "fdb16792-5366-4650-8af9-acc9b615f3d6", "0538504f-54b7-4301-8c11-c5913a31f342", "User", "USER" }
+                    { "06cbffbd-b9aa-44aa-9808-ab4bedae3efe", "9edd844c-f615-4d99-973f-6e201debb75f", "Admin", "ADMIN" },
+                    { "aa3d8811-368c-4a50-87f8-95e76daaccb5", "a9689c3e-2e4b-40ed-a84f-24852b3b23b8", "Moderator", "MODERATOR" },
+                    { "e5170e84-6995-478a-9c81-62286de5a4e9", "8fadac30-69c4-49e1-8c95-3387459bdeb0", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -314,9 +366,9 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "54440f44-252c-4531-8d56-a2a1e6d6e50a", 0, "f1d4da5f-227a-4719-ab22-83fbdc3fb2cf", "user@autooa.com", true, null, null, false, null, "USER@AUTOOA.COM", "USER@AUTOOA.COM", "AQAAAAEAACcQAAAAEOCUN3pApsyORIt023hguk1uzcorLkdcKKPylu2EXe5UBHAUOSwEfI5FTPQi/AOwfA==", null, false, "7847fb4c-1a25-4113-ad47-8b122d1dec38", false, "user@autooa.com" },
-                    { "8974e59e-38e3-4d85-82e0-33cbb5217a3d", 0, "b7ca9d83-7aa7-4d68-a4d9-f1e99854996b", "admin@autooa.com", true, null, null, false, null, "ADMIN@AUTOOA.COM", "ADMIN@AUTOOA.COM", "AQAAAAEAACcQAAAAEF6vQ/l3Mg6QYf6iMJ572bkbuhDvSBJqALkabKwZ0ntvdJDSpRTM2Aw3rgMFT5w/yw==", null, false, "9dba61af-6ed5-4a6c-9177-47d1d273121a", false, "admin@autooa.com" },
-                    { "c4676a5f-b7c6-420e-aa0d-f1a77426157a", 0, "50145372-1329-401c-a601-d0be4615f5d1", "moder@autooa.com", true, null, null, false, null, "MODER@AUTOOA.COM", "MODER@AUTOOA.COM", "AQAAAAEAACcQAAAAEAWNk8l6GYN4EXlXapsRmOMQXmeaeP6vwNOX34RwodQo1XntOpWYXqfTnARj/iKcOw==", null, false, "0852bc1c-ad57-44ed-b1b8-b749a2e30671", false, "moder@autooa.com" }
+                    { "94373997-fc09-40f5-9e82-57bc3b4b4db7", 0, "193793e8-16c5-4fe0-a2f9-65553aabc5e3", "user@autooa.com", true, null, null, false, null, "USER@AUTOOA.COM", "USER@AUTOOA.COM", "AQAAAAEAACcQAAAAEA8+djl5KunaNydIrvTDaFHfh8iRvu5eCkQDyHOKbyALcz1O942o8f+5Dx30lC2usw==", null, false, "fc320c94-d37c-4b77-81cb-17dcb16f7b34", false, "user@autooa.com" },
+                    { "b8f5a2d6-a435-451a-86df-403e61a0cd22", 0, "a18fec70-51c7-4467-961b-098d57c4d7aa", "moder@autooa.com", true, null, null, false, null, "MODER@AUTOOA.COM", "MODER@AUTOOA.COM", "AQAAAAEAACcQAAAAEJfxe2/zuw52Pxg6/d7QT8U88sWJHcZPvl1sx+RTvNU5kstTINUj7dqHW4Q5nXh3Bg==", null, false, "25575ff3-f002-4e6b-954b-ad49df97c6aa", false, "moder@autooa.com" },
+                    { "d7d4c191-1fbd-4aa4-9ea3-e3aabbf2ca60", 0, "4ceb577a-d0e7-4326-a950-8100e5fb4182", "admin@autooa.com", true, null, null, false, null, "ADMIN@AUTOOA.COM", "ADMIN@AUTOOA.COM", "AQAAAAEAACcQAAAAEDS+9gB4yYCC58TjqFP9VAa6SvDnH3CsOz2jsi7QYvMzfRgADME1AqX/OoTowJPscQ==", null, false, "975a07f3-e51c-4fdc-9344-cf413922d52e", false, "admin@autooa.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -324,19 +376,19 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "BodyTypeId", "BodyTypeName", "IconPath" },
                 values: new object[,]
                 {
-                    { 1, "Седан", "Images\\BodyTypeIcon.png" },
-                    { 2, "Універсал", "Images\\BodyTypeIcon.png" },
-                    { 3, "Хетчбек", "Images\\BodyTypeIcon.png" },
-                    { 4, "Купе", "Images\\BodyTypeIcon.png" },
-                    { 5, "Кабріолет", "Images\\BodyTypeIcon.png" },
-                    { 6, "Позашляховик / Кросовер", "Images\\BodyTypeIcon.png" },
-                    { 7, "Мінівен", "Images\\BodyTypeIcon.png" },
-                    { 8, "Ліфтбек", "Images\\BodyTypeIcon.png" },
-                    { 9, "Мікровен", "Images\\BodyTypeIcon.png" },
-                    { 10, "Пікап", "Images\\BodyTypeIcon.png" },
-                    { 11, "Родстер", "Images\\BodyTypeIcon.png" },
-                    { 12, "Лімузин", "Images\\BodyTypeIcon.png" },
-                    { 13, "Фастбек", "Images\\BodyTypeIcon.png" }
+                    { 1, "Седан", "\\Images\\BodyTypeIcon.png" },
+                    { 2, "Універсал", "\\Images\\BodyTypeIcon.png" },
+                    { 3, "Хетчбек", "\\Images\\BodyTypeIcon.png" },
+                    { 4, "Купе", "\\Images\\BodyTypeIcon.png" },
+                    { 5, "Кабріолет", "\\Images\\BodyTypeIcon.png" },
+                    { 6, "Позашляховик / Кросовер", "\\Images\\BodyTypeIcon.png" },
+                    { 7, "Мінівен", "\\Images\\BodyTypeIcon.png" },
+                    { 8, "Ліфтбек", "\\Images\\BodyTypeIcon.png" },
+                    { 9, "Мікровен", "\\Images\\BodyTypeIcon.png" },
+                    { 10, "Пікап", "\\Images\\BodyTypeIcon.png" },
+                    { 11, "Родстер", "\\Images\\BodyTypeIcon.png" },
+                    { 12, "Лімузин", "\\Images\\BodyTypeIcon.png" },
+                    { 13, "Фастбек", "\\Images\\BodyTypeIcon.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -354,15 +406,15 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "FuelTypeId", "FuelName", "IconPath" },
                 values: new object[,]
                 {
-                    { 1, "Дизель", "Images\\fuelTypeIcon.png" },
-                    { 2, "Бензин", "Images\\fuelTypeIcon.png" },
-                    { 3, "Газ", "Images\\fuelTypeIcon.png" },
-                    { 4, "Газ / Бензин", "Images\\fuelTypeIcon.png" },
-                    { 5, "Гібрид", "Images\\fuelTypeIcon.png" },
-                    { 6, "Електро", "Images\\fuelTypeIcon.png" },
-                    { 7, "Інше", "Images\\fuelTypeIcon.png" },
-                    { 8, "Газ метан", "Images\\fuelTypeIcon.png" },
-                    { 9, "Газ пропан-бутан", "Images\\fuelTypeIcon.png" }
+                    { 1, "Дизель", "\\Images\\fuelTypeIcon.png" },
+                    { 2, "Бензин", "\\Images\\fuelTypeIcon.png" },
+                    { 3, "Газ", "\\Images\\fuelTypeIcon.png" },
+                    { 4, "Газ / Бензин", "\\Images\\fuelTypeIcon.png" },
+                    { 5, "Гібрид", "\\Images\\fuelTypeIcon.png" },
+                    { 6, "Електро", "\\Images\\fuelTypeIcon.png" },
+                    { 7, "Інше", "\\Images\\fuelTypeIcon.png" },
+                    { 8, "Газ метан", "\\Images\\fuelTypeIcon.png" },
+                    { 9, "Газ пропан-бутан", "\\Images\\fuelTypeIcon.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -370,12 +422,17 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "GearBoxId", "GearBoxName", "IconPath" },
                 values: new object[,]
                 {
-                    { 1, "Ручна / Механіка", "Images\\gearBoxIcon.png" },
-                    { 2, "Автомат", "Images\\gearBoxIcon.png" },
-                    { 3, "Типтронік", "Images\\gearBoxIcon.png" },
-                    { 4, "Робот", "Images\\gearBoxIcon.png" },
-                    { 5, "Варіатор", "Images\\gearBoxIcon.png" }
+                    { 1, "Ручна / Механіка", "\\Images\\gearBoxIcon.png" },
+                    { 2, "Автомат", "\\Images\\gearBoxIcon.png" },
+                    { 3, "Типтронік", "\\Images\\gearBoxIcon.png" },
+                    { 4, "Робот", "\\Images\\gearBoxIcon.png" },
+                    { 5, "Варіатор", "\\Images\\gearBoxIcon.png" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Regions",
+                columns: new[] { "RegionId", "RegionName" },
+                values: new object[] { 1, "Ukraine" });
 
             migrationBuilder.InsertData(
                 table: "VehicleBrands",
@@ -391,12 +448,12 @@ namespace AutoOA.Core.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "fdb16792-5366-4650-8af9-acc9b615f3d6", "54440f44-252c-4531-8d56-a2a1e6d6e50a" },
-                    { "1d8ac350-0590-4973-b3da-eb0daab1b6ca", "8974e59e-38e3-4d85-82e0-33cbb5217a3d" },
-                    { "737d13d4-54b3-47d9-bcc2-f2fc1df0c9d7", "8974e59e-38e3-4d85-82e0-33cbb5217a3d" },
-                    { "fdb16792-5366-4650-8af9-acc9b615f3d6", "8974e59e-38e3-4d85-82e0-33cbb5217a3d" },
-                    { "737d13d4-54b3-47d9-bcc2-f2fc1df0c9d7", "c4676a5f-b7c6-420e-aa0d-f1a77426157a" },
-                    { "fdb16792-5366-4650-8af9-acc9b615f3d6", "c4676a5f-b7c6-420e-aa0d-f1a77426157a" }
+                    { "e5170e84-6995-478a-9c81-62286de5a4e9", "94373997-fc09-40f5-9e82-57bc3b4b4db7" },
+                    { "aa3d8811-368c-4a50-87f8-95e76daaccb5", "b8f5a2d6-a435-451a-86df-403e61a0cd22" },
+                    { "e5170e84-6995-478a-9c81-62286de5a4e9", "b8f5a2d6-a435-451a-86df-403e61a0cd22" },
+                    { "06cbffbd-b9aa-44aa-9808-ab4bedae3efe", "d7d4c191-1fbd-4aa4-9ea3-e3aabbf2ca60" },
+                    { "aa3d8811-368c-4a50-87f8-95e76daaccb5", "d7d4c191-1fbd-4aa4-9ea3-e3aabbf2ca60" },
+                    { "e5170e84-6995-478a-9c81-62286de5a4e9", "d7d4c191-1fbd-4aa4-9ea3-e3aabbf2ca60" }
                 });
 
             migrationBuilder.InsertData(
@@ -410,13 +467,23 @@ namespace AutoOA.Core.Migrations
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
-                columns: new[] { "VehicleId", "BodyTypeId", "Color", "Description", "DriveTypeId", "FuelTypeId", "GearBoxId", "Mileage", "MileageIconPath", "Price", "ProductionDate", "VehicleIconPath", "VehicleModelId", "isNew" },
-                values: new object[] { 1, 1, "Black", "Авто в дуже хорошому стані. Повністтю обслужене. Капіталовкладень не потребує.", 1, 1, 1, 90000, "Images\\MileageIcon.png", 15000m, new DateTime(2006, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "\\Images\\w220cidan.png", 1, true });
+                columns: new[] { "VehicleId", "BodyTypeId", "Color", "Description", "DriveTypeId", "FirstRegistrationDate", "FuelTypeId", "GearBoxId", "Mileage", "MileageIconPath", "NumberOfDoors", "NumberOfSeats", "Price", "ProductionDate", "RegionId", "StateNumber", "UserId", "VehicleIconPath", "VehicleModelId", "isNew" },
+                values: new object[] { 1, 1, "Black", "Авто в дуже хорошому стані. Повністтю обслужене. Капіталовкладень не потребує.", 1, new DateTime(2007, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, 90000, "\\Images\\MileageIcon.png", 5, 4, 19000m, new DateTime(2006, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Не задано", "94373997-fc09-40f5-9e82-57bc3b4b4db7", "\\Images\\w220cidan.png", 1, true });
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
-                columns: new[] { "VehicleId", "BodyTypeId", "Color", "Description", "DriveTypeId", "FuelTypeId", "GearBoxId", "Mileage", "MileageIconPath", "Price", "ProductionDate", "VehicleIconPath", "VehicleModelId", "isNew" },
-                values: new object[] { 2, 2, "Gray", "Продаю свій автомобіль у хорошому стані. Зроблено всі планові роботи, все працює добре. Є невеликі подряпини, пов'язані з експлуатацією.", 3, 2, 2, 320000, "Images\\MileageIcon.png", 9000m, new DateTime(2000, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "\\Images\\320Universal.png", 2, false });
+                columns: new[] { "VehicleId", "BodyTypeId", "Color", "Description", "DriveTypeId", "FirstRegistrationDate", "FuelTypeId", "GearBoxId", "Mileage", "MileageIconPath", "NumberOfDoors", "NumberOfSeats", "Price", "ProductionDate", "RegionId", "StateNumber", "UserId", "VehicleIconPath", "VehicleModelId", "isNew" },
+                values: new object[] { 2, 2, "Gray", "Продаю свій автомобіль у хорошому стані. Зроблено всі планові роботи, все працює добре. Є невеликі подряпини, пов'язані з експлуатацією.", 3, new DateTime(2003, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2, 320000, "\\Images\\MileageIcon.png", 5, 4, 15000m, new DateTime(2000, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Не задано", "94373997-fc09-40f5-9e82-57bc3b4b4db7", "\\Images\\320Universal.png", 2, false });
+
+            migrationBuilder.InsertData(
+                table: "SalesData",
+                columns: new[] { "SalesDataId", "CreatedOn", "UpdatedOn", "VehicleId" },
+                values: new object[] { 1, new DateTime(2022, 10, 25, 15, 50, 35, 11, DateTimeKind.Local).AddTicks(3444), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 });
+
+            migrationBuilder.InsertData(
+                table: "SalesData",
+                columns: new[] { "SalesDataId", "CreatedOn", "UpdatedOn", "VehicleId" },
+                values: new object[] { 2, new DateTime(2022, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -458,6 +525,12 @@ namespace AutoOA.Core.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SalesData_VehicleId",
+                table: "SalesData",
+                column: "VehicleId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VehicleModels_VehicleBrandId",
                 table: "VehicleModels",
                 column: "VehicleBrandId");
@@ -483,6 +556,16 @@ namespace AutoOA.Core.Migrations
                 column: "GearBoxId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Vehicles_RegionId",
+                table: "Vehicles",
+                column: "RegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vehicles_UserId",
+                table: "Vehicles",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_VehicleModelId",
                 table: "Vehicles",
                 column: "VehicleModelId");
@@ -506,10 +589,13 @@ namespace AutoOA.Core.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Vehicles");
+                name: "SalesData");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Vehicles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
@@ -525,6 +611,9 @@ namespace AutoOA.Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "GearBoxes");
+
+            migrationBuilder.DropTable(
+                name: "Regions");
 
             migrationBuilder.DropTable(
                 name: "VehicleModels");

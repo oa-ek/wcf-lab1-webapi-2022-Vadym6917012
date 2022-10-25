@@ -17,6 +17,8 @@ namespace AutoOA.Core
 
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<BodyType> BodyTypes { get; set; }
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<SalesData> SalesData { get; set; }
         public DbSet<GearBox> GearBoxes { get; set; }
         public DbSet<FuelType> FuelTypes { get; set; }
         public DbSet<VehicleBrand> VehicleBrands { get; set; }

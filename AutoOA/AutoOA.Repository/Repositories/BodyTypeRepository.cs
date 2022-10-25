@@ -15,6 +15,24 @@ namespace AutoOA.Repository.Repositories
             _ctx = ctx;
         }
 
+        public async Task<BodyType> AddBodyTypeAsync(BodyType type)
+        {
+            _ctx.BodyTypes.Add(type);
+            await _ctx.SaveChangesAsync();
+            return _ctx.BodyTypes.FirstOrDefault(x => x.BodyTypeName == type.BodyTypeName);
+        }
+
+        public async Task DeleteBodyTypeAsync(int id)
+        {
+            _ctx.BodyTypes.Remove(GetBodyTypeById(id));
+            await _ctx.SaveChangesAsync();
+        }
+
+        public BodyType GetBodyTypeById(int id)
+        {
+            return _ctx.BodyTypes.FirstOrDefault(x => x.BodyTypeId == id);
+        }
+
         public async Task<IEnumerable<BodyTypeReadDto>> GetBodyTypesAsync()
         {
             var bodyDto = _ctx.BodyTypes.

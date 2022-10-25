@@ -14,6 +14,22 @@ namespace AutoOA.Repository.Repositories
             _ctx = ctx;
         }
 
+        public async Task<VehicleModel> AddVehicleModelAsync(VehicleModel model)
+        {
+            _ctx.VehicleModels.Add(model);
+            await _ctx.SaveChangesAsync();
+            return _ctx.VehicleModels.FirstOrDefault(x => x.VehicleModelName == model.VehicleModelName);
+        }
+
+        public async Task DeleteVehicleModelAsync(int id)
+        {
+            _ctx.VehicleModels.Remove(GetVehicleModelById(id));
+        }
+
+        public VehicleModel GetVehicleModelById(int id)
+        {
+            return _ctx.VehicleModels.FirstOrDefault(x => x.VehicleModelId == id);
+        }
         public async Task<IEnumerable<VehicleModelReadDto>> GetVehicleModelsAsync()
         {
             var modelDto = _ctx.VehicleModels

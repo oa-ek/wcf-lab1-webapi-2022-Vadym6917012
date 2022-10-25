@@ -14,6 +14,24 @@ namespace AutoOA.Repository.Repositories
             _ctx = ctx;
         }
 
+        public async Task<GearBox> AddGearBoxAsync(GearBox gear)
+        {
+            _ctx.GearBoxes.Add(gear);
+            await _ctx.SaveChangesAsync();
+            return _ctx.GearBoxes.FirstOrDefault(x => x.GearBoxName == gear.GearBoxName);
+        }
+
+        public async Task DeleteGearBoxAsync(int id)
+        {
+            _ctx.GearBoxes.Remove(GetGearBoxById(id));
+            await _ctx.SaveChangesAsync();
+        }
+
+        public GearBox GetGearBoxById(int id)
+        {
+            return _ctx.GearBoxes.FirstOrDefault(x => x.GearBoxId == id);
+        }
+
         public async Task<IEnumerable<GearBoxReadDto>> GetGearBoxesAsync()
         {
             var gearDto = _ctx.GearBoxes.

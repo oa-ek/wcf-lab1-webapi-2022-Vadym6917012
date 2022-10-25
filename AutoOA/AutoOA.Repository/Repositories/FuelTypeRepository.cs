@@ -14,6 +14,24 @@ namespace AutoOA.Repository.Repositories
             _ctx = ctx;
         }
 
+        public async Task<FuelType> AddFuelTypeAsync(FuelType type)
+        {
+            _ctx.FuelTypes.Add(type);
+            await _ctx.SaveChangesAsync();
+            return _ctx.FuelTypes.FirstOrDefault(x => x.FuelName == type.FuelName);
+        }
+
+        public async Task DeleteFuelTypeAsync(int id)
+        {
+            _ctx.FuelTypes.Remove(GetFuelTypeById(id));
+            await _ctx.SaveChangesAsync();
+        }
+
+        public FuelType GetFuelTypeById(int id)
+        {
+            return _ctx.FuelTypes.FirstOrDefault(x => x.FuelTypeId == id);
+        }
+
         public async Task<IEnumerable<FuelTypeReadDto>> GetFuelTypesAsync()
         {
             var fuelDto = _ctx.FuelTypes.

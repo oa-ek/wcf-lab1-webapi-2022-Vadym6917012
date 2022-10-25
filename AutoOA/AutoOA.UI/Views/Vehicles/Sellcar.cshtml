@@ -1,0 +1,117 @@
+﻿@using AutoOA.Core
+@using AutoOA.Repository.Dto.BodyTypeDto
+@using AutoOA.Repository.Dto.DriveTypeDto
+@using AutoOA.Repository.Dto.FuelTypeDto
+@using AutoOA.Repository.Dto.GearBoxDto
+@using AutoOA.Repository.Dto.VehicleBrandDto
+@using AutoOA.Repository.Dto.VehicleDto
+@using AutoOA.Repository.Dto.VehicleModelDto
+
+@model VehicleCreateDto
+
+@{
+    var model = ViewBag.Models as IEnumerable<VehicleModelReadDto>;
+    var fuel = ViewBag.FuelTypes as IEnumerable<FuelTypeReadDto>;
+    var gear = ViewBag.GearBoxes as IEnumerable<GearBoxReadDto>;
+    var drive = ViewBag.DriveTypes as IEnumerable<DriveTypeReadDto>;
+    var body = ViewBag.BodyTypes as IEnumerable<BodyTypeReadDto>;
+}
+
+<div class="row">
+    <form asp-action="Sellcar" class="col-md-4">
+        @Html.AntiForgeryToken()
+        <div class="col-mb-3">
+            <input asp-for="VehicleIconPath" type="file" class="form-control" aria-label="file example" required>
+            <span asp-validation-for="VehicleIconPath" class="text-danger"></span>
+        </div>
+
+        <div class="md-3">
+            <label class="form-label">Марка</label>
+            <select asp-for="VehicleBrandName" class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                @foreach (var u in model)
+                {
+                    <option>@u.VehicleBrand</option>
+                }
+            </select>
+        </div>
+
+        <div class="md-3">
+            <label asp-for="VehicleModelName" class="form-label">Модель</label>
+            <select class="form-select" required>
+                <option selected disabled value="">Choose...</option>
+
+                @foreach (var u in model)
+                {
+                    <option>@u.VehicleModelName</option>
+                }
+            </select>
+        </div>
+
+        <div class="md-3">
+            <label class="form-label">Паливо</label>
+            <select asp-for="FuelTypeName" class="form-select" id="validationCustom01" required>
+                <option selected disabled value="">Choose...</option>
+                @foreach (var u in fuel)
+                {
+                    <option>@u.FuelTypeName</option>
+                }
+            </select>
+        </div>
+
+        <div class="md-3">
+            <label class="form-label">Тип коробки передач</label>
+            <select asp-for="GearBoxName" class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                @foreach (var u in gear)
+                {
+                    <option>@u.GearBoxName</option>
+                }
+            </select>
+        </div>
+
+        <div class="md-3">
+            <label class="form-label">Тип приводу</label>
+            <select asp-for="DriveTypeName" class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                @foreach (var u in drive)
+                {
+                    <option>@u.DriveTypeName</option>
+                }
+            </select>
+        </div>
+
+        <div class="md-3">
+            <label class="form-label">Тип кузова</label>
+            <select asp-for="BodyTypeName" class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                @foreach (var u in body)
+                {
+                    <option>@u.BodyName</option>
+                }
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Опис українською</label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        </div>
+
+        <hr />
+
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Подати оголошення</button>
+        </div>
+    </form>
+</div>
+
+<div class="float-end">
+    <a href="/Vehicles/Add-BodyType" class="btn btn-outline-primary">Додати тип кузова</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

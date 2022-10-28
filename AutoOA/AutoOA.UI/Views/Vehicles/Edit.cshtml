@@ -1,7 +1,7 @@
 ﻿@using AutoOA.Core
 @using AutoOA.Repository.Dto.VehicleDto
 
-@model VehicleCreateDto
+@model VehicleReadDto
 
 @{
     var region = ViewBag.Regions as IEnumerable<Region>;
@@ -14,61 +14,59 @@
 }
 
 <div class="row">
-    <form asp-action="Sellcar" class="col-md-4">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form asp-action="Edit" class="col-md-4">
         @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="RegionName" class="control-label">Регіон</label>
-            <select asp-for="RegionName" name="regionName" id="regionName" class="form-select" required>
-                <option selected disabled>Choose...</option>
+            <select id="regionName" class="form-select">
                 @foreach (var u in region)
                 {
-                    <option value="@u.RegionName">@u.RegionName</option>
+                    var selected = @Model.RegionName == u.RegionName ? true : false;
+                    <!option value="@u.RegionName" @(selected ? "selected" : "" )>@u.RegionName</!option>
                 }
             </select>
-            <span asp-validation-for="RegionName" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="VehicleBrandName" class="control-label">Марка</label>
-            <select asp-for="VehicleBrandName" name="vehicleBrandName" id="vehicleBrandName" class="form-select" required>
-                <option selected disabled>Choose...</option>
+            <select id="vehicleBrandName" class="form-select">
                 @foreach (var u in model)
                 {
-                    <option value="@u.VehicleBrand.VehicleBrandName">@u.VehicleBrand.VehicleBrandName</option>
+                    var selected = @Model.VehicleBrandName == u.VehicleBrand.VehicleBrandName ? true : false;
+                    <!option value="@u.VehicleBrand.VehicleBrandName" @(selected ? "selected" : "" )>@u.VehicleBrand.VehicleBrandName</!option>
                 }
             </select>
         </div>
 
         <div class="form-group">
             <label asp-for="VehicleModelName" class="control-label">Модель</label>
-            <select asp-for="VehicleModelName" name="vehicleModelName" id="vehicleModelName" class="form-select" required>
-                <option selected disabled>Choose...</option>
-
+            <select id="vehicleModelName" class="form-select">
                 @foreach (var u in model)
                 {
-                    <option value="@u.VehicleModelName">@u.VehicleModelName</option>
+                    var selected = @Model.VehicleModelName == u.VehicleModelName ? true : false;
+                    <!option value="@u.VehicleModelName" @(selected ? "selected" : "" )>@u.VehicleModelName</!option>
                 }
             </select>
         </div>
 
         <div class="form-group">
             <label asp-for="ProductionYear" class="control-label">Виберіть рік випуску</label>
-            <input asp-for="ProductionYear" class="form-control"/>
+            <input asp-for="ProductionYear" class="form-control" />
             <span asp-validation-for="ProductionYear" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="BodyTypeName" class="control-label">Тип кузова</label>
-            <select asp-for="BodyTypeName" name="bodyTypeName" id="bodyTypeName" class="form-select" required>
-                <option selected disabled>Choose...</option>
+            <select id="bodyTypeName" class="form-select" required>
                 @foreach (var u in body)
                 {
-                    <option value="@u.BodyTypeName">@u.BodyTypeName</option>
+                    var selected = @Model.BodyTypeName == u.BodyTypeName ? true : false;
+                    <!option value="@u.BodyTypeName" @(selected ? "selected" : "" )>@u.BodyTypeName</!option>
                 }
             </select>
         </div>
-        
+
         <div class="form-group">
             <label asp-for="Color" class="control-label">Колір</label>
             <input asp-for="Color" class="form-control" />
@@ -84,11 +82,11 @@
 
         <div class="form-group">
             <label asp-for="FuelTypeName" class="control-label">Паливо</label>
-            <select asp-for="FuelTypeName" name="fuelTypeName" id="fuelTypeName" class="form-select" required>
-                <option selected disabled>Choose...</option>
+            <select id="fuelTypeName" class="form-select">
                 @foreach (var u in fuel)
                 {
-                    <option value="@u.FuelName">@u.FuelName</option>
+                    var selected = @Model.FuelTypeName == u.FuelName ? true : false;
+                    <!option value="@u.FuelName" @(selected ? "selected" : "" )>@u.FuelName</!option>
                 }
             </select>
         </div>
@@ -125,22 +123,22 @@
 
         <div class="form-group">
             <label asp-for="GearBoxName" class="control-label">Тип коробки передач</label>
-            <select asp-for="GearBoxName" name="gearBoxName" id="gearBoxName" class="form-select" required>
-                <option selected disabled>Choose...</option>
+            <select id="gearBoxName" class="form-select">
                 @foreach (var u in gear)
                 {
-                    <option value="@u.GearBoxName">@u.GearBoxName</option>
+                    var selected = @Model.GearBoxName == u.GearBoxName ? true : false;
+                    <!option value="@u.GearBoxName" @(selected ? "selected" : "" )>@u.GearBoxName</!option>
                 }
             </select>
         </div>
 
         <div class="form-group">
             <label asp-for="DriveTypeName" class="form-label">Тип приводу</label>
-            <select asp-for="DriveTypeName" class="form-select" name="driveTypeName" id="driveTypeName" required>
-                <option selected disabled>Choose...</option>
+            <select class="form-select" id="driveTypeName">
                 @foreach (var u in drive)
                 {
-                    <option value="@u.DriveTypeName">@u.DriveTypeName</option>
+                    var selected = @Model.DriveTypeName == u.DriveTypeName ? true : false;
+                    <!option value="@u.DriveTypeName" @(selected ? "selected" : "" )>@u.DriveTypeName</!option>
                 }
             </select>
         </div>
@@ -159,13 +157,13 @@
         <hr />
 
         <div class="form-group">
-            <button value="Create" va class="btn btn-primary" type="submit">Подати оголошення</button>
+            <button value="Update" class="btn btn-primary" type="submit">Оновити</button>
         </div>
     </form>
 </div>
 
 <div class="float-end">
-    <a href="/Vehicles/Add-BodyType" class="btn btn-outline-primary">Додати тип кузова</a>
+    <a href="/Home/Index" class="btn btn-outline-primary">Назад до списку</a>
 </div>
 
 @section Scripts {

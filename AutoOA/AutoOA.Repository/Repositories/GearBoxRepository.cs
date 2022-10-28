@@ -21,42 +21,26 @@ namespace AutoOA.Repository.Repositories
             return _ctx.GearBoxes.FirstOrDefault(x => x.GearBoxName == gear.GearBoxName);
         }
 
-        public async Task DeleteGearBoxAsync(int id)
+        public List<GearBox> GetGearBoxes()
         {
-            _ctx.GearBoxes.Remove(GetGearBoxById(id));
-            await _ctx.SaveChangesAsync();
+            var gearList = _ctx.GearBoxes.ToList();
+            return gearList;
         }
 
-        public GearBox GetGearBoxById(int id)
+        public GearBox GetGearBox(int id)
         {
             return _ctx.GearBoxes.FirstOrDefault(x => x.GearBoxId == id);
         }
 
-        public async Task<IEnumerable<GearBoxReadDto>> GetGearBoxesAsync()
+        public GearBox GetGearBoxByName(string name)
         {
-            var gearDto = _ctx.GearBoxes.
-                Select(x => new GearBoxReadDto {
-                    GearBoxId = x.GearBoxId,
-                    GearBoxName = x.GearBoxName,
-                    IconPath = x.IconPath,
-                    Vehicles = x.Vehicle }).ToList();
-
-            return gearDto;
+            return _ctx.GearBoxes.FirstOrDefault(x => x.GearBoxName == name);
         }
 
-        public async Task<GearBoxReadDto> GetGearBoxAsync(int id)
+        public async Task DeleteGearBoxAsync(int id)
         {
-            var u = await _ctx.GearBoxes.FirstAsync(x => x.GearBoxId == id);
-
-            var gearDto = new GearBoxReadDto
-            {
-                GearBoxId = u.GearBoxId,
-                GearBoxName = u.GearBoxName,
-                IconPath = u.IconPath,
-                Vehicles = u.Vehicle
-            };
-
-            return gearDto;
+            _ctx.Remove(GetGearBox(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

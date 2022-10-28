@@ -25,40 +25,26 @@ namespace AutoOA.Repository.Repositories
             return _ctx.Regions.FirstOrDefault(x => x.RegionName == region.RegionName);
         }
 
-        public async Task DeleteRegionAsync(int id)
+        public List<Region> GetRegions()
         {
-            _ctx.Regions.Remove(GetRegionById(id));
-            await _ctx.SaveChangesAsync();
+            var regionList = _ctx.Regions.ToList();
+            return regionList;
         }
 
-        public Region GetRegionById(int id)
+        public Region GetRegion(int id)
         {
             return _ctx.Regions.FirstOrDefault(x => x.RegionId == id);
         }
 
-        public async Task<IEnumerable<RegionReadDto>> GetRegionsAsync()
+        public Region GetRegionByName(string name)
         {
-            var regionDto = _ctx.Regions.
-                Select(x => new RegionReadDto
-                {
-                    RegionId = x.RegionId,
-                    RegionName = x.RegionName,
-                }).ToList();
-
-            return regionDto;
+            return _ctx.Regions.FirstOrDefault(x => x.RegionName == name);
         }
 
-        public async Task<RegionReadDto> GetRegionAsync(int id)
+        public async Task DeleteRegionAsync(int id)
         {
-            var u = await _ctx.Regions.FirstAsync(x => x.RegionId == id);
-
-            var regionDto = new RegionReadDto
-            {
-                RegionId = u.RegionId,
-                RegionName = u.RegionName
-            };
-
-            return regionDto;
+            _ctx.Remove(GetRegion(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

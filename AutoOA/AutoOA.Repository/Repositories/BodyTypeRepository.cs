@@ -22,42 +22,26 @@ namespace AutoOA.Repository.Repositories
             return _ctx.BodyTypes.FirstOrDefault(x => x.BodyTypeName == type.BodyTypeName);
         }
 
-        public async Task DeleteBodyTypeAsync(int id)
+        public List<BodyType> GetBodyTypes()
         {
-            _ctx.BodyTypes.Remove(GetBodyTypeById(id));
-            await _ctx.SaveChangesAsync();
+            var bodyList = _ctx.BodyTypes.ToList();
+            return bodyList;
         }
 
-        public BodyType GetBodyTypeById(int id)
+        public BodyType GetBodyType(int id)
         {
             return _ctx.BodyTypes.FirstOrDefault(x => x.BodyTypeId == id);
         }
 
-        public async Task<IEnumerable<BodyTypeReadDto>> GetBodyTypesAsync()
+        public BodyType GetBodyTypeByName(string name)
         {
-            var bodyDto = _ctx.BodyTypes.
-                Select(x => new BodyTypeReadDto { 
-                    BodyId = x.BodyTypeId, 
-                    BodyName = x.BodyTypeName,
-                    IconPath = x.IconPath,
-                    Vehicle = x.Vehicle }).ToList();
-
-            return bodyDto;
+            return _ctx.BodyTypes.FirstOrDefault(x => x.BodyTypeName == name);
         }
 
-        public async Task<BodyTypeReadDto> GetBodyTypeAsync(int id)
+        public async Task DeleteBodyTypeAsync(int id)
         {
-            var u = await _ctx.BodyTypes.FirstAsync(x => x.BodyTypeId == id);
-
-            var bodyDto = new BodyTypeReadDto
-            {
-                BodyId = u.BodyTypeId,
-                BodyName = u.BodyTypeName,
-                IconPath = u.IconPath,
-                Vehicle = u.Vehicle
-            };
-
-            return bodyDto;
-        }
+            _ctx.Remove(GetBodyType(id));
+            await _ctx.SaveChangesAsync();
+        }        
     }
 }

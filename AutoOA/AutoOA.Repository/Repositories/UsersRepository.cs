@@ -76,6 +76,11 @@ namespace AutoOA.Repository.Repositories
             return userDto;
         }
 
+        public User GetUserByEmail(string email)
+        {
+            return _ctx.Users.FirstOrDefault(x => x.Email == email);
+        }
+
         public async Task<IEnumerable<UserReadDto>> GetUsersAsync()
         {
             var users = new List<UserReadDto>();
@@ -123,8 +128,6 @@ namespace AutoOA.Repository.Repositories
 
             if (user.EmailConfirmed != model.IsConfirmed)
                 user.EmailConfirmed = model.IsConfirmed;
-
-            //var admRole = await roleManager.FindByNameAsync("Admin");
 
             if ((await _userManager.GetRolesAsync(user)).Any())
             {

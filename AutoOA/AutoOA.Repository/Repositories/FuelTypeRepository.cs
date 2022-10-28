@@ -1,7 +1,4 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto.BodyTypeDto;
-using AutoOA.Repository.Dto.FuelTypeDto;
-using Microsoft.EntityFrameworkCore;
 
 namespace AutoOA.Repository.Repositories
 {
@@ -21,42 +18,26 @@ namespace AutoOA.Repository.Repositories
             return _ctx.FuelTypes.FirstOrDefault(x => x.FuelName == type.FuelName);
         }
 
-        public async Task DeleteFuelTypeAsync(int id)
+        public List<FuelType> GetFuelTypes()
         {
-            _ctx.FuelTypes.Remove(GetFuelTypeById(id));
-            await _ctx.SaveChangesAsync();
+            var typeList = _ctx.FuelTypes.ToList();
+            return typeList;
         }
 
-        public FuelType GetFuelTypeById(int id)
+        public FuelType GetFuelType(int id)
         {
             return _ctx.FuelTypes.FirstOrDefault(x => x.FuelTypeId == id);
         }
 
-        public async Task<IEnumerable<FuelTypeReadDto>> GetFuelTypesAsync()
+        public FuelType GetFuelTypeByName(string name)
         {
-            var fuelDto = _ctx.FuelTypes.
-                Select(x => new FuelTypeReadDto { 
-                    FuelTypeId = x.FuelTypeId, 
-                    FuelTypeName = x.FuelName,
-                    IconPath = x.IconPath,
-                    Vehicles = x.Vehicle }).ToList();
-
-            return fuelDto;
+            return _ctx.FuelTypes.FirstOrDefault(x => x.FuelName == name);
         }
 
-        public async Task<FuelTypeReadDto> GetFuelTypeAsync(int id)
+        public async Task DeleteFuelTypeAsync(int id)
         {
-            var u = await _ctx.FuelTypes.FirstAsync(x => x.FuelTypeId == id);
-
-            var fuelDto = new FuelTypeReadDto
-            {
-                FuelTypeId=u.FuelTypeId,
-                FuelTypeName = u.FuelName,
-                IconPath = u.IconPath,
-                Vehicles = u.Vehicle
-            };
-
-            return fuelDto;
+            _ctx.Remove(GetFuelType(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

@@ -19,9 +19,9 @@ namespace AutoOA.UI.Controllers
             _bodyTypeRepository = bodyTypeRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _vehicleRepository.GetVehiclesAsync());
+            return View(_vehicleRepository.GetVehicles());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoOA.Core
@@ -10,8 +9,6 @@ namespace AutoOA.Core
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VehicleId { get; set; }
 
-        public DateTime FirstRegistrationDate { get; set; } // Рік першої регістрації
-
         public int RegionId { get; set; }
         public Region? Region { get; set; } // Регіон
 
@@ -21,7 +18,7 @@ namespace AutoOA.Core
         public int VehicleModelId { get; set; }
         public VehicleModel? VehicleModel { get; set; } // Модель
 
-        public DateTime ProductionDate { get; set; } // Рік випуску
+        public short ProductionYear { get; set; } // Рік випуску
 
         public int GearBoxId { get; set; }
         public GearBox? GearBox { get; set; } // Коробка передач
@@ -47,7 +44,7 @@ namespace AutoOA.Core
 
         public SalesData? SalesData { get; set; } // День продажу
 
-        public string UserId { get; set; }
-        public User User { get; set; }
+        public string? UserId { get; set; }
+        public User? User { get; set; }
     }
 }

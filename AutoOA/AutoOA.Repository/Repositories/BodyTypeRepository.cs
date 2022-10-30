@@ -1,8 +1,4 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto.BodyTypeDto;
-using AutoOA.Repository.Dto.UserDto;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace AutoOA.Repository.Repositories
 {

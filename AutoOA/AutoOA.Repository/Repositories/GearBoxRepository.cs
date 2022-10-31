@@ -1,5 +1,4 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto.BodyTypeDto;
 using AutoOA.Repository.Dto.GearBoxDto;
 using Microsoft.EntityFrameworkCore;
 

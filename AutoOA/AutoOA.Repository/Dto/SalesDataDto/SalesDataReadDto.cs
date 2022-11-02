@@ -14,7 +14,8 @@ namespace AutoOA.Repository.Dto.SalesDataDto
         public int VehicleId { get; set; }
         public Vehicle? Vehicle { get; set; }
 
-        public DateTime CreatedOn { get; set; } 
+        public DateTime CreatedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
     }
 }
+

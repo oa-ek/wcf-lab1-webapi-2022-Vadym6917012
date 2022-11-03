@@ -19,7 +19,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="RegionName" class="control-label">Регіон</label>
-            <select id="regionName" class="form-select">
+            <select id="regionName" name="regionName" class="form-select">
                 @foreach (var u in region)
                 {
                     var selected = @Model.RegionName == u.RegionName ? true : false;
@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label asp-for="VehicleBrandName" class="control-label">Марка</label>
-            <select id="vehicleBrandName" class="form-select">
+            <select id="vehicleBrandName" name="vehicleBrandName" class="form-select">
                 @foreach (var u in model)
                 {
                     var selected = @Model.VehicleBrandName == u.VehicleBrand.VehicleBrandName ? true : false;
@@ -41,7 +41,7 @@
 
         <div class="form-group">
             <label asp-for="VehicleModelName" class="control-label">Модель</label>
-            <select id="vehicleModelName" class="form-select">
+            <select id="vehicleModelName" name="vehicleModelName" class="form-select">
                 @foreach (var u in model)
                 {
                     var selected = @Model.VehicleModelName == u.VehicleModelName ? true : false;
@@ -58,7 +58,7 @@
 
         <div class="form-group">
             <label asp-for="BodyTypeName" class="control-label">Тип кузова</label>
-            <select id="bodyTypeName" class="form-select" required>
+            <select id="bodyTypeName" name="bodyTypeName" class="form-select" required>
                 @foreach (var u in body)
                 {
                     var selected = @Model.BodyTypeName == u.BodyTypeName ? true : false;
@@ -82,7 +82,7 @@
 
         <div class="form-group">
             <label asp-for="FuelTypeName" class="control-label">Паливо</label>
-            <select id="fuelTypeName" class="form-select">
+            <select id="fuelTypeName" name="fuelTypeName" class="form-select">
                 @foreach (var u in fuel)
                 {
                     var selected = @Model.FuelTypeName == u.FuelName ? true : false;
@@ -123,7 +123,7 @@
 
         <div class="form-group">
             <label asp-for="GearBoxName" class="control-label">Тип коробки передач</label>
-            <select id="gearBoxName" class="form-select">
+            <select id="gearBoxName" name="gearBoxName" class="form-select">
                 @foreach (var u in gear)
                 {
                     var selected = @Model.GearBoxName == u.GearBoxName ? true : false;
@@ -134,7 +134,7 @@
 
         <div class="form-group">
             <label asp-for="DriveTypeName" class="form-label">Тип приводу</label>
-            <select class="form-select" id="driveTypeName">
+            <select class="form-select" name="driveTypeName" id="driveTypeName">
                 @foreach (var u in drive)
                 {
                     var selected = @Model.DriveTypeName == u.DriveTypeName ? true : false;

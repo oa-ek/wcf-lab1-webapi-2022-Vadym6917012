@@ -23,7 +23,10 @@
                 <p>Створено: @Model.SalesData.CreatedOn</p>
             </div>
         </div>
-        <a href="/Vehicles/Delete/@Model.VehicleId" class="btn btn-danger">Видалити</a>
+        <div class="col-md-4">
+            <a href="/Vehicles/Delete/@Model.VehicleId" class="btn btn-danger">Видалити</a>
+            <a href="/Vehicles/Edit/@Model.VehicleId" class="btn btn-danger">Редагувати</a>
+        </div>
     </div>
 </div>
 

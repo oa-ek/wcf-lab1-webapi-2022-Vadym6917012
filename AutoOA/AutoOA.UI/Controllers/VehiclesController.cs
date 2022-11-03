@@ -189,11 +189,11 @@ namespace AutoOA.UI.Controllers
         public async Task<IActionResult> Edit(VehicleReadDto vehicleDto, string regionName, string bodyTypeName,
             string vehicleBrandName, string vehicleModelName, string gearBoxName, string driveTypeName, string fuelTypeName)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 await _vehicleRepository.UpdateAsync(vehicleDto, regionName, bodyTypeName, vehicleBrandName, vehicleModelName, gearBoxName, driveTypeName, fuelTypeName);
-                return RedirectToAction();
-            //}
+                return RedirectToAction("Details", "Vehicles", new { id = vehicleDto.Id });
+            }
             ViewBag.Regions = _regionRepository.GetRegions();
             ViewBag.Models = _vehicleModelRepository.GetVehicleModels();
             ViewBag.Brands = _vehicleBrandRepository.GetVehicleBrands();

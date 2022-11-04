@@ -9,12 +9,9 @@ namespace AutoOA.Repository.Repositories
     {
         private readonly AutoOADbContext _ctx;
 
-        private readonly UsersRepository _usersRepository;
-
-        public VehicleRepository(AutoOADbContext ctx, UsersRepository usersRepository)
+        public VehicleRepository(AutoOADbContext ctx)
         {
             _ctx = ctx;
-            _usersRepository = usersRepository;
         }
      
         public async Task<Vehicle> AddVehicleAsync(Vehicle vehicle)
@@ -141,7 +138,9 @@ namespace AutoOA.Repository.Repositories
             if (vehicle.Color != vehicleDto.Color)
                 vehicle.Color = vehicleDto.Color;
             if (vehicle.Description != vehicleDto.Description)
-                vehicle.Description = vehicleDto.Description;              
+                vehicle.Description = vehicleDto.Description;
+
+            vehicle.SalesData.UpdatedOn = DateTime.Now;
             _ctx.SaveChanges();
         }
 

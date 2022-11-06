@@ -24,14 +24,6 @@ namespace AutoOA.UI.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(SalesDataCreateDto salesDataCreateDto)
         {
-            if (ModelState.IsValid)
-            {
-                var fuelType = await _SalesDataRepository.GetDataByCreatedData(new SalesData
-                {
-                    
-                });
-                return RedirectToAction("Index", "Sales Data", new { id = fuelType.RegionId });
-            }
             return View(salesDataCreateDto);
         }
     }

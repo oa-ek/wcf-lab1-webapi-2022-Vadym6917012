@@ -33,9 +33,9 @@
             <label asp-for="VehicleBrandName" class="control-label">Марка</label>
             <select asp-for="VehicleBrandName" name="vehicleBrandName" id="vehicleBrandName" class="form-select" required>
                 <option selected disabled>Choose...</option>
-                @foreach (var u in model)
+                @foreach (var u in brands)
                 {
-                    <option value="@u.VehicleBrand.VehicleBrandName">@u.VehicleBrand.VehicleBrandName</option>
+                    <option value="@u.VehicleBrandName">@u.VehicleBrandName</option>
                 }
             </select>
         </div>

@@ -21,42 +21,26 @@ namespace AutoOA.Repository.Repositories
             return _ctx.VehicleModels.FirstOrDefault(x => x.VehicleModelName == model.VehicleModelName);
         }
 
+        public VehicleModel GetVehicleModel(int id)
+        {
+            return _ctx.VehicleModels.Include(x => x.VehicleBrand).FirstOrDefault(x => x.VehicleModelId == id);
+        }
+
+        public VehicleModel GetVehicleModelByName(string name)
+        {
+            return _ctx.VehicleModels.Include(x => x.VehicleBrand).FirstOrDefault(x => x.VehicleModelName == name);
+        }
+
+        public List<VehicleModel> GetVehicleModels()
+        {
+            var modelList = _ctx.VehicleModels.ToList();
+            return modelList;
+        }
+
         public async Task DeleteVehicleModelAsync(int id)
         {
-            _ctx.VehicleModels.Remove(GetVehicleModelById(id));
-        }
-
-        public VehicleModel GetVehicleModelById(int id)
-        {
-            return _ctx.VehicleModels.FirstOrDefault(x => x.VehicleModelId == id);
-        }
-        public async Task<IEnumerable<VehicleModelReadDto>> GetVehicleModelsAsync()
-        {
-            var modelDto = _ctx.VehicleModels
-                .Select(x => new VehicleModelReadDto { 
-                    VehicleModelId = x.VehicleModelId, 
-                    VehicleModelName = x.VehicleModelName,  
-                    VehicleBrandId = x.VehicleBrandId, 
-                    VehicleBrand = x.VehicleBrand, 
-                    Vehicles = x.Vehicles}).ToList();
-
-            return modelDto;
-        }
-
-        public async Task<VehicleModelReadDto> GetVehicleModelAsync(int id)
-        {
-            var u = await _ctx.VehicleModels.FirstAsync(x => x.VehicleModelId == id);
-
-            var modelDto = new VehicleModelReadDto
-            {
-                VehicleModelId= u.VehicleModelId,
-                VehicleModelName = u.VehicleModelName,
-                VehicleBrandId = u.VehicleBrandId,
-                VehicleBrand = u.VehicleBrand,
-                Vehicles = u.Vehicles
-            };
-
-            return modelDto;
+            _ctx.Remove(GetVehicleModel(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

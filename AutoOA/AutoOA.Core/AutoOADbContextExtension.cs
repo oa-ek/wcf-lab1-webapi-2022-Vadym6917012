@@ -301,20 +301,19 @@ namespace AutoOA.Core
                     RegionId = 1,
                     RegionName = "Ukraine"
                 });
-            builder.Entity<Vehicle>().HasData(
+           builder.Entity<Vehicle>().HasData(
                 new Vehicle
                 {
                     VehicleId = 1,
                     BodyTypeId = 1,
                     DriveTypeId = 1,
                     VehicleModelId = 1,
-                    ProductionDate = new DateTime(2006, 3, 15),
+                    ProductionYear = 2006,
                     GearBoxId = 1,
                     Price = 19000,
                     RegionId = 1,
                     NumberOfDoors = 5,
                     NumberOfSeats = 4,
-                    FirstRegistrationDate = new DateTime(2007, 9, 10),
                     isNew = true,
                     Mileage = 90000,
                     VehicleIconPath = @"\Images\w220cidan.png",
@@ -329,13 +328,12 @@ namespace AutoOA.Core
                     BodyTypeId = 2,
                     DriveTypeId = 3,
                     VehicleModelId = 2,
-                    ProductionDate = new DateTime(2000, 6, 9),
+                    ProductionYear = 2000,
                     GearBoxId = 2,
                     Price = 15000,
                     RegionId = 1,
                     NumberOfDoors = 5,
                     NumberOfSeats = 4,
-                    FirstRegistrationDate = new DateTime(2003, 9, 10),
                     isNew = false, 
                     Mileage = 320000,
                     VehicleIconPath = @"\Images\320Universal.png",

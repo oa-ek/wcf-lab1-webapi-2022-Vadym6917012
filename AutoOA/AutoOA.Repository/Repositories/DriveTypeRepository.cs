@@ -1,7 +1,4 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto.BodyTypeDto;
-using AutoOA.Repository.Dto.DriveTypeDto;
-using Microsoft.EntityFrameworkCore;
 using DriveType = AutoOA.Core.DriveType;
 
 namespace AutoOA.Repository.Repositories
@@ -22,41 +19,26 @@ namespace AutoOA.Repository.Repositories
             return _ctx.DriveTypes.FirstOrDefault(x => x.DriveTypeName == type.DriveTypeName);
         }
 
-        public async Task DeleteBodyTypeAsync(int id)
+        public List<DriveType> GetDriveTypes()
         {
-            _ctx.DriveTypes.Remove(GetDriveTypeById(id));
-            await _ctx.SaveChangesAsync();
+            var typeList = _ctx.DriveTypes.ToList();
+            return typeList;
         }
 
-        public DriveType GetDriveTypeById(int id)
+        public DriveType GetDriveType(int id)
         {
             return _ctx.DriveTypes.FirstOrDefault(x => x.DriveTypeId == id);
         }
 
-        public async Task<IEnumerable<DriveTypeReadDto>> GetDriveTypesAsync()
+        public DriveType GetDriveTypeByName(string name)
         {
-            var driveDto = _ctx.DriveTypes.
-                Select(x => new DriveTypeReadDto
-                {
-                    DriveTypeId = x.DriveTypeId,
-                    DriveTypeName = x.DriveTypeName,
-                    Vehicles = x.Vehicle}).ToList();
-
-            return driveDto;
+            return _ctx.DriveTypes.FirstOrDefault(x => x.DriveTypeName == name);
         }
 
-        public async Task<DriveTypeReadDto> GetDriveTypeAsync(int id)
+        public async Task DeleteDriveTypeAsync(int id)
         {
-            var u = await _ctx.DriveTypes.FirstAsync(x => x.DriveTypeId == id);
-
-            var driveDto = new DriveTypeReadDto
-            {
-                DriveTypeId = u.DriveTypeId,
-                DriveTypeName = u.DriveTypeName,
-                Vehicles = u.Vehicle
-            };
-
-            return driveDto;
+            _ctx.Remove(GetDriveType(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

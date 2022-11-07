@@ -1,7 +1,7 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto.BodyTypeDto;
 using AutoOA.Repository.Dto.VehicleDto;
 using Microsoft.EntityFrameworkCore;
+using AutoOA.Repository.Repositories;
 
 namespace AutoOA.Repository.Repositories
 {
@@ -13,7 +13,7 @@ namespace AutoOA.Repository.Repositories
         {
             _ctx = ctx;
         }
-
+     
         public async Task<Vehicle> AddVehicleAsync(Vehicle vehicle)
         {
             _ctx.Vehicles.Add(vehicle);
@@ -24,94 +24,130 @@ namespace AutoOA.Repository.Repositories
                 Include(x => x.FuelType).
                 Include(x => x.GearBox).
                 Include(x => x.Region).
+                Include(x => x.User).
                 Include(x => x.SalesData).
                 FirstOrDefault(x => x.VehicleModel.VehicleModelName == vehicle.VehicleModel.VehicleModelName);
         }
 
-        public async Task DeleteVehicleAsync(int id)
+        public Vehicle GetVehicle(int id)
         {
-            _ctx.Vehicles.Remove(GetVehicleById(id));
-            await _ctx.SaveChangesAsync();
-        }
-
-        public Vehicle GetVehicleById(int id)
-        {
-            return _ctx.Vehicles.FirstOrDefault(x => x.VehicleId == id);
-        }
-
-        public async Task<IEnumerable<VehicleReadDto>> GetVehiclesAsync()
-        {
-            var vehicleDto = _ctx.Vehicles
-                .Select(x => new VehicleReadDto
-                {
-                    VehicleId = x.VehicleId,
-                    FirstRegistrationDate = x.FirstRegistrationDate,
-                    RegionName = x.Region.RegionName,
-                    BodyTypeIconPath = x.BodyType.IconPath,
-                    BodyTypeName = x.BodyType.BodyTypeName,
-                    VehicleModelName = x.VehicleModel.VehicleModelName,
-                    DriveTypeName = x.DriveType.DriveTypeName,
-                    StateNumber = x.StateNumber,
-                    ProductionDate = x.ProductionDate,
-                    VehicleBrandName = x.VehicleModel.VehicleBrand.VehicleBrandName,
-                    GearBoxIconPath = x.GearBox.IconPath,
-                    GearBoxName = x.GearBox.GearBoxName,
-                    NumberOfSeats = x.NumberOfSeats,
-                    NumberOfDoors = x.NumberOfDoors,
-                    Price = x.Price,
-                    isNew = x.isNew,
-                    MileageIconPath = x.MileageIconPath,
-                    Mileage = x.Mileage,
-                    VehicleIconPath = x.VehicleIconPath,
-                    FuelIconPath = x.FuelType.IconPath,
-                    FuelTypeName = x.FuelType.FuelName,
-                    Color = x.Color,
-                    Description = x.Description,
-                    SalesData = x.SalesData
-                }).ToList();
-
-            return vehicleDto;
-        }
-
-        public async Task<VehicleReadDto> GetVehicleAsync(int id)
-        {
-            var u = await _ctx.Vehicles.Include(x => x.VehicleModel).ThenInclude(x => x.VehicleBrand).
+            return _ctx.Vehicles.Include(x => x.VehicleModel).ThenInclude(x => x.VehicleBrand).
                 Include(x => x.BodyType).
                 Include(x => x.DriveType).
                 Include(x => x.FuelType).
                 Include(x => x.GearBox).
                 Include(x => x.Region).
-                Include(x => x.SalesData).FirstAsync(x => x.VehicleId == id);
+                Include(x => x.User).
+                Include(x => x.SalesData).
+                FirstOrDefault(x => x.VehicleId == id);
+        }
+
+        public List<Vehicle> GetVehicles()
+        {
+            var vehicleList = _ctx.Vehicles.Include(x => x.VehicleModel).ThenInclude(x => x.VehicleBrand).
+                 Include(x => x.BodyType).
+                 Include(x => x.DriveType).
+                 Include(x => x.FuelType).
+                 Include(x => x.GearBox).
+                 Include(x => x.Region).
+                 Include(x => x.User).
+                 Include(x => x.SalesData).ToList();
+
+            return vehicleList;
+        }
+
+        public async Task<VehicleReadDto> GetVehicleDto(int id)
+        {
+            var v = await _ctx.Vehicles.Include(x => x.VehicleModel).ThenInclude(x => x.VehicleBrand).
+                 Include(x => x.BodyType).
+                 Include(x => x.DriveType).
+                 Include(x => x.FuelType).
+                 Include(x => x.GearBox).
+                 Include(x => x.Region).
+                 Include(x => x.User).
+                 Include(x => x.SalesData).FirstAsync(x => x.VehicleId == id);
 
             var vehicleDto = new VehicleReadDto
             {
-                VehicleId = u.VehicleId,
-                FirstRegistrationDate = u.FirstRegistrationDate,
-                RegionName = u.Region.RegionName,
-                BodyTypeIconPath = u.BodyType.IconPath,
-                BodyTypeName = u.BodyType.BodyTypeName,
-                VehicleModelName = u.VehicleModel.VehicleModelName,
-                DriveTypeName = u.DriveType.DriveTypeName,
-                StateNumber = u.StateNumber,
-                ProductionDate = u.ProductionDate,
-                VehicleBrandName = u.VehicleModel.VehicleBrand.VehicleBrandName,
-                GearBoxIconPath = u.GearBox.IconPath,
-                GearBoxName = u.GearBox.GearBoxName,
-                NumberOfSeats = u.NumberOfSeats,
-                NumberOfDoors = u.NumberOfDoors,
-                Price = u.Price,
-                isNew = u.isNew,
-                MileageIconPath = u.MileageIconPath,
-                Mileage = u.Mileage,
-                VehicleIconPath = u.VehicleIconPath,
-                FuelIconPath = u.FuelType.IconPath,
-                FuelTypeName = u.FuelType.FuelName,
-                Color = u.Color,
-                Description = u.Description,
-                SalesData = u.SalesData
+                Id = v.VehicleId,
+                RegionName = v.Region.RegionName,
+                BodyTypeName = v.BodyType.BodyTypeName,
+                VehicleModelName = v.VehicleModel.VehicleModelName,
+                DriveTypeName = v.DriveType.DriveTypeName,
+                StateNumber = v.StateNumber,
+                ProductionYear = v.ProductionYear,
+                VehicleBrandName = v.VehicleModel.VehicleBrand.VehicleBrandName,
+                GearBoxName = v.GearBox.GearBoxName,
+                NumberOfSeats = v.NumberOfSeats,
+                NumberOfDoors = v.NumberOfDoors,
+                Price = v.Price,
+                isNew = v.isNew,
+                Mileage = v.Mileage,
+                VehicleIconPath = v.VehicleIconPath,
+                FuelTypeName = v.FuelType.FuelName,
+                Color = v.Color,
+                Description = v.Description,
+                SalesData = v.SalesData,
+                UserId = v.UserId,
             };
-
             return vehicleDto;
+        }
+
+        public async Task UpdateAsync(VehicleReadDto vehicleDto, string regionName, string bodyTypeName,
+            string vehicleBrandName, string vehicleModelName, string gearBoxName, string driveTypeName, string fuelTypeName )
+        {
+            var vehicle = _ctx.Vehicles.Include(x => x.VehicleModel).ThenInclude(x => x.VehicleBrand).
+                 Include(x => x.BodyType).
+                 Include(x => x.DriveType).
+                 Include(x => x.FuelType).
+                 Include(x => x.GearBox).
+                 Include(x => x.Region).
+                 Include(x => x.User).
+                 Include(x => x.SalesData).FirstOrDefault(x => x.VehicleId == vehicleDto.Id);
+
+            if (vehicle.Region.RegionName != regionName)
+                vehicle.Region = _ctx.Regions.FirstOrDefault(x => x.RegionName == regionName);
+            if (vehicle.BodyType.BodyTypeName != bodyTypeName)
+                vehicle.BodyType = _ctx.BodyTypes.FirstOrDefault(x => x.BodyTypeName == bodyTypeName);
+            if (vehicle.VehicleModel.VehicleModelName != vehicleModelName)
+                vehicle.VehicleModel = _ctx.VehicleModels.FirstOrDefault(x => x.VehicleModelName == vehicleModelName);
+            if (vehicle.DriveType.DriveTypeName != driveTypeName)
+                vehicle.DriveType= _ctx.DriveTypes.FirstOrDefault(x => x.DriveTypeName == driveTypeName);
+            if (vehicle.StateNumber != vehicleDto.StateNumber)
+                vehicle.StateNumber = vehicleDto.StateNumber.ToUpper();
+            if (vehicle.ProductionYear != vehicleDto.ProductionYear)
+                vehicle.ProductionYear = vehicleDto.ProductionYear;
+            if (vehicle.VehicleModel.VehicleBrand.VehicleBrandName != vehicleBrandName)
+                vehicle.VehicleModel.VehicleBrand = _ctx.VehicleBrands.FirstOrDefault(x => x.VehicleBrandName == vehicleBrandName);
+            if (vehicle.GearBox.GearBoxName != gearBoxName)
+                vehicle.GearBox = _ctx.GearBoxes.FirstOrDefault(x => x.GearBoxName == gearBoxName);
+            if (vehicle.NumberOfSeats != vehicleDto.NumberOfSeats)
+                vehicle.NumberOfSeats = vehicleDto.NumberOfSeats;
+            if (vehicle.NumberOfDoors != vehicleDto.NumberOfDoors)
+                vehicle.NumberOfDoors = vehicleDto.NumberOfDoors;
+            if (vehicle.Price != vehicleDto.Price)
+                vehicle.Price = vehicleDto.Price;
+            if (vehicle.isNew != vehicleDto.isNew)
+                vehicle.isNew = vehicleDto.isNew;
+            if (vehicle.Mileage != vehicleDto.Mileage)
+                vehicle.Mileage = vehicleDto.Mileage;
+            if (vehicle.VehicleIconPath != vehicleDto.VehicleIconPath)
+                vehicle.VehicleIconPath = vehicleDto.VehicleIconPath;
+            if (vehicle.FuelType.FuelName != fuelTypeName)
+                vehicle.FuelType = _ctx.FuelTypes.FirstOrDefault(x => x.FuelName == fuelTypeName);
+            if (vehicle.Color != vehicleDto.Color)
+                vehicle.Color = vehicleDto.Color;
+            if (vehicle.Description != vehicleDto.Description)
+                vehicle.Description = vehicleDto.Description;
+
+            vehicle.SalesData.UpdatedOn = DateTime.Now;
+            _ctx.SaveChanges();
+        }
+
+        public async Task DeleteVehicleAsync(int id)
+        {
+            _ctx.Remove(GetVehicle(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

@@ -14,47 +14,33 @@ namespace AutoOA.Repository.Repositories
             _ctx = ctx;
         }
 
-        public async Task<VehicleBrand> AddVehicleBrandAsync(VehicleBrand brand)
+        public async Task<VehicleBrand> AddVehicleBrandAsync(VehicleBrand type)
         {
-            _ctx.VehicleBrands.Add(brand);
+            _ctx.VehicleBrands.Add(type);
             await _ctx.SaveChangesAsync();
-            return _ctx.VehicleBrands.FirstOrDefault(x => x.VehicleBrandName == brand.VehicleBrandName);
+            return _ctx.VehicleBrands.FirstOrDefault(x => x.VehicleBrandName == type.VehicleBrandName);
         }
 
-        public async Task DeleteVehicleBrandAsync(int id)
+        public List<VehicleBrand> GetVehicleBrands()
         {
-            _ctx.VehicleBrands.Remove(GetVehicleBrandById(id));
-            await _ctx.SaveChangesAsync();
+            var brandList = _ctx.VehicleBrands.ToList();
+            return brandList;
         }
 
-        public VehicleBrand GetVehicleBrandById(int id)
+        public VehicleBrand GetVehicleBrand(int id)
         {
             return _ctx.VehicleBrands.FirstOrDefault(x => x.VehicleBrandId == id);
         }
 
-        public async Task<IEnumerable<VehicleBrandReadDto>> GetVehicleBrandsAsync()
+        public VehicleBrand GetVehicleBrandByName(string name)
         {
-            var brandDto = _ctx.VehicleBrands
-                .Select(x => new VehicleBrandReadDto { 
-                    VehicleBrandId = x.VehicleBrandId, 
-                    VehicleBrandName = x.VehicleBrandName, 
-                    VehicleModels = x.VehicleModels}).ToList();
-
-            return brandDto;
+            return _ctx.VehicleBrands.FirstOrDefault(x => x.VehicleBrandName == name);
         }
 
-        public async Task<VehicleBrandReadDto> GetVehicleBrandAsync(int id)
+        public async Task DeleteVehicleBrandAsync(int id)
         {
-            var u = await _ctx.VehicleBrands.FirstAsync(x => x.VehicleBrandId == id);
-
-            var brandDto = new VehicleBrandReadDto
-            {
-                VehicleBrandId = u.VehicleBrandId,
-                VehicleBrandName = u.VehicleBrandName,
-                VehicleModels = u.VehicleModels
-            };
-
-            return brandDto;
+            _ctx.Remove(GetVehicleBrand(id));
+            await _ctx.SaveChangesAsync();
         }
     }
 }

@@ -37,6 +37,8 @@ builder.Services.AddTransient<GearBoxRepository>();
 builder.Services.AddTransient<VehicleBrandRepository>();
 builder.Services.AddTransient<VehicleRepository>();
 builder.Services.AddTransient<VehicleModelRepository>();
+builder.Services.AddTransient<RegionRepository>();
+builder.Services.AddTransient<SalesDataRepository>();
 
 var app = builder.Build();
 

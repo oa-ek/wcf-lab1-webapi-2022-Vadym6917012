@@ -6,9 +6,6 @@ namespace AutoOA.Repository.Dto.VehicleDto
     public class VehicleCreateDto
     {
         [Required]
-        public DateTime FirstRegistrationDate { get; set; }
-
-        [Required]
         public string? RegionName { get; set; }
 
         [Required]
@@ -20,11 +17,12 @@ namespace AutoOA.Repository.Dto.VehicleDto
         [Required]
         public string? DriveTypeName { get; set; }
 
-        [Required]
-        public string? StateNumber { get; set; }
+        [RegularExpression("^[A-Za-z]{2}[0-9]{4}[A-Za-z]{2}$", ErrorMessage = "Must be a valid state number")]
+        public string? StateNumber { get; set; } = "Не задано";
 
         [Required]
-        public DateTime ProductionDate { get; set; }
+        [RegularExpression("^[0-9]{4}$", ErrorMessage = "Must be a valid year")]
+        public short ProductionYear { get; set; }
 
         [Required]
         public string? VehicleBrandName { get; set; }
@@ -33,19 +31,23 @@ namespace AutoOA.Repository.Dto.VehicleDto
         public string? GearBoxName { get; set; }
 
         [Required]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Must be a valid number")]
         public int NumberOfSeats { get; set; }
 
         [Required]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Must be a valid number")]
         public int NumberOfDoors { get; set; }
 
         [Required]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Must be a valid Price")]
         public decimal Price { get; set; }
 
         [Required]
         public bool isNew { get; set; }
 
         [Required]
-        public int? Mileage { get; set; }
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Must be a valid mileage")]
+        public int Mileage { get; set; }
 
         [Required]
         public string? VehicleIconPath { get; set; }
@@ -54,11 +56,14 @@ namespace AutoOA.Repository.Dto.VehicleDto
         public string? FuelTypeName { get; set; }
 
         [Required]
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Must be a valid color")]
         public string? Color { get; set; }
 
         [Required]
         public string? Description { get; set; }
 
         public SalesData? SalesData { get; set; }
+
+        public string? UserId { get; set; }
     }
 }

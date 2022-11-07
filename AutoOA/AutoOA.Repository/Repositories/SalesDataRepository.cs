@@ -1,6 +1,4 @@
 ﻿using AutoOA.Core;
-using AutoOA.Repository.Dto.SalesDataDto;
-using Microsoft.EntityFrameworkCore;
 
 namespace AutoOA.Repository.Repositories
 {
@@ -18,33 +16,15 @@ namespace AutoOA.Repository.Repositories
             return _ctx.SalesData.FirstOrDefault(x => x.CreatedOn == time);
         }
 
-        public async Task<IEnumerable<SalesDataReadDto>> GetSalesDatasAsync()
+        public List<SalesData> GetSaleDatas()
         {
-            var saleDataDto = _ctx.SalesData.
-                Select(x => new SalesDataReadDto 
-                {
-                    SalesDataId = x.SalesDataId,
-                    VehicleId = x.VehicleId,
-                    CreatedOn = x.CreatedOn,
-                    UpdatedOn = x.UpdatedOn
-                }).ToList();
-
-            return saleDataDto;
+            var dataList = _ctx.SalesData.ToList();
+            return dataList;
         }
 
-        public async Task<SalesDataReadDto> GetSaleDataAsync(int id)
+        public SalesData GetSaleData(int id)
         {
-            var u = await _ctx.SalesData.FirstAsync(x => x.SalesDataId == id);
-
-            var saleDataDto = new SalesDataReadDto
-            {
-                SalesDataId = u.SalesDataId,
-                VehicleId = u.VehicleId,
-                CreatedOn = u.CreatedOn,
-                UpdatedOn = u.UpdatedOn
-            };
-
-            return saleDataDto;
+            return _ctx.SalesData.FirstOrDefault(x => x.SalesDataId == id);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using AutoOA.Core;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoOA.Repository.Dto.VehicleDto
 {
@@ -40,7 +42,10 @@ namespace AutoOA.Repository.Dto.VehicleDto
 
         [Required]
         [RegularExpression("^[0-9]+$", ErrorMessage = "Must be a valid Price")]
-        public decimal Price { get; set; }
+        public decimal Price_USD { get; set; }
+
+        public decimal Price_UAH { get; set; }
+        public decimal Price_EUR { get; set; }
 
         [Required]
         public bool isNew { get; set; }

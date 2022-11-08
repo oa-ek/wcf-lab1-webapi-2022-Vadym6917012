@@ -80,7 +80,9 @@ namespace AutoOA.Repository.Repositories
                 GearBoxName = v.GearBox.GearBoxName,
                 NumberOfSeats = v.NumberOfSeats,
                 NumberOfDoors = v.NumberOfDoors,
-                Price = v.Price,
+                Price_USD = v.Price_USD,
+                Price_UAH = v.Price_UAH,
+                Price_EUR = v.Price_EUR,
                 isNew = v.isNew,
                 Mileage = v.Mileage,
                 VehicleIconPath = v.VehicleIconPath,
@@ -125,8 +127,12 @@ namespace AutoOA.Repository.Repositories
                 vehicle.NumberOfSeats = vehicleDto.NumberOfSeats;
             if (vehicle.NumberOfDoors != vehicleDto.NumberOfDoors)
                 vehicle.NumberOfDoors = vehicleDto.NumberOfDoors;
-            if (vehicle.Price != vehicleDto.Price)
-                vehicle.Price = vehicleDto.Price;
+            if (vehicle.Price_USD != vehicleDto.Price_USD)
+                vehicle.Price_USD = vehicleDto.Price_USD;
+            if (vehicle.Price_UAH != vehicleDto.Price_UAH)
+                vehicle.Price_UAH = vehicleDto.Price_USD * 37;
+            if (vehicle.Price_EUR != vehicleDto.Price_EUR)
+                vehicle.Price_EUR = vehicleDto.Price_USD * 0.9984m;
             if (vehicle.isNew != vehicleDto.isNew)
                 vehicle.isNew = vehicleDto.isNew;
             if (vehicle.Mileage != vehicleDto.Mileage)

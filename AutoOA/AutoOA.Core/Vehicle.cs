@@ -29,7 +29,9 @@ namespace AutoOA.Core
         public string? StateNumber { get; set; } = "Не задано"; // Гос номер
         public int NumberOfSeats { get; set; } // Кількість сидінь
         public int NumberOfDoors { get; set; } // Кількість дверей
-        public decimal Price { get; set; } = 0; // Ціна
+        public decimal Price_USD { get; set; } = 0; // Ціна в доларах
+        public decimal Price_UAH { get; set; } = 0; // Ціна в гривнях
+        public decimal Price_EUR { get; set; } = 0; // Ціна в євро
         public bool isNew { get; set; } // Новий?
         public string MileageIconPath { get; set; } = @"\Images\MileageIcon.png";
         public int Mileage { get; set; } // Пробіг

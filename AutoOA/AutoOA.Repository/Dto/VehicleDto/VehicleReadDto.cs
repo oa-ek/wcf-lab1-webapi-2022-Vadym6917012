@@ -15,7 +15,9 @@ namespace AutoOA.Repository.Dto.VehicleDto
         public string? GearBoxName { get; set; }
         public int NumberOfSeats { get; set; }
         public int NumberOfDoors { get; set; }
-        public decimal Price { get; set; }
+        public decimal Price_USD { get; set; }
+        public decimal Price_UAH { get; set; } 
+        public decimal Price_EUR { get; set; }
         public bool isNew { get; set; }
         public int Mileage { get; set; }
         public string? VehicleIconPath { get; set; }

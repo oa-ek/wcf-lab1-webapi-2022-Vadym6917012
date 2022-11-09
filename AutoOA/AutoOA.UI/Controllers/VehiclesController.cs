@@ -91,9 +91,9 @@ namespace AutoOA.UI.Controllers
             ViewBag.GearBoxes = _gearBoxRepository.GetGearBoxes();
             ViewBag.DriveTypes = _driveTypeRepository.GetDriveTypes();
             ViewBag.BodyTypes = _bodyTypeRepository.GetBodyTypes();
-            //if (ModelState.IsValid)
-            //{
-                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "Image", picture.FileName);
+            if (ModelState.IsValid)
+            {
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "Images", picture.FileName);
 
                 using (FileStream stream = new FileStream(picturePath, FileMode.Create))
                     picture.CopyTo(stream);
@@ -184,7 +184,7 @@ namespace AutoOA.UI.Controllers
 
                 //vehicle.VehicleIconPath = Path.Combine("img", "upload", picturePath);
                 return RedirectToAction("Index", "Home", new { id = vehicle.VehicleId });
-           // }
+            }
             return View(vehicleDto);
         }
 

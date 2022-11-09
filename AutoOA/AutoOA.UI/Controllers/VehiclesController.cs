@@ -6,6 +6,7 @@ using AutoOA.Repository.Dto.VehicleDto;
 using AutoOA.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoOA.UI.Controllers
 {
@@ -31,11 +32,11 @@ namespace AutoOA.UI.Controllers
 
         public VehiclesController(ILogger<VehiclesController> logger, VehicleRepository vehicleRepository,
             RegionRepository regionRepository, VehicleModelRepository vehicleModelRepository,
-            VehicleBrandRepository vehicleBrandRepository,FuelTypeRepository fuelTypeRepository,
+            VehicleBrandRepository vehicleBrandRepository, FuelTypeRepository fuelTypeRepository,
             GearBoxRepository gearBoxRepository, SignInManager<User> signInManager,
-            DriveTypeRepository driveTypeRepository,BodyTypeRepository bodyTypeRepository,
+            DriveTypeRepository driveTypeRepository, BodyTypeRepository bodyTypeRepository,
             SalesDataRepository salesDataRepository, UsersRepository usersRepository,
-            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment )
+            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             _vehicleRepository = vehicleRepository;
@@ -92,14 +93,13 @@ namespace AutoOA.UI.Controllers
             ViewBag.BodyTypes = _bodyTypeRepository.GetBodyTypes();
             //if (ModelState.IsValid)
             //{
-                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "upload", picture.FileName);
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "Image", picture.FileName);
 
-            vehicleDto.VehicleIconPath = picturePath;
-
-            using (FileStream stream = new FileStream(picturePath, FileMode.Create))
+                using (FileStream stream = new FileStream(picturePath, FileMode.Create))
                     picture.CopyTo(stream);
 
-                
+                vehicleDto.VehicleIconPath = picturePath;
+
 
                 var region = _regionRepository.GetRegionByName(regionName);
                 if (region == null)
@@ -153,20 +153,20 @@ namespace AutoOA.UI.Controllers
                 var saleData = new SalesData() { CreatedOn = DateTime.Now };
 
                 var user = _usersRepository.GetUserByEmail(User.Identity.Name);
-                if(user == null)
+                if (user == null)
                 {
                     user = new User() { Email = User.Identity.Name };
                 }
 
                 var vehicle = await _vehicleRepository.AddVehicleAsync(new Vehicle
                 {
-                    Region = region, 
+                    Region = region,
                     BodyType = bodyType,
                     VehicleModel = vehicleModel,
                     ProductionYear = vehicleDto.ProductionYear,
                     GearBox = gearBox,
                     DriveType = driveType,
-                    StateNumber = String.IsNullOrEmpty(vehicleDto.StateNumber)? "Не задано": vehicleDto.StateNumber.ToUpper(),
+                    StateNumber = String.IsNullOrEmpty(vehicleDto.StateNumber) ? "Не задано" : vehicleDto.StateNumber.ToUpper(),
                     NumberOfSeats = vehicleDto.NumberOfSeats,
                     NumberOfDoors = vehicleDto.NumberOfDoors,
                     Price_USD = vehicleDto.Price_USD,
@@ -184,7 +184,7 @@ namespace AutoOA.UI.Controllers
 
                 //vehicle.VehicleIconPath = Path.Combine("img", "upload", picturePath);
                 return RedirectToAction("Index", "Home", new { id = vehicle.VehicleId });
-            //}
+           // }
             return View(vehicleDto);
         }
 
@@ -232,7 +232,7 @@ namespace AutoOA.UI.Controllers
         public async Task<IActionResult> ConfirmDelete(int id)
         {
             await _vehicleRepository.DeleteVehicleAsync(id);
-            return RedirectToAction("Index", "Home");  
+            return RedirectToAction("Index", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

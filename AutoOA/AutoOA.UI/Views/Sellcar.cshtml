@@ -147,7 +147,7 @@
 
         <div class="form-group">
             <label asp-for="VehicleIconPath" class="control-label">Додайте фото</label>
-            <input class="form-control" name="picture" id="picture" type="file" />
+            <input asp-for="VehicleIconPath" class="form-control" required>
             <span asp-validation-for="VehicleIconPath" class="text-danger"></span>
         </div>
 

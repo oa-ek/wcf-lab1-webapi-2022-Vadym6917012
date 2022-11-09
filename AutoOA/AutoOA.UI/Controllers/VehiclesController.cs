@@ -4,9 +4,8 @@ using System.Diagnostics;
 using AutoOA.Repository.Repositories;
 using AutoOA.Repository.Dto.VehicleDto;
 using AutoOA.Core;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using System;
-using AutoOA.Repository.Dto.UserDto;
 
 namespace AutoOA.UI.Controllers
 {
@@ -28,11 +27,15 @@ namespace AutoOA.UI.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
         public VehiclesController(ILogger<VehiclesController> logger, VehicleRepository vehicleRepository,
-            RegionRepository regionRepository, VehicleModelRepository vehicleModelRepository, VehicleBrandRepository vehicleBrandRepository,
-            FuelTypeRepository fuelTypeRepository, GearBoxRepository gearBoxRepository,
+            RegionRepository regionRepository, VehicleModelRepository vehicleModelRepository,
+            VehicleBrandRepository vehicleBrandRepository,FuelTypeRepository fuelTypeRepository,
+            GearBoxRepository gearBoxRepository, SignInManager<User> signInManager,
             DriveTypeRepository driveTypeRepository,BodyTypeRepository bodyTypeRepository,
-            SalesDataRepository salesDataRepository, UsersRepository usersRepository, UserManager<User> userManager, SignInManager<User> signInManager )
+            SalesDataRepository salesDataRepository, UsersRepository usersRepository,
+            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment )
         {
             _logger = logger;
             _vehicleRepository = vehicleRepository;
@@ -47,6 +50,7 @@ namespace AutoOA.UI.Controllers
             _usersRepository = usersRepository;
             _userManager = userManager;
             _signInManager = signInManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -76,7 +80,7 @@ namespace AutoOA.UI.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Sellcar(VehicleCreateDto vehicleDto, string regionName, string bodyTypeName,
+        public async Task<IActionResult> Sellcar(VehicleCreateDto vehicleDto, IFormFile picture, string regionName, string bodyTypeName,
             string vehicleBrandName, string vehicleModelName, string gearBoxName, string driveTypeName, string fuelTypeName)
         {
             ViewBag.Regions = _regionRepository.GetRegions();
@@ -86,8 +90,17 @@ namespace AutoOA.UI.Controllers
             ViewBag.GearBoxes = _gearBoxRepository.GetGearBoxes();
             ViewBag.DriveTypes = _driveTypeRepository.GetDriveTypes();
             ViewBag.BodyTypes = _bodyTypeRepository.GetBodyTypes();
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "upload", picture.FileName);
+
+            vehicleDto.VehicleIconPath = picturePath;
+
+            using (FileStream stream = new FileStream(picturePath, FileMode.Create))
+                    picture.CopyTo(stream);
+
+                
+
                 var region = _regionRepository.GetRegionByName(regionName);
                 if (region == null)
                 {
@@ -168,8 +181,10 @@ namespace AutoOA.UI.Controllers
                     SalesData = saleData,
                     User = user
                 });
+
+                //vehicle.VehicleIconPath = Path.Combine("img", "upload", picturePath);
                 return RedirectToAction("Index", "Home", new { id = vehicle.VehicleId });
-            }
+            //}
             return View(vehicleDto);
         }
 

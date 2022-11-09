@@ -54,7 +54,7 @@ namespace AutoOA.Repository.Dto.VehicleDto
         [RegularExpression("^[0-9]+$", ErrorMessage = "Must be a valid mileage")]
         public int Mileage { get; set; }
 
-        [Required]
+        
         public string? VehicleIconPath { get; set; }
 
         [Required]

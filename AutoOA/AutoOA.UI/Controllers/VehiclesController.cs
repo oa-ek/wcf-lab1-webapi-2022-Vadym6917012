@@ -98,9 +98,9 @@ namespace AutoOA.UI.Controllers
 
                 using (FileStream stream = new FileStream(picturePath, FileMode.Create))
                     picture.CopyTo(stream);
+                string url = @"\Images\" + picture.FileName;
 
-                vehicleDto.VehicleIconPath = picturePath;
-
+                vehicleDto.VehicleIconPath = url;
 
                 var region = _regionRepository.GetRegionByName(regionName);
                 if (region == null)

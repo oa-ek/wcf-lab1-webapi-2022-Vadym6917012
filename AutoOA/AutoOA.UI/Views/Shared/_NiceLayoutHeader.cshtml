@@ -11,9 +11,52 @@
         }
         @if (User.IsInRole("User"))
         {
-            <a class="nav-item" asp-controller="Vehicles" asp-action="Sellcar">
-                <span>Подати оголошення</span>
-            </a>
+            <div style="padding: 0 0px 0 15px">
+                <a class="nav-profile" asp-controller="Vehicles" asp-action="Sellcar">
+                    <span>Подати оголошення</span>
+                </a>
+            </div>
+            <nav class="header-nav ms-auto">
+                <div style="padding: 25px 0 0 0">
+                    <ul>
+                        <li>
+                            <a class="nav-profile d-flex align-items-center  pe-0" href="#" data-bs-toggle="dropdown">
+                                <h6>Валюта</h6>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end ">
+
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="/Identity">
+                                        <i class="bi bi-person"></i>
+                                        <span>Гривня</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="/Identity">
+                                        <i class="bi bi-people"></i>
+                                        <span>Долар</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="/Identity">
+                                        <i class="bi bi-people"></i>
+                                        <span>Євро</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
         }
     </div><!-- End Logo -->
 
@@ -67,7 +110,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="">
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">

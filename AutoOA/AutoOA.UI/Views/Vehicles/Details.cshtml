@@ -1,8 +1,12 @@
 ﻿@using AutoOA.Core
 @using AutoOA.Repository.Dto.VehicleModelDto
 @using AutoOA.Repository.Dto.VehicleDto
+@using Microsoft.AspNetCore.Identity
 
 @model Vehicle
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = "Home Page";
@@ -26,6 +30,14 @@
         </div>
     </div>
 </div>
+
+@if (SignInManager.IsSignedIn(User) && User.Identity.Name == Model.User.UserName)
+{
+    <div class="float-end">
+        <a href="/Vehicles/Edit/@Model.VehicleId" class="btn btn-outline-primary">Редагувати</a>
+    </div>
+}
+
 
 
 

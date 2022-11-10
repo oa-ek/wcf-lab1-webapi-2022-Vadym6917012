@@ -11,36 +11,22 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_NiceLayout.cshtml";
+    Layout = "_NiceLayout";
 }
 
 <div class="text-center">
-    <div class="container">
-        <div class="row-cols-auto">
-            <form method="get" asp-action="Index">
-                <p>
-                    <input type="search" placeholder="enter query" value="@ViewData["Title"]" name="searchVehicle" style="width:500px;" />
-                    <input type="submit" value="Search" class="btn btn-primary" />
-                    <a asp-action="Index">Reset</a>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            @foreach (var u in Model)
-            {
-                <div class="card" style="width:400px">
-                    <a href="/Vehicles/Details/@u.VehicleId" class="text-decoration-none">
-                        <img class="card-img-top" style="height: 250px" src="@u.VehicleIconPath" alt=" ">
-                    </a>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @foreach (var u in Model)
+        {
+            <div class="card" style="width:400px">
+                <a href="Vehicles/Details/@u.VehicleId" class="text-decoration-none">
+                    <img class="card-img-top" style="height: 250px" src="@u.VehicleIconPath" alt=" ">
                     <div class="card-body">
                         <div class="text-center">
                             <h5 class="fw-bolder">
                                 <a href="Vehicles/Details/@u.VehicleId" class="text-decoration-none">@u.VehicleModel.VehicleBrand.VehicleBrandName @u.VehicleModel.VehicleModelName @u.ProductionYear</a>
                             </h5>
-                            <p class="text-success">@u.Price_USD $</p>
+                            <p class="text-success">@u.Price $</p>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
@@ -55,9 +41,9 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            }
-        </div>
+                </a>
+            </div>
+        }
     </div>
 </div>
 

@@ -8,6 +8,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="card mb-3" style="max-width: 100%;">
     <div class="row no-gutters">
         <div class="col-md-4">
@@ -22,10 +23,6 @@
                 <p>Місце: @Model.Region.RegionName</p>
                 <p>Створено: @Model.SalesData.CreatedOn</p>
             </div>
-        </div>
-        <div class="col-md-4">
-            <a href="/Vehicles/Delete/@Model.VehicleId" class="btn btn-danger">Видалити</a>
-            <a href="/Vehicles/Edit/@Model.VehicleId" class="btn btn-danger">Редагувати</a>
         </div>
     </div>
 </div>

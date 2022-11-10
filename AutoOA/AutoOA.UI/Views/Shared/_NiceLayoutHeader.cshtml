@@ -29,8 +29,8 @@
             </li><!-- End Search Icon-->
 
             <div class="search-bar">
-                <form class="search-form d-flex align-items-center" method="POST" action="#">
-                    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <form method="get" asp-controller="Home" asp-action="Index" class="search-form d-flex align-items-center">
+                    <input type="text" name="searchString" value="@ViewData["GetVehicleDetails"]" placeholder="Search" title="Enter search keyword">
                     <button type="submit" title="Search"><i class="bi bi-search"></i></button>
                 </form>
             </div><!-- End Search Bar -->

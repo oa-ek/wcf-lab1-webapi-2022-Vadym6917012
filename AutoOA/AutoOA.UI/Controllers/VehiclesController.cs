@@ -4,16 +4,16 @@ using System.Diagnostics;
 using AutoOA.Repository.Repositories;
 using AutoOA.Repository.Dto.VehicleDto;
 using AutoOA.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
 
 namespace AutoOA.UI.Controllers
 {
     public class VehiclesController : Controller
     {
         private readonly ILogger<VehiclesController> _logger;
+
+        private readonly AutoOADbContext _ctx;
 
         private readonly VehicleRepository _vehicleRepository;
         private readonly RegionRepository _regionRepository;
@@ -37,7 +37,7 @@ namespace AutoOA.UI.Controllers
             GearBoxRepository gearBoxRepository, SignInManager<User> signInManager,
             DriveTypeRepository driveTypeRepository, BodyTypeRepository bodyTypeRepository,
             SalesDataRepository salesDataRepository, UsersRepository usersRepository,
-            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
+            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment, AutoOADbContext ctx)
         {
             _logger = logger;
             _vehicleRepository = vehicleRepository;
@@ -53,6 +53,7 @@ namespace AutoOA.UI.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _webHostEnvironment = webHostEnvironment;
+
         }
 
         public IActionResult Index()

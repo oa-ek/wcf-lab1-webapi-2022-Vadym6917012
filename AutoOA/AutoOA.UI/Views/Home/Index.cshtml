@@ -11,7 +11,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_NiceLayout.cshtml";
+    Layout = "_NiceLayout";
 }
 
 <div class="text-center">
@@ -20,28 +20,29 @@
         {
             <div class="card" style="width:400px">
                 <a href="Vehicles/Details/@u.VehicleId" class="text-decoration-none">
-                <img class="card-img-top" style="height: 250px" src="@u.VehicleIconPath" alt=" ">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h5 class="fw-bolder">
-                            <a href="Vehicles/Details/@u.VehicleId" class="text-decoration-none">@u.VehicleModel.VehicleBrand.VehicleBrandName @u.VehicleModel.VehicleModelName @u.ProductionYear</a>                            
-                        </h5>
-                        <p class="text-success">@u.Price $</p>
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td><img class="card-img" src="@u.FuelType.IconPath" alt="..." style="width: 1.3rem"> @u.FuelType.FuelName</td>
-                                    <td><img class="card-img" src="@u.GearBox.IconPath" alt="..." style="width: 1.3rem"> @u.GearBox.GearBoxName</td>
-                                </tr>
-                                <tr>
-                                    <td><img class="card-img" src="@u.BodyType.IconPath" alt="..." style="width: 1.3rem"> @u.BodyType.BodyTypeName</td>
-                                    <td><img class="card-img" src="@u.MileageIconPath" alt="..." style="width: 1.3rem"> @u.Mileage км</td>
-                                </tr>                                
-                            </tbody>
-                        </table>
+                    <img class="card-img-top" style="height: 250px" src="@u.VehicleIconPath" alt=" ">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h5 class="fw-bolder">
+                                <a href="Vehicles/Details/@u.VehicleId" class="text-decoration-none">@u.VehicleModel.VehicleBrand.VehicleBrandName @u.VehicleModel.VehicleModelName @u.ProductionYear</a>
+                            </h5>
+                            <p class="text-success">@u.Price $</p>
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td><img class="card-img" src="@u.FuelType.IconPath" alt="..." style="width: 1.3rem"> @u.FuelType.FuelName</td>
+                                        <td><img class="card-img" src="@u.GearBox.IconPath" alt="..." style="width: 1.3rem"> @u.GearBox.GearBoxName</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img class="card-img" src="@u.BodyType.IconPath" alt="..." style="width: 1.3rem"> @u.BodyType.BodyTypeName</td>
+                                        <td><img class="card-img" src="@u.MileageIconPath" alt="..." style="width: 1.3rem"> @u.Mileage км</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            </a></div>
+                </a>
+            </div>
         }
     </div>
 </div>

@@ -286,7 +286,7 @@ namespace AutoOA.Core
                 },
                 new VehicleBrand
                 {
-                    VehicleBrandId = 5,
+                    VehicleBrandId = 6,
                     VehicleBrandName = "Audi"
                 });
             builder.Entity<VehicleModel>().HasData(

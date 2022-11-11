@@ -30,6 +30,16 @@ namespace AutoOA.UI.Controllers
             return View(_vehicleRepository.GetVehicles());
         }
 
+        public IActionResult IndexUAH()
+        {
+            return View(_vehicleRepository.GetVehicles());
+        }
+
+        public IActionResult IndexEUR()
+        {
+            return View(_vehicleRepository.GetVehicles());
+        }
+
         [Route("Home/Index")]
         [HttpGet]
         public async Task<IActionResult> Index(string searchString)

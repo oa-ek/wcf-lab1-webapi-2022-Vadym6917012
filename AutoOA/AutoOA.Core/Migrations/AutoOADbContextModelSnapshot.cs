@@ -331,7 +331,7 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             SalesDataId = 1,
-                            CreatedOn = new DateTime(2022, 11, 11, 2, 0, 57, 824, DateTimeKind.Local).AddTicks(772),
+                            CreatedOn = new DateTime(2022, 11, 11, 3, 39, 56, 476, DateTimeKind.Local).AddTicks(7849),
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             VehicleId = 1
                         },
@@ -417,49 +417,49 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "84f0d8a5-086d-483b-a131-957c85b12289",
+                            Id = "1d07ac3e-4496-4892-92ea-c3012fce0ae9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d6476cb8-6971-4481-bcdc-b7741998bcf6",
+                            ConcurrencyStamp = "22dfe745-ba48-436f-9e2b-18c541e39391",
                             Email = "admin@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@AUTOOA.COM",
                             NormalizedUserName = "ADMIN@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBrc2NwulDrIkjV56Wv7SoIxhWyec/TNrHs+8CiE4Pi4+R1xuyoJsVPVC3WD7johmQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDy1GZO7dJX4q8nr0futIMXWxUlVZbBq4N2Kurfp8GqbXTagKXrVd+JpHsLps7pAoQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5e555b12-37dc-4ec2-96d1-431b2516d792",
+                            SecurityStamp = "18f72b16-d29a-4f39-9020-3b8f7e6be86e",
                             TwoFactorEnabled = false,
                             UserName = "admin@autooa.com"
                         },
                         new
                         {
-                            Id = "6cd70aa7-22d0-465b-816a-36a516cdaf1d",
+                            Id = "185b9852-e964-4c08-8a88-1369b3db3abc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "95c1dc41-53c9-4dbb-91d9-810cd9568293",
+                            ConcurrencyStamp = "2816b326-a97e-493a-b3ad-ff79faef7564",
                             Email = "moder@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MODER@AUTOOA.COM",
                             NormalizedUserName = "MODER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECOysWF2yMrfEZ6s9PXLKrMpEVysbi6KDDjxNgeXYBm7lEMPk8SDsPGV01zGsBJEvQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELqjt+N2toNlhl7vo46F3pCLFscx2IZONqlnlmAml0WwF5GXYODw/430PIDhjtov7w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fd57d62b-cc96-47c9-88b5-2b529d50a324",
+                            SecurityStamp = "4c9f0ce2-d72b-4ce0-a9b5-85cb1c97bc16",
                             TwoFactorEnabled = false,
                             UserName = "moder@autooa.com"
                         },
                         new
                         {
-                            Id = "cfd937cc-fa7b-4d2b-a5dc-13c8c22d0ead",
+                            Id = "39a8ae83-9e39-4d35-b694-67b4b324cc7e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c992e1ff-bc83-4efe-b09d-cbe97b94ddb9",
+                            ConcurrencyStamp = "a5f8cf37-3f65-4607-9405-6b71afffe516",
                             Email = "user@autooa.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@AUTOOA.COM",
                             NormalizedUserName = "USER@AUTOOA.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFplH+yXedPiL9iR+9IvAg2iHZz+1voD8V3IfYVej9BsBI2wYkUIRCSYxKp/79/t8g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMU5DtGMG3KHsie8XXkb2auWb61OBhBnmFqbE1wQ93xv4aprY0/xpQzSnevxFQwJpg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6de0e2b0-191e-4397-b8e3-d47fc3f0ba37",
+                            SecurityStamp = "2157aa87-ed3c-4acc-a6f7-ca3a7642cb1a",
                             TwoFactorEnabled = false,
                             UserName = "user@autooa.com"
                         });
@@ -572,7 +572,7 @@ namespace AutoOA.Core.Migrations
                             ProductionYear = (short)2006,
                             RegionId = 1,
                             StateNumber = "Не задано",
-                            UserId = "cfd937cc-fa7b-4d2b-a5dc-13c8c22d0ead",
+                            UserId = "39a8ae83-9e39-4d35-b694-67b4b324cc7e",
                             VehicleIconPath = "\\Images\\w220cidan.png",
                             VehicleModelId = 1,
                             isNew = true
@@ -596,7 +596,7 @@ namespace AutoOA.Core.Migrations
                             ProductionYear = (short)2000,
                             RegionId = 1,
                             StateNumber = "Не задано",
-                            UserId = "cfd937cc-fa7b-4d2b-a5dc-13c8c22d0ead",
+                            UserId = "39a8ae83-9e39-4d35-b694-67b4b324cc7e",
                             VehicleIconPath = "\\Images\\320Universal.png",
                             VehicleModelId = 2,
                             isNew = false
@@ -627,7 +627,27 @@ namespace AutoOA.Core.Migrations
                         new
                         {
                             VehicleBrandId = 2,
-                            VehicleBrandName = "BMW"
+                            VehicleBrandName = "Bmw"
+                        },
+                        new
+                        {
+                            VehicleBrandId = 3,
+                            VehicleBrandName = "Acura"
+                        },
+                        new
+                        {
+                            VehicleBrandId = 4,
+                            VehicleBrandName = "Alfa Romeo"
+                        },
+                        new
+                        {
+                            VehicleBrandId = 5,
+                            VehicleBrandName = "Alphina"
+                        },
+                        new
+                        {
+                            VehicleBrandId = 6,
+                            VehicleBrandName = "Audi"
                         });
                 });
 
@@ -695,22 +715,22 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3ecd6716-4b3f-4923-8c04-b836569de487",
-                            ConcurrencyStamp = "19584bc2-38a8-4acc-a8c2-e90208188fb9",
+                            Id = "5ba4c78b-46e8-4469-bbda-12b7921a5542",
+                            ConcurrencyStamp = "d5a65055-ac59-46e0-b367-d774ab086e8e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4eebe85e-9be7-4845-a920-3722de767a15",
-                            ConcurrencyStamp = "9930e85b-a3fa-4a05-926d-b201f023f4eb",
+                            Id = "5b5eb146-f804-462b-b01f-402b29b11126",
+                            ConcurrencyStamp = "53c72ccd-a285-475f-9b42-02afaada233b",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
-                            Id = "42c884eb-f378-4248-8d52-8a8b5aa8b007",
-                            ConcurrencyStamp = "0c7665ea-b3b7-42d9-8ec8-4c9b446809da",
+                            Id = "44a88983-2598-49cd-b95f-8e746169355f",
+                            ConcurrencyStamp = "8f9f0bde-84d4-4a0e-b695-7a810127a469",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -807,33 +827,33 @@ namespace AutoOA.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "84f0d8a5-086d-483b-a131-957c85b12289",
-                            RoleId = "3ecd6716-4b3f-4923-8c04-b836569de487"
+                            UserId = "1d07ac3e-4496-4892-92ea-c3012fce0ae9",
+                            RoleId = "5ba4c78b-46e8-4469-bbda-12b7921a5542"
                         },
                         new
                         {
-                            UserId = "84f0d8a5-086d-483b-a131-957c85b12289",
-                            RoleId = "4eebe85e-9be7-4845-a920-3722de767a15"
+                            UserId = "1d07ac3e-4496-4892-92ea-c3012fce0ae9",
+                            RoleId = "5b5eb146-f804-462b-b01f-402b29b11126"
                         },
                         new
                         {
-                            UserId = "84f0d8a5-086d-483b-a131-957c85b12289",
-                            RoleId = "42c884eb-f378-4248-8d52-8a8b5aa8b007"
+                            UserId = "1d07ac3e-4496-4892-92ea-c3012fce0ae9",
+                            RoleId = "44a88983-2598-49cd-b95f-8e746169355f"
                         },
                         new
                         {
-                            UserId = "6cd70aa7-22d0-465b-816a-36a516cdaf1d",
-                            RoleId = "4eebe85e-9be7-4845-a920-3722de767a15"
+                            UserId = "185b9852-e964-4c08-8a88-1369b3db3abc",
+                            RoleId = "5b5eb146-f804-462b-b01f-402b29b11126"
                         },
                         new
                         {
-                            UserId = "6cd70aa7-22d0-465b-816a-36a516cdaf1d",
-                            RoleId = "42c884eb-f378-4248-8d52-8a8b5aa8b007"
+                            UserId = "185b9852-e964-4c08-8a88-1369b3db3abc",
+                            RoleId = "44a88983-2598-49cd-b95f-8e746169355f"
                         },
                         new
                         {
-                            UserId = "cfd937cc-fa7b-4d2b-a5dc-13c8c22d0ead",
-                            RoleId = "42c884eb-f378-4248-8d52-8a8b5aa8b007"
+                            UserId = "39a8ae83-9e39-4d35-b694-67b4b324cc7e",
+                            RoleId = "44a88983-2598-49cd-b95f-8e746169355f"
                         });
                 });
 

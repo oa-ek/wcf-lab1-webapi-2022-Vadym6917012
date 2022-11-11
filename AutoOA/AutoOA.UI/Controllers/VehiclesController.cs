@@ -6,7 +6,6 @@ using AutoOA.Repository.Dto.VehicleDto;
 using AutoOA.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using static Humanizer.In;
 using System.IO;
 
 namespace AutoOA.UI.Controllers

@@ -1,5 +1,10 @@
 ﻿@page
 @model GenerateRecoveryCodesModel
+
+@{
+    Layout = "~/Views/Shared/_NiceLayout.cshtml";
+}
+
 @{
     ViewData["Title"] = "Generate two-factor authentication (2FA) recovery codes";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;

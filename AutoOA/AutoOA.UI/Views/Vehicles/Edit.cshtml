@@ -4,6 +4,10 @@
 @model VehicleReadDto
 
 @{
+    Layout = "~/Views/Shared/_NiceLayout.cshtml";
+}
+
+@{
     var region = ViewBag.Regions as IEnumerable<Region>;
     var brands = ViewBag.Brands as IEnumerable<VehicleBrand>;
     var model = ViewBag.Models as IEnumerable<VehicleModel>;

@@ -1,5 +1,10 @@
 ﻿@page
 @model EnableAuthenticatorModel
+
+@{
+    Layout = "~/Views/Shared/_NiceLayout.cshtml";
+}
+
 @{
     ViewData["Title"] = "Configure authenticator app";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;

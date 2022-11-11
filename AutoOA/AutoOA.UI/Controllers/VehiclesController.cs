@@ -6,14 +6,14 @@ using AutoOA.Repository.Dto.VehicleDto;
 using AutoOA.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static Humanizer.In;
+using System.IO;
 
 namespace AutoOA.UI.Controllers
 {
     public class VehiclesController : Controller
     {
         private readonly ILogger<VehiclesController> _logger;
-
-        private readonly AutoOADbContext _ctx;
 
         private readonly VehicleRepository _vehicleRepository;
         private readonly RegionRepository _regionRepository;
@@ -37,7 +37,7 @@ namespace AutoOA.UI.Controllers
             GearBoxRepository gearBoxRepository, SignInManager<User> signInManager,
             DriveTypeRepository driveTypeRepository, BodyTypeRepository bodyTypeRepository,
             SalesDataRepository salesDataRepository, UsersRepository usersRepository,
-            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment, AutoOADbContext ctx)
+            UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             _vehicleRepository = vehicleRepository;
@@ -233,7 +233,23 @@ namespace AutoOA.UI.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
+            var vehicle = _vehicleRepository.GetVehicle(id);
+
+            string fullPath = _webHostEnvironment.WebRootPath + vehicle.VehicleIconPath;
+
+            if (!System.IO.File.Exists(fullPath)) return View();
+
+            try
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong");
+            }
+  
             await _vehicleRepository.DeleteVehicleAsync(id);
+
             return RedirectToAction("Index", "Home");
         }
 

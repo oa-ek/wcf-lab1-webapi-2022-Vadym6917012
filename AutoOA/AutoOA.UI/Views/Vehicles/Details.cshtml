@@ -31,7 +31,7 @@
     </div>
 </div>
 
-@if (SignInManager.IsSignedIn(User) && User.Identity.Name == Model.User.UserName)
+@if (SignInManager.IsSignedIn(User) && User.Identity.Name == Model.User.UserName || User.IsInRole("Admin"))
 {
     <div class="float-end">
         <a href="/Vehicles/Edit/@Model.VehicleId" class="btn btn-outline-primary">Редагувати</a>

@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:54640",
-      "sslPort": 44382
+      "applicationUrl": "http://localhost:12196",
+      "sslPort": 44317
     }
   },
   "profiles": {
-    "AutoOA.WebAPI": {
+    "AutoOA.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7249;http://localhost:5249",
+      "applicationUrl": "https://localhost:7051;http://localhost:5051",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

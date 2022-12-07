@@ -22,33 +22,33 @@
         @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="RegionName" class="control-label">Регіон</label>
+            <label asp-for="Region.RegionName" class="control-label">Регіон</label>
             <select id="regionName" name="regionName" class="form-select">
                 @foreach (var u in region)
                 {
-                    var selected = @Model.RegionName == u.RegionName ? true : false;
+                    var selected = Model.Region.RegionName == u.RegionName ? true : false;
                     <!option value="@u.RegionName" @(selected ? "selected" : "" )>@u.RegionName</!option>
                 }
             </select>
         </div>
 
         <div class="form-group">
-            <label asp-for="VehicleBrandName" class="control-label">Марка</label>
+            <label asp-for="VehicleModel.VehicleBrand.VehicleBrandName" class="control-label">Марка</label>
             <select id="vehicleBrandName" name="vehicleBrandName" class="form-select">
                 @foreach (var u in model)
                 {
-                    var selected = @Model.VehicleBrandName == u.VehicleBrand.VehicleBrandName ? true : false;
+                    var selected = Model.VehicleModel.VehicleBrand.VehicleBrandName == u.VehicleBrand.VehicleBrandName ? true : false;
                     <!option value="@u.VehicleBrand.VehicleBrandName" @(selected ? "selected" : "" )>@u.VehicleBrand.VehicleBrandName</!option>
                 }
             </select>
         </div>
 
         <div class="form-group">
-            <label asp-for="VehicleModelName" class="control-label">Модель</label>
+            <label asp-for="VehicleModel.VehicleModelName" class="control-label">Модель</label>
             <select id="vehicleModelName" name="vehicleModelName" class="form-select">
                 @foreach (var u in model)
                 {
-                    var selected = @Model.VehicleModelName == u.VehicleModelName ? true : false;
+                    var selected = @Model.VehicleModel.VehicleModelName == u.VehicleModelName ? true : false;
                     <!option value="@u.VehicleModelName" @(selected ? "selected" : "" )>@u.VehicleModelName</!option>
                 }
             </select>
@@ -61,11 +61,11 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="BodyTypeName" class="control-label">Тип кузова</label>
+            <label asp-for="BodyType.BodyTypeName" class="control-label">Тип кузова</label>
             <select id="bodyTypeName" name="bodyTypeName" class="form-select" required>
                 @foreach (var u in body)
                 {
-                    var selected = @Model.BodyTypeName == u.BodyTypeName ? true : false;
+                    var selected = @Model.BodyType.BodyTypeName == u.BodyTypeName ? true : false;
                     <!option value="@u.BodyTypeName" @(selected ? "selected" : "" )>@u.BodyTypeName</!option>
                 }
             </select>
@@ -85,12 +85,12 @@
 
 
         <div class="form-group">
-            <label asp-for="FuelTypeName" class="control-label">Паливо</label>
+            <label asp-for="FuelType.FuelTypeName" class="control-label">Паливо</label>
             <select id="fuelTypeName" name="fuelTypeName" class="form-select">
                 @foreach (var u in fuel)
                 {
-                    var selected = @Model.FuelTypeName == u.FuelName ? true : false;
-                    <!option value="@u.FuelName" @(selected ? "selected" : "" )>@u.FuelName</!option>
+                    var selected = @Model.FuelType.FuelTypeName == u.FuelTypeName ? true : false;
+                    <!option value="@u.FuelTypeName" @(selected ? "selected" : "" )>@u.FuelTypeName</!option>
                 }
             </select>
         </div>
@@ -126,22 +126,22 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="GearBoxName" class="control-label">Тип коробки передач</label>
+            <label asp-for="GearBox.GearBoxName" class="control-label">Тип коробки передач</label>
             <select id="gearBoxName" name="gearBoxName" class="form-select">
                 @foreach (var u in gear)
                 {
-                    var selected = @Model.GearBoxName == u.GearBoxName ? true : false;
+                    var selected = @Model.GearBox.GearBoxName == u.GearBoxName ? true : false;
                     <!option value="@u.GearBoxName" @(selected ? "selected" : "" )>@u.GearBoxName</!option>
                 }
             </select>
         </div>
 
         <div class="form-group">
-            <label asp-for="DriveTypeName" class="form-label">Тип приводу</label>
+            <label asp-for="DriveType.DriveTypeName" class="form-label">Тип приводу</label>
             <select class="form-select" name="driveTypeName" id="driveTypeName">
                 @foreach (var u in drive)
                 {
-                    var selected = @Model.DriveTypeName == u.DriveTypeName ? true : false;
+                    var selected = @Model.DriveType.DriveTypeName == u.DriveTypeName ? true : false;
                     <!option value="@u.DriveTypeName" @(selected ? "selected" : "" )>@u.DriveTypeName</!option>
                 }
             </select>

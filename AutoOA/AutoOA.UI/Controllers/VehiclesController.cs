@@ -147,7 +147,7 @@ namespace AutoOA.UI.Controllers
                 var fuelType = _fuelTypeRepository.GetFuelTypeByName(fuelTypeName);
                 if (fuelType == null)
                 {
-                    fuelType = new FuelType() { FuelName = fuelTypeName };
+                    fuelType = new FuelType() { FuelTypeName = fuelTypeName };
                     fuelType = await _fuelTypeRepository.AddFuelTypeAsync(fuelType);
                 }
 
@@ -210,7 +210,7 @@ namespace AutoOA.UI.Controllers
             if (ModelState.IsValid)
             {
                 await _vehicleRepository.UpdateAsync(vehicleDto, regionName, bodyTypeName, vehicleBrandName, vehicleModelName, gearBoxName, driveTypeName, fuelTypeName);
-                return RedirectToAction("Details", "Vehicles", new { id = vehicleDto.Id });
+                return RedirectToAction("Details", "Vehicles", new { id = vehicleDto.VehicleId });
             }
             ViewBag.Regions = _regionRepository.GetRegions();
             ViewBag.Models = _vehicleModelRepository.GetVehicleModels();
